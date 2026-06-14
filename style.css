@@ -1134,3 +1134,108 @@ body.dark-mode .bottom-nav {
   color: var(--text-muted);
   margin-bottom: 10px;
 }
+
+/* Modal Overlays for Version 2 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 200;
+  display: none; /* Controlled by JS active class */
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  width: 100%;
+  max-width: 440px;
+  padding: 20px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  animation: scaleUpModal 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-card-large {
+  max-width: 520px;
+  max-height: 85vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+@keyframes scaleUpModal {
+  from { transform: scale(0.9) translateY(20px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.modal-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+.modal-close-btn:hover {
+  color: var(--secondary);
+}
+
+.modal-body {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Card Edit Actions Row styling */
+.card-edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  border-top: 1px dashed var(--border-color);
+  padding-top: 10px;
+  margin-top: 12px;
+}
+
+.btn-icon-only {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+}

@@ -1,5 +1,6 @@
 // Global State
 let tripData = null;
+let rawTripData = null; // Storing raw loaded JSON to support local mutations
 let activeTab = 'itinerary'; // itinerary, checklist, budget, info, food
 let selectedDay = 0; // Currently viewed day (0-12)
 let autoDetectedDay = 0; // Day index matching today's date (if inside range)
@@ -14,6 +15,7 @@ const USD_TO_JPY_RATE = 155; // Offline-first JPY conversion rate
 const CHECKLIST_STORAGE_KEY = 'japan-trip-checklist-state';
 const BUDGET_STORAGE_KEY = 'japan-trip-budget-entries';
 const THEME_STORAGE_KEY = 'japan-trip-theme-preference';
+const ITINERARY_MUTATIONS_KEY = 'japan-trip-itinerary-mutations';
 
 // Initialize App
 document.addEventListener('DOMContentLoaded', () => {
@@ -67,6 +69,14 @@ function setupNavigation() {
     switchTab('itinerary');
     selectDayTab(autoDetectedDay, true);
   });
+
+  // Close modals hooks
+  document.getElementById('event-modal-close').addEventListener('click', () => {
+    document.getElementById('event-modal').classList.remove('active');
+  });
+  document.getElementById('budget-edit-modal-close').addEventListener('click', () => {
+    document.getElementById('budget-edit-modal').classList.remove('active');
+  });
 }
 
 function switchTab(tabName) {
@@ -112,7 +122,8 @@ async function loadTripData() {
     if (!response.ok) {
       throw new Error('Could not load itinerary JSON data');
     }
-    tripData = await response.json();
+    rawTripData = await response.json();
+    applyItineraryMutations();
     
     // Auto-detect current day & render initial view
     detectCurrentDay();
@@ -265,10 +276,15 @@ function renderItineraryDay() {
         <h2 class="day-title-text">${day.dayLabel}</h2>
         <div class="day-theme">${day.theme}</div>
       </div>
-      <div class="day-selector-wrapper">
-        <select id="day-selector-dropdown" class="form-control" style="width: 100%; padding: 8px 12px; font-size: 0.9rem; font-weight: 600;">
-          ${selectDayOptions}
-        </select>
+      <div style="display: flex; gap: 8px; align-items: center; width: 100%;">
+        <div class="day-selector-wrapper" style="flex: 1;">
+          <select id="day-selector-dropdown" class="form-control" style="width: 100%; padding: 8px 12px; font-size: 0.9rem; font-weight: 600;">
+            ${selectDayOptions}
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="openEventModal('', ${selectedDay})" style="font-size: 0.85rem; padding: 8px 14px; flex-shrink: 0; display: flex; align-items: center; gap: 4px; height: 38px;">
+          ➕ Add Event
+        </button>
       </div>
     </div>
     ${hotelNotesHtml}
@@ -365,6 +381,10 @@ function renderItineraryDay() {
             ${detailsHtml ? `<div class="card-details-grid">${detailsHtml}</div>` : ''}
             ${tipsHtml}
             ${navigateButtonHtml ? `<div class="card-actions">${navigateButtonHtml}</div>` : ''}
+            <div class="card-edit-actions">
+              <button class="btn btn-icon-only" onclick="openEventModal('${act.id}', ${selectedDay})">✏️ Edit</button>
+              <button class="btn btn-icon-only btn-danger" onclick="confirmDeleteEvent('${act.id}')">🗑️ Delete</button>
+            </div>
           </div>
         </div>
       `;
@@ -525,8 +545,12 @@ window.toggleCategoryCollapse = function(catId) {
   }
 };
 
-window.confirmResetChecklist = function() {
-  if (confirm('Are you sure you want to reset all checklist tasks back to unchecked?')) {
+window.confirmResetChecklist = async function() {
+  const confirmResult = await showCustomConfirm(
+    '🔄 Reset Checklist?',
+    'Are you sure you want to reset all checklist tasks back to unchecked? This cannot be undone.'
+  );
+  if (confirmResult) {
     saveChecklistState({});
     renderChecklist();
   }
@@ -550,10 +574,16 @@ function renderBudget() {
 
   const entries = loadBudgetEntries();
   
-  // Calculate Totals
+  // Calculate Totals (Dual Currency support with backward compatibility)
   let totalSpentYen = 0;
   entries.forEach(entry => {
-    totalSpentYen += entry.amountYen;
+    const amount = entry.amount !== undefined ? entry.amount : entry.amountYen;
+    const currency = entry.currency || 'JPY';
+    if (currency === 'USD') {
+      totalSpentYen += amount * USD_TO_JPY_RATE;
+    } else {
+      totalSpentYen += amount;
+    }
   });
 
   const totalSpentUsd = Math.round(totalSpentYen / USD_TO_JPY_RATE);
@@ -563,7 +593,7 @@ function renderBudget() {
   summaryCard.className = 'budget-summary-card';
   summaryCard.innerHTML = `
     <div style="font-size: 0.9rem; opacity: 0.9;">Total Actual Spend</div>
-    <div class="budget-sum-val">¥${totalSpentYen.toLocaleString()} JPY</div>
+    <div class="budget-sum-val">¥${Math.round(totalSpentYen).toLocaleString()} JPY</div>
     <div class="budget-sum-usd">≈ $${totalSpentUsd.toLocaleString()} USD <span style="font-size: 0.75rem; opacity: 0.8;">(approx. 1$ = ${USD_TO_JPY_RATE}¥)</span></div>
   `;
   container.appendChild(summaryCard);
@@ -599,9 +629,18 @@ function renderBudget() {
           <option value="Other">🏷️ Other</option>
         </select>
       </div>
-      <div class="form-group">
-        <label>Amount (Yen ¥)</label>
-        <input type="number" class="form-control" id="spend-amount" placeholder="e.g. 1500" min="1" required />
+      <div style="display: flex; gap: 10px; margin-bottom: 12px;">
+        <div style="flex: 1;">
+          <label>Currency</label>
+          <select class="form-control" id="spend-currency" required>
+            <option value="JPY">JPY (¥)</option>
+            <option value="USD">USD ($)</option>
+          </select>
+        </div>
+        <div style="flex: 2;">
+          <label>Amount</label>
+          <input type="number" class="form-control" id="spend-amount" placeholder="e.g. 1500" min="1" required />
+        </div>
       </div>
       <div class="form-group">
         <label>Note / Description (Optional)</label>
@@ -623,7 +662,15 @@ function renderBudget() {
       // Sum actual spends for this day
       const dayEntries = entries.filter(e => e.dayIndex === index);
       let dayActualYen = 0;
-      dayEntries.forEach(e => dayActualYen += e.amountYen);
+      dayEntries.forEach(entry => {
+        const amount = entry.amount !== undefined ? entry.amount : entry.amountYen;
+        const currency = entry.currency || 'JPY';
+        if (currency === 'USD') {
+          dayActualYen += amount * USD_TO_JPY_RATE;
+        } else {
+          dayActualYen += amount;
+        }
+      });
 
       const dayActualUsd = Math.round(dayActualYen / USD_TO_JPY_RATE);
       const estText = day.dayOverview.budgetEstimate || 'No estimate listed';
@@ -634,14 +681,19 @@ function renderBudget() {
       let itemsHtml = '';
       if (dayEntries.length > 0) {
         dayEntries.forEach(entry => {
+          const amount = entry.amount !== undefined ? entry.amount : entry.amountYen;
+          const currency = entry.currency || 'JPY';
+          const symbol = currency === 'USD' ? '$' : '¥';
+          
           itemsHtml += `
             <div class="spend-item">
               <div>
                 <strong>[${entry.category}]</strong> ${entry.note || ''}
               </div>
               <div style="display: flex; align-items: center; gap: 8px;">
-                <span>¥${entry.amountYen.toLocaleString()}</span>
-                <button class="spend-delete-btn" onclick="deleteSpendEntry('${entry.id}')">❌</button>
+                <span>${symbol}${amount.toLocaleString()}</span>
+                <button class="spend-delete-btn" onclick="openBudgetEditModal('${entry.id}')" style="color: var(--primary);">✏️</button>
+                <button class="spend-delete-btn" onclick="confirmDeleteSpend('${entry.id}')">❌</button>
               </div>
             </div>
           `;
@@ -653,7 +705,7 @@ function renderBudget() {
       row.innerHTML = `
         <div class="budget-day-header" onclick="toggleCategoryCollapse('budget-day-${index}')">
           <div>Day ${day.dayNumber} · ${day.title}</div>
-          <div style="font-size: 0.9rem; color: var(--primary);">¥${dayActualYen.toLocaleString()} (~$${dayActualUsd})</div>
+          <div style="font-size: 0.9rem; color: var(--primary);">¥${Math.round(dayActualYen).toLocaleString()} (~$${dayActualUsd})</div>
         </div>
         <div class="budget-day-details" id="budget-day-${index}">
           <div style="margin-bottom: 8px; font-size: 0.8rem; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
@@ -671,14 +723,16 @@ window.handleAddSpend = function(event) {
   event.preventDefault();
   const dayIndex = parseInt(document.getElementById('spend-day').value);
   const category = document.getElementById('spend-category').value;
-  const amountYen = parseInt(document.getElementById('spend-amount').value);
+  const currency = document.getElementById('spend-currency').value;
+  const amount = parseInt(document.getElementById('spend-amount').value);
   const note = document.getElementById('spend-note').value;
 
   const newEntry = {
     id: 'b-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
     dayIndex,
     category,
-    amountYen,
+    currency,
+    amount,
     note,
     timestamp: Date.now()
   };
@@ -691,8 +745,12 @@ window.handleAddSpend = function(event) {
   renderBudget();
 };
 
-window.deleteSpendEntry = function(entryId) {
-  if (confirm('Are you sure you want to delete this expense entry?')) {
+window.confirmDeleteSpend = async function(entryId) {
+  const confirmResult = await showCustomConfirm(
+    '🗑️ Delete Expense?',
+    'Are you sure you want to delete this expense entry?'
+  );
+  if (confirmResult) {
     let entries = loadBudgetEntries();
     entries = entries.filter(e => e.id !== entryId);
     saveBudgetEntries(entries);
@@ -1024,3 +1082,269 @@ function hideInstallBanner() {
     installBanner.style.display = 'none';
   }
 }
+
+// ==========================================
+// CUSTOM OVERLAYS, MUTATIONS & TIMING HELPERS (Version 2)
+// ==========================================
+
+// Custom Confirmation Dialog Helper (Returns a Promise)
+function showCustomConfirm(title, message) {
+  return new Promise((resolve) => {
+    const modal = document.getElementById('confirm-modal');
+    const titleEl = document.getElementById('confirm-modal-title');
+    const bodyEl = document.getElementById('confirm-modal-body');
+    const cancelBtn = document.getElementById('confirm-modal-cancel');
+    const okBtn = document.getElementById('confirm-modal-ok');
+
+    titleEl.innerText = title;
+    bodyEl.innerText = message;
+    
+    modal.classList.add('active');
+
+    function cleanUp() {
+      modal.classList.remove('active');
+      cancelBtn.removeEventListener('click', onCancel);
+      okBtn.removeEventListener('click', onConfirm);
+    }
+
+    function onCancel() {
+      cleanUp();
+      resolve(false);
+    }
+
+    function onConfirm() {
+      cleanUp();
+      resolve(true);
+    }
+
+    cancelBtn.addEventListener('click', onCancel);
+    okBtn.addEventListener('click', onConfirm);
+  });
+}
+
+// Open Modal Form for Itinerary Events
+window.openEventModal = function(eventId = '', dayIndex = 0) {
+  const modal = document.getElementById('event-modal');
+  const titleEl = document.getElementById('event-modal-title');
+  const form = document.getElementById('event-form');
+  
+  form.reset();
+  document.getElementById('event-id').value = eventId;
+  
+  if (eventId) {
+    titleEl.innerText = '✏️ Edit Itinerary Event';
+    const day = tripData.days[dayIndex];
+    const event = day.activities.find(act => act.id === eventId);
+    
+    if (event) {
+      document.getElementById('event-time').value = event.time || '';
+      document.getElementById('event-title').value = event.title || '';
+      document.getElementById('event-desc').value = event.description || '';
+      document.getElementById('event-loc-name').value = (event.location && event.location.name) || '';
+      document.getElementById('event-loc-addr').value = (event.location && event.location.address) || '';
+      document.getElementById('event-mode').value = event.travelMode || '';
+      document.getElementById('event-variant').value = event.variant || '';
+      document.getElementById('event-tips').value = (event.notes && event.notes.join('\n')) || '';
+      document.getElementById('event-booking').value = event.bookingRef || '';
+    }
+  } else {
+    titleEl.innerText = '➕ Add Itinerary Event';
+  }
+
+  modal.classList.add('active');
+};
+
+// Handle Event Modal Form Submit
+window.handleSaveEvent = function(event) {
+  event.preventDefault();
+  
+  const eventId = document.getElementById('event-id').value;
+  const time = document.getElementById('event-time').value;
+  const title = document.getElementById('event-title').value;
+  const description = document.getElementById('event-desc').value;
+  const locName = document.getElementById('event-loc-name').value;
+  const locAddr = document.getElementById('event-loc-addr').value;
+  const travelMode = document.getElementById('event-mode').value || null;
+  const variant = document.getElementById('event-variant').value || null;
+  const tipsText = document.getElementById('event-tips').value;
+  const bookingRef = document.getElementById('event-booking').value || null;
+
+  const notes = tipsText ? tipsText.split('\n').map(line => line.trim()).filter(Boolean) : [];
+  const location = locName ? { name: locName, address: locAddr || null } : null;
+
+  const mutations = getItineraryMutations();
+
+  if (eventId) {
+    // Check if it's a locally added event first
+    const localAddedIndex = mutations.added.findIndex(item => item.event.id === eventId);
+    if (localAddedIndex !== -1) {
+      mutations.added[localAddedIndex].event = {
+        ...mutations.added[localAddedIndex].event,
+        time, title, description, location, travelMode, variant, notes, bookingRef
+      };
+    } else {
+      mutations.edited[eventId] = {
+        time, title, description, location, travelMode, variant, notes, bookingRef
+      };
+    }
+  } else {
+    const newId = 'custom-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
+    const newEvent = {
+      id: newId,
+      time, title, description, location, travelMode, variant, notes, bookingRef
+    };
+    mutations.added.push({
+      dayIndex: selectedDay,
+      event: newEvent
+    });
+  }
+
+  saveItineraryMutations(mutations);
+  applyItineraryMutations();
+  
+  document.getElementById('event-modal').classList.remove('active');
+  renderItineraryDay();
+};
+
+// Confirm and Delete Event
+window.confirmDeleteEvent = async function(eventId) {
+  const confirmResult = await showCustomConfirm(
+    '🗑️ Delete Event?', 
+    'Are you sure you want to delete this event from the itinerary? This cannot be undone.'
+  );
+  
+  if (confirmResult) {
+    const mutations = getItineraryMutations();
+    const localIndex = mutations.added.findIndex(item => item.event.id === eventId);
+    
+    if (localIndex !== -1) {
+      mutations.added.splice(localIndex, 1);
+    } else {
+      mutations.deleted.push(eventId);
+    }
+    
+    saveItineraryMutations(mutations);
+    applyItineraryMutations();
+    renderItineraryDay();
+  }
+};
+
+// Get itinerary mutations from localStorage
+function getItineraryMutations() {
+  const dataStr = localStorage.getItem(ITINERARY_MUTATIONS_KEY);
+  return dataStr ? JSON.parse(dataStr) : { added: [], edited: {}, deleted: [] };
+}
+
+// Save itinerary mutations to localStorage
+function saveItineraryMutations(mutations) {
+  localStorage.setItem(ITINERARY_MUTATIONS_KEY, JSON.stringify(mutations));
+}
+
+// Parse time strings into total minutes from midnight for sorting
+function timeStringToMinutes(timeStr) {
+  if (!timeStr) return 1440;
+  const cleanStr = timeStr.replace(/[~]/g, '').trim().toLowerCase();
+  
+  if (cleanStr.includes('evening') || cleanStr.includes('night') || cleanStr.includes('dinner')) return 1200;
+  if (cleanStr.includes('afternoon') || cleanStr.includes('lunch') || cleanStr.includes('midday')) return 720;
+  if (cleanStr.includes('morning') || cleanStr.includes('breakfast')) return 480;
+  if (cleanStr.includes('pre-flight') || cleanStr.includes('pre-load') || cleanStr.includes('pre-trip')) return -10;
+  if (cleanStr.includes('overnight')) return 1400;
+
+  const match = cleanStr.match(/^(\d+):(\d+)\s*(am|pm)/);
+  if (match) {
+    let hours = parseInt(match[1]);
+    const minutes = parseInt(match[2]);
+    const ampm = match[3];
+    if (ampm === 'pm' && hours < 12) hours += 12;
+    if (ampm === 'am' && hours === 12) hours = 0;
+    return hours * 60 + minutes;
+  }
+  
+  const matchHour = cleanStr.match(/^(\d+)\s*(am|pm)/);
+  if (matchHour) {
+    let hours = parseInt(matchHour[1]);
+    const ampm = matchHour[2];
+    if (ampm === 'pm' && hours < 12) hours += 12;
+    if (ampm === 'am' && hours === 12) hours = 0;
+    return hours * 60;
+  }
+
+  return 1440;
+}
+
+// Apply local storage mutations on top of raw itinerary.json
+function applyItineraryMutations() {
+  if (!rawTripData) return;
+  tripData = JSON.parse(JSON.stringify(rawTripData));
+  const mutations = getItineraryMutations();
+
+  tripData.days.forEach((day, index) => {
+    let activities = day.activities.map(act => {
+      if (mutations.deleted.includes(act.id)) return null;
+      if (mutations.edited[act.id]) {
+        return { ...act, ...mutations.edited[act.id] };
+      }
+      return act;
+    }).filter(act => act !== null);
+
+    const additions = mutations.added.filter(item => item.dayIndex === index);
+    additions.forEach(item => {
+      activities.push(item.event);
+    });
+
+    activities.sort((a, b) => timeStringToMinutes(a.time) - timeStringToMinutes(b.time));
+    day.activities = activities;
+  });
+}
+
+// Open Budget Edit Modal
+window.openBudgetEditModal = function(entryId) {
+  const entries = loadBudgetEntries();
+  const entry = entries.find(e => e.id === entryId);
+  if (!entry) return;
+
+  const modal = document.getElementById('budget-edit-modal');
+  document.getElementById('budget-edit-id').value = entryId;
+  
+  const daySelect = document.getElementById('budget-edit-day');
+  daySelect.innerHTML = '';
+  tripData.days.forEach((d, idx) => {
+    daySelect.innerHTML += `<option value="${idx}">Day ${d.dayNumber} · ${d.title}</option>`;
+  });
+  daySelect.value = entry.dayIndex;
+  
+  document.getElementById('budget-edit-category').value = entry.category;
+  document.getElementById('budget-edit-currency').value = entry.currency || 'JPY';
+  document.getElementById('budget-edit-amount').value = entry.amount !== undefined ? entry.amount : entry.amountYen;
+  document.getElementById('budget-edit-note').value = entry.note || '';
+
+  modal.classList.add('active');
+};
+
+// Handle Budget Edit Save
+window.handleSaveBudgetEdit = function(event) {
+  event.preventDefault();
+  const entryId = document.getElementById('budget-edit-id').value;
+  const dayIndex = parseInt(document.getElementById('budget-edit-day').value);
+  const category = document.getElementById('budget-edit-category').value;
+  const currency = document.getElementById('budget-edit-currency').value;
+  const amount = parseInt(document.getElementById('budget-edit-amount').value);
+  const note = document.getElementById('budget-edit-note').value;
+
+  const entries = loadBudgetEntries();
+  const index = entries.findIndex(e => e.id === entryId);
+  if (index !== -1) {
+    entries[index] = {
+      ...entries[index],
+      dayIndex,
+      category,
+      currency,
+      amount,
+      note
+    };
+    saveBudgetEntries(entries);
+    document.getElementById('budget-edit-modal').classList.remove('active');
+    renderBudget();
+  }
+};

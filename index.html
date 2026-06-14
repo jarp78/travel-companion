@@ -141,6 +141,123 @@
     </button>
   </nav>
 
+  <!-- Reusable Custom Confirmation Modal -->
+  <div class="modal-overlay" id="confirm-modal">
+    <div class="modal-card">
+      <h3 class="modal-title" id="confirm-modal-title">Confirm Action</h3>
+      <div class="modal-body" id="confirm-modal-body">Are you sure?</div>
+      <div class="modal-actions">
+        <button class="btn" id="confirm-modal-cancel">Cancel</button>
+        <button class="btn btn-primary" id="confirm-modal-ok">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Itinerary Event Modal -->
+  <div class="modal-overlay" id="event-modal">
+    <div class="modal-card modal-card-large">
+      <div class="modal-card-header">
+        <h3 class="modal-title" id="event-modal-title">Itinerary Event</h3>
+        <button class="modal-close-btn" id="event-modal-close" aria-label="Close modal">×</button>
+      </div>
+      <form id="event-form" onsubmit="handleSaveEvent(event)">
+        <input type="hidden" id="event-id" />
+        <div class="form-group">
+          <label for="event-time">Time</label>
+          <input type="text" class="form-control" id="event-time" placeholder="e.g. 10:30 AM or Evening" required />
+        </div>
+        <div class="form-group">
+          <label for="event-title">Title</label>
+          <input type="text" class="form-control" id="event-title" placeholder="e.g. Senso-ji Temple Visit" required />
+        </div>
+        <div class="form-group">
+          <label for="event-desc">Description</label>
+          <textarea class="form-control" id="event-desc" rows="3" placeholder="Details or notes about the activity..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="event-loc-name">Location Name (Optional)</label>
+          <input type="text" class="form-control" id="event-loc-name" placeholder="e.g. Senso-ji Temple" />
+        </div>
+        <div class="form-group">
+          <label for="event-loc-addr">Location Address (Optional, for maps link)</label>
+          <input type="text" class="form-control" id="event-loc-addr" placeholder="e.g. 2-3-1 Asakusa, Taito City, Tokyo" />
+        </div>
+        <div class="form-group">
+          <label for="event-mode">Travel Mode (for navigation)</label>
+          <select class="form-control" id="event-mode">
+            <option value="">None</option>
+            <option value="transit">🚇 Transit</option>
+            <option value="walking">🚶 Walking</option>
+            <option value="driving">🚗 Driving / Taxi</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="event-variant">Variant (Badge)</label>
+          <select class="form-control" id="event-variant">
+            <option value="">None (Standard Day Itinerary)</option>
+            <option value="A">🔵 Option A (Original Plan)</option>
+            <option value="B">🟢 Option B (Suggested Addition)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="event-tips">Tips / Notes (One per line, optional)</label>
+          <textarea class="form-control" id="event-tips" rows="2" placeholder="💡 Pack a compact umbrella&#10;💡 Dress comfortably"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="event-booking">Booking Ref / Confirmation (Optional)</label>
+          <input type="text" class="form-control" id="event-booking" placeholder="e.g. Booking ID: 141053" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 15px;">Save Event</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Budget Modal -->
+  <div class="modal-overlay" id="budget-edit-modal">
+    <div class="modal-card">
+      <div class="modal-card-header">
+        <h3 class="modal-title">Edit Expense</h3>
+        <button class="modal-close-btn" id="budget-edit-modal-close" aria-label="Close modal">×</button>
+      </div>
+      <form id="budget-edit-form" onsubmit="handleSaveBudgetEdit(event)">
+        <input type="hidden" id="budget-edit-id" />
+        <div class="form-group">
+          <label for="budget-edit-day">Trip Day</label>
+          <select class="form-control" id="budget-edit-day" required>
+            <!-- Populated via JS -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="budget-edit-category">Category</label>
+          <select class="form-control" id="budget-edit-category" required>
+            <option value="Food">🍜 Food</option>
+            <option value="Transport">🚅 Transport</option>
+            <option value="Shopping">🛍️ Shopping</option>
+            <option value="Activities">⚔️ Activities</option>
+            <option value="Accommodation">🏨 Hotel</option>
+            <option value="Other">🏷️ Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="budget-edit-currency">Currency</label>
+          <select class="form-control" id="budget-edit-currency" required>
+            <option value="JPY">JPY (¥)</option>
+            <option value="USD">USD ($)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="budget-edit-amount">Amount</label>
+          <input type="number" class="form-control" id="budget-edit-amount" min="1" required />
+        </div>
+        <div class="form-group">
+          <label for="budget-edit-note">Note / Description (Optional)</label>
+          <input type="text" class="form-control" id="budget-edit-note" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 15px;">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
   <!-- App Script -->
   <script src="app.js"></script>
 </body>
