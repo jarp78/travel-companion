@@ -1,0 +1,2153 @@
+{
+  "trip": {
+    "title": "Japan Family Adventure 2026",
+    "startDate": "2026-06-15",
+    "endDate": "2026-06-27",
+    "travelers": [
+      "Sylvia Karina Arreola Chapa",
+      "Jose Alfredo Rodriguez Portillo",
+      "Logan Alexander Rodriguez Arreola",
+      "Maximiliano Rodriguez Arreola"
+    ]
+  },
+  "preTripChecklist": [
+    {
+      "category": "6-8 Weeks Before Departure",
+      "items": [
+        {
+          "id": "jrpass",
+          "text": "Book Japan Rail Pass (14-day) — buy BEFORE leaving the US (jrpass.com or japan-rail-pass.com). Exchange voucher at Haneda airport on arrival.",
+          "checked": false
+        },
+        {
+          "id": "teamlab_tix",
+          "text": "Book TeamLab / Activity Tickets — See Day 3 for alternative. If choosing Mori Art Museum, no advance booking needed. Book Robot Restaurant or other paid experiences early.",
+          "checked": false
+        },
+        {
+          "id": "pokemon_cafe",
+          "text": "Book Pokémon Café Tokyo — Reservation-only. Releases bookings ~1 month ahead on official site. Set a reminder! (cafe.pokemon.co.jp)",
+          "checked": false
+        },
+        {
+          "id": "usj_tix",
+          "text": "Book Universal Studios Japan — Nintendo World timed passes sell out instantly. Book via official USJ app the moment they release.",
+          "checked": false
+        },
+        {
+          "id": "shibuya_scramble_deck",
+          "text": "Book Shibuya Scramble Square Observation Deck — Optional but great. Book at shibuya-scramble-square.com for guaranteed entry.",
+          "checked": false
+        },
+        {
+          "id": "confirm_ryumeikan",
+          "text": "Confirm Hotel Ryumeikan Tokyo (Marunouchi) for Tokyo stay — book quadruple room or connecting rooms.",
+          "checked": false
+        },
+        {
+          "id": "book_mimaru_kyoto",
+          "text": "Book MIMARU Kyoto Shinmachi Sanjo (ask for Pokémon rooms!) for Kyoto stay.",
+          "checked": false
+        },
+        {
+          "id": "book_zentis_osaka",
+          "text": "Book Hotel Zentis Osaka for Osaka stay.",
+          "checked": false
+        },
+        {
+          "id": "book_tokyo_final",
+          "text": "Book Tokyo hotel for final night (Jun 25-26).",
+          "checked": false
+        },
+        {
+          "id": "jrpass_delivery",
+          "text": "Confirm Japan Rail Pass voucher delivery address (arrives by mail). 14-day pass recommended.",
+          "checked": false
+        },
+        {
+          "id": "travel_insurance",
+          "text": "Purchase travel insurance — strongly recommended for a trip of this size.",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "category": "2-3 Weeks Before Departure",
+      "items": [
+        {
+          "id": "translate_app",
+          "text": "Download Google Translate with Japanese language pack for OFFLINE use. Camera translates menus in real-time!",
+          "checked": false
+        },
+        {
+          "id": "maps_offline",
+          "text": "Download Google Maps offline maps for Tokyo, Kyoto, and Osaka. Works brilliantly for train routing.",
+          "checked": false
+        },
+        {
+          "id": "suica_card",
+          "text": "Add Suica (IC Card) to Apple Wallet or Google Pay NOW. Load money before flying. Tap on/off trains, use at convenience stores & vending machines.",
+          "checked": false
+        },
+        {
+          "id": "tabelog_app",
+          "text": "Download Tabelog — Japan's best restaurant rating app. Better than Google for finding local spots.",
+          "checked": false
+        },
+        {
+          "id": "flush_app",
+          "text": "Download Flush — Shows location of clean public restrooms. Very useful!",
+          "checked": false
+        },
+        {
+          "id": "payke_app",
+          "text": "Download Payke — Scan product barcodes to see labels in English. Great in supermarkets and pharmacies.",
+          "checked": false
+        },
+        {
+          "id": "go_taxi",
+          "text": "Download GO Taxi — Japan's Uber equivalent, English friendly.",
+          "checked": false
+        },
+        {
+          "id": "visit_japan_web",
+          "text": "Register family on Visit Japan Web (services.digital.go.jp/en/visit-japan-web/). Immigration pre-registration speeds up customs. Use browser, do for ALL 4 family members.",
+          "checked": false
+        },
+        {
+          "id": "passport_check",
+          "text": "Check passport expiry dates — Japan requires 6 months validity beyond travel dates.",
+          "checked": false
+        },
+        {
+          "id": "order_yen",
+          "text": "Order Japanese yen from US bank (better rates than airport). Bring ~$200 USD equivalent in cash per person for day 1.",
+          "checked": false
+        },
+        {
+          "id": "atm_check",
+          "text": "Note that 7-Eleven ATMs in Japan accept most US cards and give excellent exchange rates (reliable backup).",
+          "checked": false
+        },
+        {
+          "id": "connectivity_data",
+          "text": "Get eSIM or Pocket WiFi — Saily by NordVPN (eSIM) or IIJmio. Get data for all 4 devices and activate before departure. Excellent 4G/5G everywhere.",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "category": "1 Week Before Departure",
+      "items": [
+        {
+          "id": "confirm_hotels_final",
+          "text": "Confirm all hotel reservations — Print or screenshot confirmation numbers.",
+          "checked": false
+        },
+        {
+          "id": "confirm_tix_final",
+          "text": "Confirm all pre-booked tickets (TeamLab, Pokémon Café, restaurant reservations).",
+          "checked": false
+        },
+        {
+          "id": "test_wifi",
+          "text": "Activate your eSIM / Pocket WiFi and test that it works.",
+          "checked": false
+        },
+        {
+          "id": "weather_check",
+          "text": "Check weather forecast — pack a compact umbrella each (June is rainy season!).",
+          "checked": false
+        },
+        {
+          "id": "slipon_shoes",
+          "text": "Pack slip-on shoes for the whole family — shoes are removed constantly at temples, restaurants, and ryokan.",
+          "checked": false
+        },
+        {
+          "id": "trash_bags",
+          "text": "Bring/pack small bags for trash — Japan has almost NO public bins. Carry wrappers until finding a convenience store.",
+          "checked": false
+        },
+        {
+          "id": "phone_storage",
+          "text": "Load extra photos off phones to make space. You will take hundreds of photos per day.",
+          "checked": false
+        },
+        {
+          "id": "share_itinerary",
+          "text": "Itinerary: share this document — Give family members a simple 1-page summary. Teens are more cooperative when they know what's coming!",
+          "checked": false
+        },
+        {
+          "id": "power_banks",
+          "text": "Charge all portable power banks and pack USB-C cables.",
+          "checked": false
+        }
+      ]
+    }
+  ],
+  "days": [
+    {
+      "dayNumber": 0,
+      "date": "2026-06-15",
+      "dayLabel": "Day 0 · June 15 (Mon)",
+      "title": "Memphis → Atlanta",
+      "theme": "Travel Day",
+      "hotelNote": "Hyatt Place ORD (already booked)",
+      "activities": [
+        {
+          "id": "d0-1",
+          "time": "12:00 PM",
+          "title": "Depart Memphis (MEM)",
+          "description": "Start the journey from Memphis.",
+          "variant": null,
+          "location": {
+            "name": "Memphis International Airport",
+            "address": "Memphis International Airport, MEM"
+          },
+          "travelMode": "transit",
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d0-2",
+          "time": "6:00 PM",
+          "title": "Arrive Atlanta",
+          "description": "Landed in Atlanta.",
+          "variant": null,
+          "location": {
+            "name": "Hartsfield-Jackson Atlanta International Airport",
+            "address": "Atlanta International Airport, ATL"
+          },
+          "travelMode": null,
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d0-3",
+          "time": "~5:30 PM",
+          "title": "Check in — Hyatt Place",
+          "description": "Check in at Hyatt Place ORD (already booked). Note: The itinerary notes ORD (Chicago), likely a connection hotel or booked hotel name as written.",
+          "variant": null,
+          "location": {
+            "name": "Hyatt Place",
+            "address": "Hyatt Place"
+          },
+          "travelMode": "walking",
+          "notes": [],
+          "bookingRef": "Already Booked"
+        },
+        {
+          "id": "d0-4",
+          "time": "Evening",
+          "title": "Light Dinner & Early Bedtime",
+          "description": "Light dinner near hotel, early bedtime — big travel day tomorrow!",
+          "variant": null,
+          "location": null,
+          "travelMode": null,
+          "notes": [
+            "Pack tip: lay out everything you're taking to Japan tonight. You'll thank yourself tomorrow."
+          ],
+          "bookingRef": null
+        }
+      ],
+      "dayOverview": {
+        "walking": null,
+        "transitRides": null,
+        "budgetEstimate": "Minimal (Food at airport / near hotel)"
+      }
+    },
+    {
+      "dayNumber": 1,
+      "date": "2026-06-16",
+      "dayLabel": "Day 1 · June 16 (Tue)",
+      "title": "Atlanta → Toronto → Tokyo (Overnight Flight)",
+      "theme": "Departure & Transpacific Flight",
+      "hotelNote": "Overnight flight — try to sleep on the plane!",
+      "activities": [
+        {
+          "id": "d1-1",
+          "time": "4:00 AM",
+          "title": "Hotel to ATL airport",
+          "description": "Transfer to ATL airport.",
+          "variant": "A",
+          "location": {
+            "name": "Hartsfield-Jackson Atlanta International Airport",
+            "address": "Hartsfield-Jackson Atlanta International Airport"
+          },
+          "travelMode": "driving",
+          "notes": [],
+          "bookingRef": "Booking reference: CPXU6R"
+        },
+        {
+          "id": "d1-2",
+          "time": "7:00 AM",
+          "title": "Depart ATL — Premium Economy",
+          "description": "Flight departs ATL. Premium Economy seating.",
+          "variant": "A",
+          "location": null,
+          "travelMode": null,
+          "notes": [],
+          "bookingRef": "Booking reference: CPXU6R"
+        },
+        {
+          "id": "d1-3",
+          "time": "9:21 AM",
+          "title": "Arrive @Toronto",
+          "description": "Layover in Toronto.",
+          "variant": "A",
+          "location": {
+            "name": "Toronto Pearson International Airport",
+            "address": "Toronto Pearson International Airport, YYZ"
+          },
+          "travelMode": null,
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d1-4",
+          "time": "1:05 PM",
+          "title": "Depart Toronto YYZ — Premium Economy",
+          "description": "Transpacific flight departs Toronto (13 h 35 m). Overnight flight — try to sleep on the plane! Consider melatonin to help with jet lag.",
+          "variant": "A",
+          "location": null,
+          "travelMode": null,
+          "notes": [],
+          "bookingRef": "Booking reference: CPXU6R"
+        },
+        {
+          "id": "d1-5",
+          "time": "Pre-flight",
+          "title": "Download Google Translate with Japanese offline",
+          "description": "Make sure to download the translation package for offline use.",
+          "variant": "B",
+          "location": null,
+          "travelMode": null,
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d1-6",
+          "time": "Pre-flight",
+          "title": "Pre-load a Suica card app (IC Card)",
+          "description": "Add Suica to Apple Wallet or Google Pay. You'll tap on/off trains like locals.",
+          "variant": "B",
+          "location": null,
+          "travelMode": null,
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d1-7",
+          "time": "Pre-flight",
+          "title": "Get a Japan SIM or pocket WiFi arranged",
+          "description": "Ensure connectivity is sorted before landing.",
+          "variant": "B",
+          "location": null,
+          "travelMode": null,
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d1-8",
+          "time": "Pre-flight",
+          "title": "Bring yen from a US bank or plan to use 7-Eleven ATMs",
+          "description": "Plan your cash buffer. Japan is cash-friendly.",
+          "variant": "B",
+          "location": null,
+          "travelMode": null,
+          "notes": [],
+          "bookingRef": null
+        }
+      ],
+      "dayOverview": {
+        "walking": null,
+        "transitRides": null,
+        "budgetEstimate": "Minimal (Flight meals included)"
+      }
+    },
+    {
+      "dayNumber": 2,
+      "date": "2026-06-17",
+      "dayLabel": "Day 2 · June 17 (Wed)",
+      "title": "Arrival in Tokyo",
+      "theme": "Tokyo Arrival & Hotel Check-in",
+      "hotelNote": "Checking in at Tokyo Bay Shiomi Prince Hotel",
+      "activities": [
+        {
+          "id": "d2-1",
+          "time": "3:40 PM",
+          "title": "Land at Haneda (HND)",
+          "description": "Touchdown in Japan! Welcome to Tokyo.",
+          "variant": null,
+          "location": {
+            "name": "Haneda Airport Terminal 3",
+            "address": "Haneda Airport Terminal 3, Tokyo"
+          },
+          "travelMode": null,
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d2-2",
+          "time": "~5:15 PM",
+          "title": "Clear immigration & bags",
+          "description": "Clear immigration, collect luggage, and head towards public transport.",
+          "variant": null,
+          "location": null,
+          "travelMode": null,
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d2-3",
+          "time": "~6:00 PM",
+          "title": "Take Tokyo Monorail → Hamamatsucho Station",
+          "description": "Take Tokyo Monorail to Hamamatsucho Station, then transfer to JR Keiyo Line to Shiomi Station. Walk about 3–5 minutes to the hotel.",
+          "variant": null,
+          "location": {
+            "name": "Shiomi Station",
+            "address": "Shiomi Station, Tokyo"
+          },
+          "travelMode": "transit",
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d2-4",
+          "time": "~7:15 PM",
+          "title": "Arrive Tokyo hotel",
+          "description": "Check in at Tokyo Bay Shiomi Prince Hotel. Address: 2-8-6 Shiomi, Koto City, Tokyo 135-0052, Japan.",
+          "variant": null,
+          "location": {
+            "name": "Tokyo Bay Shiomi Prince Hotel",
+            "address": "2-8-6 Shiomi, Koto City, Tokyo 135-0052, Japan"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Hotel: Tokyo Bay Shiomi Prince Hotel. Address: 2-8-6 Shiomi, Koto City, Tokyo 135-0052, Japan"
+          ],
+          "bookingRef": "Booked"
+        },
+        {
+          "id": "d2-5",
+          "time": "Evening",
+          "title": "Light dinner near hotel",
+          "description": "Ramen or convenience store onigiri near hotel.",
+          "variant": null,
+          "location": null,
+          "travelMode": null,
+          "notes": [
+            "First meal in Japan suggestion: Ichiran Ramen — individual booths, order by ticket machine, no English needed! Perfect for jet-lagged arrivals.",
+            "Grab snacks at 7-Eleven or Lawson convenience store — they're shockingly good!",
+            "⚠️ June is start of rainy season — pack a compact umbrella!"
+          ],
+          "bookingRef": null
+        }
+      ],
+      "dayOverview": {
+        "walking": "Under 1 km",
+        "transitRides": 2,
+        "budgetEstimate": "¥5,000 - 8,000 for dinner & snacks"
+      }
+    },
+    {
+      "dayNumber": 3,
+      "date": "2026-06-18",
+      "dayLabel": "Day 3 · June 18 (Thu)",
+      "title": "Tokyo — Samurai, Anime & Electric Town",
+      "theme": "Samurai Experience, Ikebukuro & Shinjuku",
+      "hotelNote": "Still at Tokyo Bay Shiomi Prince Hotel (no checkout)",
+      "activities": [
+        {
+          "id": "d3-1",
+          "time": "07:30 AM",
+          "title": "Breakfast — Breakfast at the hotel",
+          "description": "Optional breakfast stop at Tokyo Station’s Gransta food hall (≈20–25 min from hotel via JR Keiyo Line). Gransta food hall options: Éclair de Génie (pastries), Gotsubo (onigiri with premium fillings), or standing cafés for coffee.",
+          "variant": null,
+          "location": {
+            "name": "Tokyo Station Gransta",
+            "address": "Tokyo Station Gransta"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Gransta breakfast budget: ¥600–1,000/person"
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d3-2",
+          "time": "09:40 AM",
+          "title": "Getting to SAMURAI’ve",
+          "description": "Walk 1 min to Shiomi Station → JR Keiyo Line → Tokyo Station (7 min) → JR Yamanote Line → Harajuku Station (~25 min) · Total: ~35 min · ¥260. Exit via Takeshita Exit, 8-min walk to dojo.",
+          "variant": null,
+          "location": {
+            "name": "SAMURAI've Dojo",
+            "address": "Shibata Building B2, 3-3-12 Sendagaya, Shibuya-ku, Tokyo"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Show Google Maps: サムライブ 千駄ヶ谷 or address: 〒151-0051 東京都渋谷区千駄ヶ谷3-3-12"
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d3-3",
+          "time": "10:15 AM",
+          "title": "Arrive at SAMURAI’ve Dojo (arrive 10–15 min early)",
+          "description": "Allow time to change into your samurai kimono before the 10:30 session. Staff will help you dress.",
+          "variant": null,
+          "location": {
+            "name": "SAMURAI've Dojo",
+            "address": "Shibata Building B2, 3-3-12 Sendagaya, Shibuya-ku, Tokyo"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "What to Wear: Wear fitted comfortable clothes underneath (leggings/athletic wear). The kimono goes over everything — bulky jeans make dressing awkward."
+          ],
+          "bookingRef": "Booking ID: 141053"
+        },
+        {
+          "id": "d3-4",
+          "time": "10:30 AM",
+          "title": "⚔️ SAMURAI’ve — Samurai Sword Experience",
+          "description": "Taught by film/stage stunt professionals. Progression: Kitsuke (wear kimono), Reigi sahou (etiquette & code), Basic lesson (grip, stance, cutting), Tachimawari (live choreographed fight where you are the hero!), Photo & video shoot.",
+          "variant": null,
+          "location": {
+            "name": "SAMURAI've Dojo",
+            "address": "Shibata Building B2, 3-3-12 Sendagaya, Shibuya-ku, Tokyo"
+          },
+          "travelMode": null,
+          "notes": [
+            "⚔️ Why SAMURAI’ve? The instructors are actual film/stage stunt professionals. The movie fight scene at the end is what makes teens lose their minds. The boys will rewatch this footage for the rest of the trip.",
+            "The Video Moment: Each person performs their choreographed fight scene while the group records. Clear your phone storage the night before.",
+            "Cost for 4: 2 adults (¥11,000) + 2 teens over 12 (¥11,000 each) = ¥44,000 total (~$290 USD). Private Plan for 4 = ¥77,000.",
+            "⚠️ Book Before You Go: SAMURAI’ve: book as soon as possible at samurai-experience.com or via Viator. The 10:30am slot on June 18 is what you want."
+          ],
+          "bookingRef": "Booking ID: 141053"
+        },
+        {
+          "id": "d3-5",
+          "time": "12:15 PM",
+          "title": "Travel to Ikebukuro",
+          "description": "JR Yamanote Line: Harajuku → Ikebukuro (~15 min, 4 stops, ¥220). Take East Exit → follow signs for Sunshine City / Sunshine 60.",
+          "variant": null,
+          "location": {
+            "name": "Ikebukuro Station",
+            "address": "Ikebukuro Station, Tokyo"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Show station staff: 池袋駅 (Ikebukuro Station)."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d3-6",
+          "time": "13:00 PM",
+          "title": "Lunch — Ikebukuro",
+          "description": "Options right at the station: Gyukatsu Motomura (grill your own wagyu cutlet at table), Ichiran Ramen (individual booths), or Sunshine City 2F food court. Budget ¥1,000–1,800/person.",
+          "variant": null,
+          "location": {
+            "name": "Ikebukuro Station",
+            "address": "Ikebukuro Station, Tokyo"
+          },
+          "travelMode": "walking",
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d3-7",
+          "time": "14:30 PM",
+          "title": "Pokémon Center Mega Tokyo (Sunshine City 2F)",
+          "description": "Largest Pokémon store in Japan. Sunshine City Alpa Building 2F. Japan-exclusive merch, trading cards, plushies. Pokémon Café is also here (requires advance reservation). Budget 60–90 min. Set spending limit BEFORE entering.",
+          "variant": null,
+          "location": {
+            "name": "Pokémon Center Mega Tokyo",
+            "address": "Sunshine City Alpa 2F, Toshima City, Tokyo"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Pokémon Center Strategy: Prices are fixed everywhere — no need to price-compare. Give each teen a fixed yen cash budget before entering.",
+            "Sunshine City East Exit is directly connected to the Sunshine 60 skyscraper. Pokémon Center is 2F of the Alpa wing."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d3-8",
+          "time": "16:00 PM",
+          "title": "Sunshine City + Ikebukuro Explore",
+          "description": "Explore arcade (Namco crane machines, Taiko no Tatsujin drum game. Budget ¥1,000-2,000/person), Animate (5-story anime megastore nearby), and shopping (Uniqlo, GU, Marui 0101). Ikebukuro has a more local, less-touristy vibe than Akihabara.",
+          "variant": null,
+          "location": {
+            "name": "Sunshine City",
+            "address": "Sunshine City, Toshima City, Tokyo"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Animate — Time Limit Warning: 5 floors of every anime franchise imaginable. Set a firm 30–45 min limit and a spending cap before you walk in.",
+            "Ikebukuro vs Akihabara: Ikebukuro has a more local otaku crowd. The anime culture leans toward gaming and figures. Both neighborhoods are great."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d3-9",
+          "time": "18:00 PM",
+          "title": "Travel to Shinjuku for Dinner",
+          "description": "JR Yamanote Line: Ikebukuro → Shinjuku (~10 min, 2 stops, ¥170). West Exit. Omoide Yokocho is immediately to your left.",
+          "variant": null,
+          "location": {
+            "name": "Shinjuku Station",
+            "address": "Shinjuku Station, Tokyo"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Show staff: 新宿駅 (Shinjuku Station). West Exit."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d3-10",
+          "time": "18:30 PM",
+          "title": "Omoide Yokocho — Shinjuku",
+          "description": "'Memory Lane' — narrow smoky alley of tiny yakitori stalls. Order: yakitori skewers, grilled chicken skin, edamame, cold Sapporo (parents!). Arrive 18:00–18:30 before it gets packed. Very smoky from charcoal grills — teens will think this is the coolest place on earth.",
+          "variant": null,
+          "location": {
+            "name": "Omoide Yokocho",
+            "address": "1-chome Nishi-Shinjuku, Shinjuku City, Tokyo"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Omoide Yokocho is at 1-chome Nishi-Shinjuku — West Exit of Shinjuku Station, immediately to your left as you exit. You literally cannot miss it.",
+            "Still Hungry After Omoide? Omoide Yokocho is atmospheric but portions are small. Plan on Ichiran Ramen afterward if the boys need a proper meal."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d3-11",
+          "time": "Evening",
+          "title": "Optional After Dinner & Return",
+          "description": "Shinjuku Golden Gai (5-min walk): 200+ micro-bars. Karaoke: Big Echo or Karaoke Kan (private rooms, huge English selection). Return to hotel: Shinjuku Station → JR Yamanote Line → Tokyo Station → JR Keiyo Line → Shiomi Station (~25 min, ¥260).",
+          "variant": null,
+          "location": {
+            "name": "Shinjuku Golden Gai",
+            "address": "1-chome Kabukicho, Shinjuku City, Tokyo"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Karaoke in Japan: Private rooms only. ~¥500–1,000/person/hour.",
+            "At Tokyo Station: follow signs for the JR Keiyo Line platform. Show station staff: 潮見駅 (Shiomi Station)."
+          ],
+          "bookingRef": null
+        }
+      ],
+      "dayOverview": {
+        "walking": "5–7 km",
+        "transitRides": 3,
+        "budgetEstimate": "¥60,000–70,000 for family of 4 (includes SAMURAI’ve)"
+      }
+    },
+    {
+      "dayNumber": 4,
+      "date": "2026-06-19",
+      "dayLabel": "Day 4 · June 19 (Fri)",
+      "title": "Tokyo — History, Hidden Streets & Shibuya",
+      "theme": "Asakusa, Yanaka, Harajuku & Shibuya Crossing",
+      "hotelNote": "Still at Tokyo Bay Shiomi Prince Hotel. Tomorrow checkout by 7:00am. Send large luggage to Kyoto hotel today via Takkyubin!",
+      "activities": [
+        {
+          "id": "d4-1",
+          "time": "06:45 AM",
+          "title": "Breakfast — Quick & Early",
+          "description": "Catch Senso-ji before tour buses. Breakfast at hotel or Konbini (7-Eleven or Lawson near hotel): onigiri, tamagoyaki sandwich, hot coffee.",
+          "variant": null,
+          "location": null,
+          "travelMode": null,
+          "notes": [
+            "On the walk to the station: buy a hot canned coffee from a street vending machine.",
+            "💡 LUGGAGE TIP: Send large luggage to Kyoto hotel via Takkyubin/Yamato luggage forwarding today. Keep one overnight backpack for essentials on the Shinkansen tomorrow."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d4-2",
+          "time": "07:00 AM",
+          "title": "Getting to Senso-ji",
+          "description": "Walk to Shiomi Station → JR Keiyo Line → Tokyo Station (7 min) → Ginza Line → Asakusa Station (~20 min) · Total: ~30 min · ¥300. 3-min walk to Kaminarimon Gate.",
+          "variant": null,
+          "location": {
+            "name": "Asakusa Station",
+            "address": "Asakusa Station, Tokyo"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Show staff: 浅草駅 (Asakusa Station)."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d4-3",
+          "time": "07:30 AM",
+          "title": "⛩️ Senso-ji Temple — Asakusa",
+          "description": "Tokyo’s oldest temple (7th century). Arrive before 8am to have stone paths nearly to yourself. Walk through Kaminarimon (Thunder Gate), Nakamise-dori shopping street (shops open ~9–10am), inner grounds. Free to enter. Toss a ¥5 coin in donation box for luck. Budget 60–75 min.",
+          "variant": null,
+          "location": {
+            "name": "Senso-ji Temple",
+            "address": "2-3-1 Asakusa, Taito City, Tokyo"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "⛩️ Senso-ji Early Magic: 7:30am is one of the most beautiful moments. Empty paths, incense smoke, golden light. By 9am it becomes packed tourist chaos. Early alarm is 100% worth it."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d4-4",
+          "time": "09:00 AM",
+          "title": "Yanaka — Hidden Old Tokyo",
+          "description": "15-min walk or short taxi (~¥800) from Asakusa. Edo-era streets that survived WWII bombing. Walk Yanaka Ginza shopping street, grab melon pan and coffee from a local bakery, visit Yanaka Cemetery. Famous for feral cats. Budget 75–90 min.",
+          "variant": null,
+          "location": {
+            "name": "Yanaka Ginza",
+            "address": "3-13-1 Yanaka, Taito City, Tokyo"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Yanaka — Worth the Detour: Old wooden houses, artisan shops, a covered shotengai. Not a tourist attraction — an actual living neighborhood. Feral cats are legendary.",
+            "Yanaka → Harajuku: Walk or taxi (~¥800) to Nippori Station → JR Yamanote Line → Harajuku (~25 min). Show staff: 原宿駅 (Harajuku Station)."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d4-5",
+          "time": "12:00 PM",
+          "title": "Lunch — Harajuku / Omotesando",
+          "description": "Two vibes: Takeshita Street (Marion Crepes, cheap ramen, bubble tea. ¥500-900/person) or Omotesando (5-min walk, sit-down ramen, Gyukatsu Motomura. ¥1,200-1,800/person). Crepes are non-negotiable! Line moves in under 10 min.",
+          "variant": null,
+          "location": {
+            "name": "Takeshita Street",
+            "address": "1-chome Jingumae, Shibuya City, Tokyo"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Marion Crepes — Don’t Skip: Tokyo institution since 1976. Strawberry custard is the classic order. Eating a crepe on Takeshita Street is a perfect moment."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d4-6",
+          "time": "13:00 PM",
+          "title": "Harajuku — Shopping & Explore",
+          "description": "THE shopping stop of the trip. Takeshita Street (teen fashion, ¥1,000–3,000), Ura-Harajuku backstreets (Japanese streetwear: Beams, Supreme, vintage), Atmos Harajuku (sneaker store with Japan-exclusive colors), Omotesando (flagship stores). Budget 2 hours. Walk straight to Meiji Shrine.",
+          "variant": null,
+          "location": {
+            "name": "Harajuku Station",
+            "address": "Jingumae, Shibuya City, Tokyo"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Shopping Strategy: Takeshita Street = affordable (¥1,000-3,000). Ura-Harajuku = streetwear (Neighborhood, Wtaps, Beams).",
+            "Budget Watch: This is the day the budget can blow up. Give each family member a set cash amount and hold to it.",
+            "After shopping, walk north from Harajuku Station main exit. Meiji Shrine torii gate is a 5-min walk through Yoyogi Park."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d4-7",
+          "time": "15:30 PM",
+          "title": "⛩️ Meiji Shrine & Yoyogi Forest",
+          "description": "70-hectare forest sanctuary in the heart of Tokyo. Walk through towering cedar forest (~10 min each way). Main torii gate (massive, wooden). Inner Shrine Garden (optional, ¥500): traditional Japanese garden. Outer grounds are FREE. Budget 45–60 min.",
+          "variant": null,
+          "location": {
+            "name": "Meiji Shrine",
+            "address": "1-1 Yoyogikamizonocho, Shibuya City, Tokyo"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Why This, Not More Temples? Meiji Shrine is about the feeling of the ancient cedar forest in a modern megacity.",
+            "The Photo: Large wooden torii just before the inner path. June afternoon light through trees is beautiful.",
+            "Teens & Shrines: Even teens tend to be moved by Meiji Shrine's scale and quiet. Free and under an hour.",
+            "Yoyogi Park has benches and open grass. Perfect for a 15-min rest before Shibuya."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d4-8",
+          "time": "17:00 PM",
+          "title": "Travel to Shibuya",
+          "description": "JR Yamanote Line: Harajuku → Shibuya (1 stop, ~3 min, ¥170).",
+          "variant": null,
+          "location": {
+            "name": "Shibuya Station",
+            "address": "Shibuya Station, Tokyo"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Show staff: 渋谷駅 (Shibuya Station)."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d4-9",
+          "time": "17:30 PM",
+          "title": "Shibuya Crossing & Hachiko",
+          "description": "Exit via Hachiko Exit. Hachiko Bronze Statue is in the plaza. Arrive before dark to see crossing in daylight, then stay for full neon night. Starbucks 2F (Tsutaya building) is free, buy a drink. Or Scramble Square observation deck (floor 47, ¥2,000/adult, book at shibuya-scramble-square.com). Aim for 17:30-18:00 golden hour arrival.",
+          "variant": null,
+          "location": {
+            "name": "Shibuya Scramble Crossing",
+            "address": "Shibuya Scramble Crossing, Tokyo"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Best Crossing Photos: Starbucks 2F Tsutaya building is free. Scramble Square floor 47 gives a true aerial view but needs a ticket."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d4-10",
+          "time": "19:00 PM",
+          "title": "Dinner & Return",
+          "description": "Option A: Uobei Sushi Shibuya (conveyor belt via tablet, plates on bullet-train track, ¥1,500-2,500/person, 15-30 min wait). Option B: Manten Sushi (18-22 course set, reservation required, ¥8,000-12,000/person). Walk Shibuya Center-gai afterwards. Return: Shibuya Station → JR Yamanote Line → Osaki Station (10 min) → Rinkai Line → Shinonome Station → walk OR Tatsumi → JR Keiyo Line → Shiomi (total ~30 min, ¥400).",
+          "variant": null,
+          "location": {
+            "name": "Uobei Shibuya Dougenzaka",
+            "address": "2-29-11 Dogenzaka, Shibuya City, Tokyo"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Uobei vs Manten: Uobei is fun, casual, teens love the delivery. Manten is a high-end sushi splurge.",
+            "Day 4 is the most geographically logical day: Asakusa → Yanaka → Harajuku → Meiji → Shibuya."
+          ],
+          "bookingRef": null
+        }
+      ],
+      "dayOverview": {
+        "walking": "8–10 km",
+        "transitRides": 3,
+        "budgetEstimate": "¥20,000–35,000 for 4 (higher with shopping)"
+      }
+    },
+    {
+      "dayNumber": 5,
+      "date": "2026-06-20",
+      "dayLabel": "Day 5 · June 20 (Sat)",
+      "title": "Tokyo → Kyoto",
+      "theme": "Shinkansen Transit & Gion Evening",
+      "hotelNote": "Checking in at Hotel Emion Kyoto (Kyoto)",
+      "activities": [
+        {
+          "id": "d5-1",
+          "time": "7:00 AM",
+          "title": "Check out of Tokyo hotel",
+          "description": "Check out of Tokyo Bay Shiomi Prince Hotel. Pack light — everything else goes on the Shinkansen (large luggage was sent ahead via Takkyubin). Walk 3–5 min to Shiomi Station → JR Keiyo Line to Tokyo Station (~7 min). Arrive 30-40 min early.",
+          "variant": null,
+          "location": {
+            "name": "Tokyo Station",
+            "address": "1-chome Marunouchi, Chiyoda City, Tokyo"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Arrive at Tokyo Station 30–40 min early. Buy an ekiben (bento) from the platform before boarding."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d5-2",
+          "time": "~8:33 AM",
+          "title": "🚅 Shinkansen — Tokyo → Kyoto",
+          "description": "Board Hikari from Tokyo Station, Tokaido Shinkansen platforms (typically Tracks 14–19). Show staff: 京都 (Kyoto). Journey ~2h 45 min. Ordinary Car - Car No. 14. Seats: 2D (Sylvia), 2E (Jose), 3D (Logan), 3E (Max).",
+          "variant": null,
+          "location": null,
+          "travelMode": null,
+          "notes": [
+            "Shinkansen seat tip: RIGHT side = seats C/D in the 2-seat column. Mt. Fuji appears around Shin-Fuji Station, ~45 min into the journey. If you see it, it's a genuine treat."
+          ],
+          "bookingRef": "Booking Ref: Samuraive (Hikari train)"
+        },
+        {
+          "id": "d5-3",
+          "time": "~11:12 AM",
+          "title": "Arrive Kyoto Station",
+          "description": "Exit Shinkansen platforms toward JR Central exit. Travel: Kyoto Station → Hotel Emion (Umekoji-Kyotonishi). Take JR Sagano/San-in Line to Umekoji-Kyotonishi Station (1 stop, ~3 min, ¥150). Station is directly connected to hotel.",
+          "variant": null,
+          "location": {
+            "name": "Hotel Emion Kyoto",
+            "address": "20-4 Sujakuonjicho, Shimogyo Ward, Kyoto"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Hotel Emion — arrival: From Kyoto Station platform: follow JR signs to the San-in Line. Or take a taxi from Kyoto Station — under ¥800 (~$6 USD), very easy with luggage. Hotel lobby is on the 3rd floor. Restaurants on floors 1-2 for arrival lunch."
+          ],
+          "bookingRef": "Booked"
+        },
+        {
+          "id": "d5-4",
+          "time": "12:00 PM",
+          "title": "Drop bags at the hotel",
+          "description": "Drop backpacks/bags at hotel lobby.",
+          "variant": null,
+          "location": {
+            "name": "Hotel Emion Kyoto",
+            "address": "20-4 Sujakuonjicho, Shimogyo Ward, Kyoto"
+          },
+          "travelMode": "walking",
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d5-5",
+          "time": "1:00 PM",
+          "title": "Nishiki Market & Surrounding Shopping Streets",
+          "description": "Travel: Hotel Emion → Nishiki Market. Take Bus #205 or #206 from Umekoji Park stop → Shijo-Kawaramachi (~20 min, ¥230), or subway Karasuma Line from Kyoto Station → Shijo (2 stops), or taxi (~15-20 min, ~¥2,000 / $13 USD). Explore Nishiki Market.",
+          "variant": null,
+          "location": {
+            "name": "Nishiki Market",
+            "address": "Nishikikoji-dori, Nakagyo Ward, Kyoto"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Nishiki Market tip: Best in the morning for local atmosphere. It's narrow — keep group in single file. Great for: matcha soft serve, yuba skewers, tamagoyaki (rolled egg)."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d5-6",
+          "time": "3:00 PM",
+          "title": "Afternoon Stroll & Gion evening walk",
+          "description": "Walk east along Shijo Street to Gion (Hanamikoji) (~12 min walk). Flat, easy stroll through the heart of old Kyoto. Flow: Nishiki → Shijo → Gion → Yasaka → Pontocho. Spot geiko on Hanamikoji Street after 7 PM (walk quietly, no flash). Pontocho Alley: narrow lane, river views (kawayuka river seating). Return: Bus #207 from Gion → Umekoji Kyoto Nishi, OR taxi (~25 min, bus ¥230 / taxi ~¥1,200). Taxi is easiest late evening.",
+          "variant": null,
+          "location": {
+            "name": "Gion Hanamikoji Street",
+            "address": "Hanamikoji-dori, Higashiyama Ward, Kyoto"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Afternoon walk towards Gion: You'll encounter lantern streets, cafés, matcha shops, hidden alleys, kimono rentals, river views.",
+            "Gion evening: Hanamikoji after 7 PM — tourist density drops. Pontocho Alley runs parallel to Kamo River. Gion restaurants close by 10 PM — plan dinner by 8 PM.",
+            "🚕 Taxi is easiest late evening.",
+            "‼️ Buy Pocari Sweat / Aquarius / cold water often. Kyoto heat sneaks up on you."
+          ],
+          "bookingRef": null
+        }
+      ],
+      "dayOverview": {
+        "walking": "3-4 km (mostly flat)",
+        "transitRides": 3,
+        "budgetEstimate": "¥30,000-40,000 for 4 (Shinkansen + meals + evening)"
+      }
+    },
+    {
+      "dayNumber": 6,
+      "date": "2026-06-21",
+      "dayLabel": "Day 6 · June 21 (Sun)",
+      "title": "Historic Kyoto",
+      "theme": "Fushimi Inari, Higashiyama & Michelin Gyoza",
+      "hotelNote": "Still at Hotel Emion Kyoto (no checkout)",
+      "activities": [
+        {
+          "id": "d6-1",
+          "time": "6:30 AM",
+          "title": "⛩️ Fushimi Inari Shrine — ARRIVE AT DAWN",
+          "description": "Travel: Hotel (Umekoji-Kyotonishi) → Fushimi Inari. Take JR Sagano Line east → Kyoto Station (1 stop), then JR Nara Line → Inari Station (2 stops) ~20 min total, ¥240. Shrine is 2 min walk from exit. Walk vermillion torii gates as far as you like. Upper gates are nearly empty. Bring water & snack. Budget 90 min before crowds arrive after 9 AM. Do NOT feel pressured to hike all the way up (first 30-40 min is best).",
+          "variant": null,
+          "location": {
+            "name": "Fushimi Inari Shrine",
+            "address": "68 Fukusa Yabunouchicho, Fushimi Ward, Kyoto"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Show staff: 稲荷駅 (Inari Station).",
+            "⛩️ Fushimi Inari timing: Dawn (6:30 AM): near-empty, incense smoke, golden light. 9 AM onwards: tour buses arrive.",
+            "Coffee Stop: Vermillion Café near Fushimi Inari. Riverside seating, peaceful, excellent coffee, matcha, photogenic.",
+            "Fushimi sake district: Fushimi area around Inari has small sake breweries. Gekkeikan Okura Sake Museum is a highlight (¥600 entry, sake tasting)."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d6-2",
+          "time": "09:30 AM",
+          "title": "Kiyomizu-dera Temple",
+          "description": "Travel: Fushimi Inari → Kiyomizudera. Take Bus #南5 from Tofukuji → Kiyomizumichi stop OR taxi (~20 min, bus ¥230 / taxi ~¥900). Taxi recommended (easier with group). Perched on a wooden stage over a hillside. Allow 45-60 min. Priority order: Kiyomizu-dera, Sannezaka, Ninenzaka, Yasaka Pagoda area, Gion. Walk down through Ninenzaka & Sannenzaka cobblestone lanes.",
+          "variant": null,
+          "location": {
+            "name": "Kiyomizu-dera Temple",
+            "address": "1-chome Kiyomizu, Higashiyama Ward, Kyoto"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Food & Treats: MUST TRY #1 — ThisisShizen Ice Cream. Artistic and feels very Kyoto-modern. Address: 586-2 Banocho, Nakagyo Ward, Kyoto (Anekoji-dori/Karasuma). Located in Higashiyama area. Teens will love it.",
+            "MUST TRY #3 — Coffee: Weekenders Coffee. Address: 682-7 Ishifudonocho, Shimogyo Ward, Kyoto. Tiny, minimalist, excellent coffee."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d6-3",
+          "time": "Afternoon",
+          "title": "Philosopher's Path & Nijo Castle (optional)",
+          "description": "Travel: Kiyomizudera → Philosopher's Path. Walk north through Higashiyama → Nanzenji → Philosopher's Path (~35 min walk, flat/gentle). Beautiful walk — this IS part of sightseeing. Philosopher's Path is a 2km peaceful canal walk lined with trees. Optional spots: Adashino Nenbutsu-ji (8,000 stone Buddha statues), Nijo Castle (famous for 'nightingale floors' that squeak to prevent ninja infiltration).",
+          "variant": null,
+          "location": {
+            "name": "Philosopher's Path",
+            "address": "Tetsugaku no Michi, Sakyo Ward, Kyoto"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Nijo Castle tip: Nightingale floors were engineered to squeak to detect ninja. Story fascinates teens."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d6-4",
+          "time": "5:00 PM",
+          "title": "Sukemasa — Michelin Bib Gourmand Gyoza",
+          "description": "Travel: Philosopher's Path → Sukemasa (Pontocho area). Taxi is easiest (~10 min, ¥700). Small restaurant (serves only 20 people). Handmade gyoza is the main attraction. Walk through Pontocho Alley afterwards to enjoy the river atmosphere and lanterns. Return: Bus #207 → Umekoji Kyoto Nishi OR taxi (~25 min, ¥230 / taxi ~¥1,300, taxi easiest late evening).",
+          "variant": null,
+          "location": {
+            "name": "Sukemasa Gyoza",
+            "address": "Pontocho area, Kyoto"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Sukemasa reservation: Small restaurant — reservations are essential and fill up fast. Ask hotel if they can make reservation. Michelin Bib Gourmand = exceptional quality.",
+            "Pontocho Alley optional after dinner: see lanterns, river atmosphere, nighttime Kyoto."
+          ],
+          "bookingRef": "Ask Hotel to Book"
+        }
+      ],
+      "dayOverview": {
+        "walking": "6-8 km (mix of flat & hills)",
+        "transitRides": 4,
+        "budgetEstimate": "¥15,000-25,000 for 4 (excl. dinner)"
+      }
+    },
+    {
+      "dayNumber": 7,
+      "date": "2026-06-22",
+      "dayLabel": "Day 7 · June 22 (Mon)",
+      "title": "Hiroshima Day Trip",
+      "theme": "Hiroshima Peace Memorial & Miyajima Island",
+      "hotelNote": "Still at Hotel Emion Kyoto (no checkout)",
+      "activities": [
+        {
+          "id": "d7-1",
+          "time": "6:50 AM",
+          "title": "Leave Hotel for Kyoto Station",
+          "description": "Travel: Hotel (Umekoji-Kyotonishi) → Kyoto Station. Take JR Sagano Line east (1 stop, ~3 min, ¥150). Walk straight to Shinkansen platforms from JR gates.",
+          "variant": null,
+          "location": {
+            "name": "Kyoto Station",
+            "address": "Higashishioji Kamadonocho, Shimogyo Ward, Kyoto"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Quick convenience store breakfast at Kyoto Station or near hotel. Get: onigiri, egg sandwich, hot canned coffee, pastries, juice/Pocari. This is authentic Japan travel culture."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d7-2",
+          "time": "8:01 AM",
+          "title": "🚅 Shinkansen Kyoto → Hiroshima",
+          "description": "Board Hikari 733 westbound from Kyoto Station. Journey ~1hr 55 min. Ordinary Car Car No. 11. Seats: 1D (Sylvia), 1E (Jose), 2D (Logan), 2E (Max).",
+          "variant": null,
+          "location": null,
+          "travelMode": null,
+          "notes": [],
+          "bookingRef": "Hikari 733 (Shinkansen)"
+        },
+        {
+          "id": "d7-3",
+          "time": "10:00 AM",
+          "title": "Arrive Hiroshima — Peace Memorial Park",
+          "description": "Travel: Hiroshima Station → Peace Memorial Park. Walk ~20 min (flat, scenic along river), OR tram #2 or #6 to Genbaku-Dome-mae (~5 min tram ride, ¥190). Walk is recommended (very atmospheric). Moving park at epicenter of 1945 bombing. Visit Children's Peace Monument, Flame of Peace, Cenotaph, and Peace Pond.",
+          "variant": null,
+          "location": {
+            "name": "Hiroshima Peace Memorial Park",
+            "address": "1-1 Nakajimacho, Naka Ward, Hiroshima"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Must-eat: Hiroshima Okonomiyaki. Layered with noodles inside — different from Osaka. Okonomi-mura: 3-story building of okonomiyaki stalls near Peace Park. ~¥1,200/person. Best for lunch."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d7-4",
+          "time": "11:30 AM",
+          "title": "Atomic Bomb Dome (Genbaku Dome)",
+          "description": "The only structure that survived near the hypocenter — UNESCO World Heritage. Walking the riverbank around the dome is quietly powerful.",
+          "variant": null,
+          "location": {
+            "name": "Atomic Bomb Dome",
+            "address": "1-10 Otemachi, Naka Ward, Hiroshima"
+          },
+          "travelMode": "walking",
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d7-5",
+          "time": "1:00 PM",
+          "title": "Peace Memorial Museum",
+          "description": "One of the most important museums in Japan — allow 75-90 min. Deeply moving exhibits on the human stories of the atomic bombing.",
+          "variant": null,
+          "location": {
+            "name": "Hiroshima Peace Memorial Museum",
+            "address": "1-2 Nakajimacho, Naka Ward, Hiroshima"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Museum preparation: Not graphic in a traumatic way — exhibits are thoughtfully presented. Focus on human stories. Both teens (13 & 15) will handle it well. Allow 75 min.",
+            "⚾ Souvenir idea: Hiroshima Carp baseball gear — the beloved local team. Available near the Peace Park or at the stadium shop."
+          ],
+          "bookingRef": "Ticket via Klook"
+        },
+        {
+          "id": "d7-6",
+          "time": "3:00 PM",
+          "title": "Miyajima Island — floating torii gate (Optional)",
+          "description": "Travel: Peace Park area → Miyajima Island. Take JR Sanyo Line from Hiroshima Station → Miyajimaguchi (25 min), then JR Ferry (10 min) · ~35 min total · ¥840 + ¥200 ferry. One of Japan's most iconic sights. Tame deer roam freely. Allow 2 hours on the island for peaceful wandering, snack stops (maple leaf-shaped cakes), shrine, and torii gate view.",
+          "variant": null,
+          "location": {
+            "name": "Itsukushima Jinja (Miyajima)",
+            "address": "Miyajimacho, Hatsukaichi, Hiroshima"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Show staff: 宮島口 (Miyajimaguchi). Ferry runs every 10-15 min.",
+            "⛩️ Miyajima — tide timing: The torii gate is best at high tide when it appears to float. Check tide times at hiroshima-navi.com before going."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d7-7",
+          "time": "5:00 PM",
+          "title": "Return to Kyoto",
+          "description": "Travel: JR Ferry Miyajima → Miyajimaguchi (10 min) → JR Sanyo Line to Hiroshima Station (25 min). Buy Ekiben (bento) + snacks at station. Shinkansen Hiroshima → Shin-Osaka: Sakura 766 departs 18:33, arrives Shin-Osaka 20:21. Seats: 2C (Sylvia), 2D (Jose), 3C (Logan), 3D (Max). Transfer to Hikari 666 (Shin-Osaka → Kyoto, 20:21 departure). Seats: 1D (Sylvia), 1E (Jose), 2D (Logan), 2E (Max). Arrive Kyoto, take JR Sagano Line to Umekoji-Kyotonishi (1 stop, ¥150).",
+          "variant": null,
+          "location": {
+            "name": "Kyoto Station",
+            "address": "Kyoto Station"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Last Nozomi/Hikari to Kyoto ~9:30 PM — aim for 6:30-7 PM departure from Hiroshima.",
+            "Hotel is directly connected to Umekoji-Kyotonishi station exit.",
+            "Reserve Shinkansen seats in advance."
+          ],
+          "bookingRef": "Sakura 766 & Hik 666"
+        }
+      ],
+      "dayOverview": {
+        "walking": "5-7 km total",
+        "transitRides": 4,
+        "budgetEstimate": "¥35,000-50,000 for 4 (Shinkansen x4 + museum + Miyajima + meals)"
+      }
+    },
+    {
+      "dayNumber": 8,
+      "date": "2026-06-23",
+      "dayLabel": "Day 8 · June 23 (Tue)",
+      "title": "Nature + Hidden Kyoto",
+      "theme": "Arashiyama Bamboo Grove & Nara Deer Park",
+      "hotelNote": "Still at Hotel Emion Kyoto. Tomorrow checkout by 7:00am.",
+      "activities": [
+        {
+          "id": "d8-1",
+          "time": "6:30 AM",
+          "title": "Arashiyama Bamboo Grove — ARRIVE AT DAWN",
+          "description": "Travel: Hotel (Umekoji-Kyotonishi) → Arashiyama Bamboo Grove. Take JR Sagano Line westbound → Saga-Arashiyama Station (~15 min, ¥240). Direct line from hotel! 3 min walk to grove. Arrive at dawn when it is a completely different world. Hear the sound of bamboo swaying in morning silence. Breakfast: Konbini breakfast.",
+          "variant": null,
+          "location": {
+            "name": "Arashiyama Bamboo Grove",
+            "address": "Arashiyama Genrokuzancho, Ukyo Ward, Kyoto"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Show staff: 嵯峨嵐山駅 (Saga-Arashiyama Station).",
+            "Bamboo Grove — Hotel Emion advantage: This is the single best location perk of Hotel Emion. No transfers, no connections. ~15 min door to bamboo. Before 8 AM is genuinely magical."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d8-2",
+          "time": "08:00 AM",
+          "title": "Arashiyama Area Explore",
+          "description": "Walk from station to Monkey Park Iwatayama (15 min uphill hike, wild Japanese macaques roam free), Tenryu-ji garden (UNESCO zen garden with mountain backdrop), and Togetsukyo Bridge. Riverside cafes for a slow breakfast coffee with mountain views.",
+          "variant": null,
+          "location": {
+            "name": "Monkey Park Iwatayama",
+            "address": "8 Arashiyama Genrokuzancho, Ukyo Ward, Kyoto"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Walk from station — Bamboo Grove and attractions are within 10 min walk.",
+            "Monkey Park tip: 15 min uphill hike is worth it. Feed monkeys through wire mesh — they take crackers gently. Great views of Kyoto from top."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d8-3",
+          "time": "11:30 AM",
+          "title": "Lunch — Arashiyama Yoshimura",
+          "description": "Soba noodles with river and mountain views. Address: Japan, 〒616-8385 Kyoto, Ukyo Ward, Sagatenryuji Susukinobabacho, 3.",
+          "variant": null,
+          "location": {
+            "name": "Arashiyama Yoshimura",
+            "address": "3 Sagatenryuji Susukinobabacho, Ukyo Ward, Kyoto"
+          },
+          "travelMode": "walking",
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d8-4",
+          "time": "Afternoon",
+          "title": "Nara — free-roaming deer & giant Buddha (Optional)",
+          "description": "Travel: Arashiyama (Saga-Arashiyama) → Nara. Take JR Sagano Line east → Kyoto Station (25 min), then JR Nara Line → Nara Station (45 min) · ~70 min total · ¥990. Walk 15 min to Nara Deer Park. Hundreds of deer bow for shika senbei (deer crackers). Visit Todai-ji Temple (world's largest bronze Buddha). Allow 2.5-3 hours in Nara.",
+          "variant": null,
+          "location": {
+            "name": "Nara Park",
+            "address": "Zoshicho, Nara, 630-8211"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Show staff: 奈良駅 (Nara Station).",
+            "Nara — is it worth it? Yes — especially with teens. Wild deer bow on command. Manageable as a half-day add-on."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d8-5",
+          "time": "Afternoon",
+          "title": "Alternative: Arashiyama Slow Down",
+          "description": "Wander around Togetsukyo Bridge, Rankyo Gorge, and Arashiyama park viewpoint. Head to Kyoto for dinner by 5 PM.",
+          "variant": null,
+          "location": {
+            "name": "Togetsukyo Bridge",
+            "address": "Togetsukyo Bridge, Kyoto"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Tea ceremony booking: Book in advance through hotel concierge or Airbnb. En tea ceremony near Gion is highly rated."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d8-6",
+          "time": "6:00 PM",
+          "title": "Omakase Dinner — Kyoto Sen-ryo",
+          "description": "6 pm Reservation at Kyoto Sen-ryo (寿司 京都千両) party of 4. Address: Japan, 〒601-8001 Kyoto, Minami Ward, Higashikujo Muromachi, 48 J'Sビル １F. Return: Taxi from central Kyoto to Hotel Emion (~15-20 min, ¥900-1,300) or bus #205/206.",
+          "variant": null,
+          "location": {
+            "name": "Kyoto Sen-ryo",
+            "address": "48 Higashikujo Muromachi, Shimogyo Ward, Kyoto"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Okeya Kyujiro (alternative if booked): 25-course sushi omakase. Reservation needed months in advance. Located in central Kyoto."
+          ],
+          "bookingRef": "Reserved via Gmail"
+        }
+      ],
+      "dayOverview": {
+        "walking": "6-8 km (includes Monkey Park)",
+        "transitRides": 2,
+        "budgetEstimate": "¥15,000-25,000 for 4 (excl. dinner)"
+      }
+    },
+    {
+      "dayNumber": 9,
+      "date": "2026-06-24",
+      "dayLabel": "Day 9 · June 24 (Wed)",
+      "title": "Kyoto → Osaka — Culture, Markets & Amazing Food",
+      "theme": "Transit to Osaka, Kuromon Market & Shinsekai",
+      "hotelNote": "Checking in at Hotel Zentis Osaka. Backpacks only.",
+      "activities": [
+        {
+          "id": "d9-1",
+          "time": "Morning",
+          "title": "Transit to Osaka",
+          "description": "Breakfast in Kyoto, check out from hotel. Travel: Hotel (Umekoji-Kyotonishi) → Kyoto Station (JR Sagano Line east, 1 stop). Transfer to JR Kyoto Line Special Rapid (Line A Shin-Kaisoku 425) to Osaka Station. Departs KYOTO 09:00 AM, arrives OSAKA 09:29 AM. Ordinary Car Car No. 12. Seats: 8A (Sylvia), 8B (Jose), 8C (Logan), 8D (Max). Walk to Hotel Zentis Osaka and drop bags.",
+          "variant": "A",
+          "location": {
+            "name": "Hotel Zentis Osaka",
+            "address": "1-4-26 Dojimahama, Kita Ward, Osaka"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Special Rapid (Shin-Kaisoku) takes ~30 mins. Drop bags at Hotel Zentis and head straight to market."
+          ],
+          "bookingRef": "Line A Shin-Kaisoku 425"
+        },
+        {
+          "id": "d9-2",
+          "time": "Late Morning",
+          "title": "Kuromon Ichiba Market",
+          "description": "'Osaka's Kitchen' — fresh seafood, grilled wagyu skewers, crab legs, incredible brunch energy. Head straight here after dropping bags.",
+          "variant": "A",
+          "location": {
+            "name": "Kuromon Ichiba Market",
+            "address": "2-4-1 Nippombashi, Chuo Ward, Osaka"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "KUROMON ICHIBA MARKET: Go early before crowds."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d9-3",
+          "time": "Midday",
+          "title": "Shinsaibashi Shopping Arcade & Nintendo Osaka",
+          "description": "Walk to Shinsaibashi shopping arcade — covered street with local and international fashion. Pop into Nintendo Osaka Store (free entry, exclusive merch, calmer than USJ's Nintendo World).",
+          "variant": "A",
+          "location": {
+            "name": "Nintendo Osaka (Daimaru Shinsaibashi 9F)",
+            "address": "1-7-1 Shinsaibashisuji, Chuo Ward, Osaka"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Nintendo Osaka Store: A must-visit for Nintendo fans. Pokémon Café Osaka is also here (reserve in advance)."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d9-4",
+          "time": "Afternoon",
+          "title": "Shinsekai Neighborhood",
+          "description": "Retro 1950s neighborhood with a totally unique vibe. The place for kushikatsu (fried skewers). Remember the sacred 'NO double dipping' rule! Authentic, very Osaka.",
+          "variant": "A",
+          "location": {
+            "name": "Shinsekai",
+            "address": "Ebisuhigashi, Naniwa Ward, Osaka"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "SHINSEKAI district: About 30 min walk south from Shinsaibashi. Great kushikatsu."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d9-5",
+          "time": "Late Afternoon",
+          "title": "Dotonbori Walk",
+          "description": "Walk along Dotonbori canal. Try takoyaki at Aizuya, see the Glico man sign, enjoy Cremia soft serve, and view the canal from Ebisu Bridge.",
+          "variant": "A",
+          "location": {
+            "name": "Dotonbori Glico Sign",
+            "address": "1-chome Dotonbori, Chuo Ward, Osaka"
+          },
+          "travelMode": "walking",
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d9-6",
+          "time": "Evening",
+          "title": "Wagyu Yakiniku BBQ or Ichiran",
+          "description": "Wagyu Yakiniku BBQ near Namba — grill your own wagyu at the table (boys will love it), proper sit-down dinner. Or Ichiran Ramen Dotonbori for something quick. Optional: Pokémon Café Osaka.",
+          "variant": "A",
+          "location": {
+            "name": "Dotonbori Area",
+            "address": "Dotonbori, Osaka"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Option B Additions: Dotonbori food mission (takoyaki at Aizuya, taiyaki, fresh crab, gyoza). Pokémon Café Osaka requires advance reservation."
+          ],
+          "bookingRef": null
+        }
+      ],
+      "dayOverview": {
+        "walking": "6-8 km",
+        "transitRides": 2,
+        "budgetEstimate": "¥15,000-25,000 for family of 4 (excl. dinner)"
+      }
+    },
+    {
+      "dayNumber": 10,
+      "date": "2026-06-25",
+      "dayLabel": "Day 10 · June 25 (Thu)",
+      "title": "Osaka — Universal Studios Japan",
+      "theme": "USJ Thrills or Aquarium Alternative",
+      "hotelNote": "Transfer luggage to Tokyo Bay Shiomi Prince Hotel today. Sleep at Hotel Zentis Osaka.",
+      "activities": [
+        {
+          "id": "d10-1",
+          "time": "08:00 AM",
+          "title": "Universal Studios Japan — Option A",
+          "description": "Arrive Early (gates open 8:30 AM, sometimes 8:00 AM). Nintendo World timed entry. Express Pass Priority Order: 1. Flying Dinosaur, 2. Hollywood Dream Backwards, 3. Harry Potter, 4. Despicable Me, 5. Space Fantasy, 6. Jurassic World, 7. Use passes flexibly. Mario Kart: Koopa's Challenge is the crown jewel. Power-Up Band (~¥4,000) for interactive game. Food: Butterbeer in Hogsmeade, Minion churros. Return: JR Yumesaki Line to Osaka Station (~15 min) → Hotel Zentis.",
+          "variant": "A",
+          "location": {
+            "name": "Universal Studios Japan",
+            "address": "2-1-33 Sakurajima, Konohana Ward, Osaka"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "USJ Note: Nintendo World is incredible but timed entry passes sell out fast. Book online MONTHS ahead.",
+            "LUGGAGE NOTE: Transfer luggage to Tokyo Bay Shiomi Prince Hotel today so it is waiting for your return to Tokyo."
+          ],
+          "bookingRef": "Express Pass Booked"
+        },
+        {
+          "id": "d10-2",
+          "time": "09:00 AM",
+          "title": "Aquarium Kaiyukan — Option B",
+          "description": "One of the world's best! Giant whale shark tank, multiple floors. Half-day. Perfect for nature lovers.",
+          "variant": "B",
+          "location": {
+            "name": "Osaka Aquarium Kaiyukan",
+            "address": "1-1-10 Kaigandori, Minato Ward, Osaka"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Alternative to USJ: Nintendo Osaka Store (free) + Pokémon Café + Aquarium = full amazing day with no long queues."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d10-3",
+          "time": "13:00 PM",
+          "title": "Osaka Castle & Park — Option B",
+          "description": "Beautiful grounds, history exhibit inside the castle. Less than 30 min from hotel. Combine with Osaka Museum of History next door.",
+          "variant": "B",
+          "location": {
+            "name": "Osaka Castle",
+            "address": "1-1 Osakajo, Chuo Ward, Osaka"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "TeamLab Planets (Toyosu, Tokyo): if you didn't do TeamLab Borderless in Tokyo, consider this on your final Tokyo day instead."
+          ],
+          "bookingRef": null
+        }
+      ],
+      "dayOverview": {
+        "walking": "8-10 km",
+        "transitRides": 2,
+        "budgetEstimate": "¥30,000-50,000 (USJ tickets/food/merch)"
+      }
+    },
+    {
+      "dayNumber": 11,
+      "date": "2026-06-26",
+      "dayLabel": "Day 11 · June 26 (Fri)",
+      "title": "Osaka → Tokyo (Final Night)",
+      "theme": "Return to Tokyo & Farewell Dinner",
+      "hotelNote": "Check-in at Tokyo Bay Shiomi Prince Hotel (return)",
+      "activities": [
+        {
+          "id": "d11-1",
+          "time": "09:18 AM",
+          "title": "🚅 Shinkansen back to Tokyo",
+          "description": "Departs SHIN-OSAKA, Hikari 644. Arrives TOKYO 12:12. Ordinary Car Car No. 11. Seats: 4A (Sylvia), 4B (Jose), 5A (Logan), 5B (Maximiliano 1412-524629).",
+          "variant": "A",
+          "location": {
+            "name": "Tokyo Station",
+            "address": "Tokyo Station"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Final Shinkansen ride. Sit back and relax."
+          ],
+          "bookingRef": "Hikari 644 (Shinkansen)"
+        },
+        {
+          "id": "d11-2",
+          "time": "3:00 PM",
+          "title": "Check-in at Tokyo Bay Shiomi Prince Hotel",
+          "description": "Check into hotel. Address: 2-chōme-8-16 Shiomi, Koto City, Tokyo 135-0052, Japan.",
+          "variant": "A",
+          "location": {
+            "name": "Tokyo Bay Shiomi Prince Hotel",
+            "address": "2-chōme-8-16 Shiomi, Koto City, Tokyo 135-0052, Japan"
+          },
+          "travelMode": "walking",
+          "notes": [],
+          "bookingRef": "Booked"
+        },
+        {
+          "id": "d11-3",
+          "time": "Afternoon",
+          "title": "Last-minute shopping",
+          "description": "Head to Shinjuku: Tokyu Hands (gift shop), Don Quijote (quirky gifts), Isetan food basement. Final souvenir hunt.",
+          "variant": "A",
+          "location": {
+            "name": "Don Quijote Shinjuku Tonari",
+            "address": "1-12-6 Okubo, Shinjuku City, Tokyo"
+          },
+          "travelMode": "transit",
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d11-4",
+          "time": "Evening",
+          "title": "Farewell Dinner",
+          "description": "Farewell dinner: ask hotel staff for a nice and not expensive celebratory dinner locally.",
+          "variant": "A",
+          "location": null,
+          "travelMode": null,
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d11-5",
+          "time": "Afternoon",
+          "title": "Shinjuku Gyoen National Garden — Option B",
+          "description": "Stunning gardens even in June (hydrangeas in bloom!). Perfect for nature lovers.",
+          "variant": "B",
+          "location": {
+            "name": "Shinjuku Gyoen National Garden",
+            "address": "11 Naitomachi, Shinjuku City, Tokyo"
+          },
+          "travelMode": "transit",
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d11-6",
+          "time": "Afternoon",
+          "title": "TeamLab Planets in Toyosu — Option B",
+          "description": "TeamLab Planets in Toyosu (if not done earlier) — completely different from Borderless, immersive water floor.",
+          "variant": "B",
+          "location": {
+            "name": "teamLab Planets TOKYO",
+            "address": "6-1-16 Toyosu, Koto City, Tokyo"
+          },
+          "travelMode": "transit",
+          "notes": [],
+          "bookingRef": null
+        }
+      ],
+      "dayOverview": {
+        "walking": "5-7 km",
+        "transitRides": 2,
+        "budgetEstimate": "¥15,000-25,000 for dinner & shopping"
+      }
+    },
+    {
+      "dayNumber": 12,
+      "date": "2026-06-27",
+      "dayLabel": "Day 12 · June 27 (Sat)",
+      "title": "Tokyo → Home",
+      "theme": "Departure for USA",
+      "hotelNote": "Sleep at Hyatt Place ORD (already booked)",
+      "activities": [
+        {
+          "id": "d12-1",
+          "time": "Morning",
+          "title": "Pack & Light Breakfast",
+          "description": "Pack bags, eat a light breakfast near hotel.",
+          "variant": null,
+          "location": null,
+          "travelMode": null,
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d12-2",
+          "time": "Noon",
+          "title": "Leave for Narita Airport",
+          "description": "Transfer from hotel to Narita Airport (NRT).",
+          "variant": null,
+          "location": {
+            "name": "Narita International Airport",
+            "address": "Narita International Airport, NRT"
+          },
+          "travelMode": "transit",
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d12-3",
+          "time": "5:25 PM",
+          "title": "Depart NRT",
+          "description": "Flight departs Narita.",
+          "variant": null,
+          "location": null,
+          "travelMode": null,
+          "notes": [],
+          "bookingRef": null
+        },
+        {
+          "id": "d12-4",
+          "time": "7:47 PM",
+          "title": "Arrive ORD (Chicago)",
+          "description": "Arrive in Chicago (same day due to time zones). Check in at Hyatt Place ORD (already booked). Return to Memphis next morning.",
+          "variant": null,
+          "location": {
+            "name": "Hyatt Place Chicago/O'Hare Airport",
+            "address": "6810 Mannheim Rd, Rosemont, IL 60018"
+          },
+          "travelMode": "driving",
+          "notes": [],
+          "bookingRef": "Already Booked"
+        }
+      ],
+      "dayOverview": {
+        "walking": "Minimal",
+        "transitRides": 2,
+        "budgetEstimate": "Yen remaining / travel food"
+      }
+    }
+  ],
+  "hotels": [
+    {
+      "city": "Tokyo",
+      "name": "Park Hotel Tokyo",
+      "tier": "Top Pick",
+      "area": "Shiodome/Ginza",
+      "address": "1-7-1 Higashishimbashi, Minato City, Tokyo 105-7227, Japan",
+      "notes": "Art-themed rooms, skyline views, 25th floor lobby, near Shimbashi/Shiodome stations",
+      "estRate": "$250-310/night for 2 rooms"
+    },
+    {
+      "city": "Tokyo",
+      "name": "Hotel Ryumeikan Tokyo",
+      "tier": "Alternative",
+      "area": "Marunouchi/Tokyo Station",
+      "address": "1-3-22 Yaesu, Chuo City, Tokyo 103-0028, Japan",
+      "notes": "Rated one of the best mid-range hotels in Tokyo. Directly across from Tokyo Station.",
+      "estRate": "$220-280/night for 2 rooms"
+    },
+    {
+      "city": "Osaka",
+      "name": "Cross Hotel Osaka",
+      "tier": "Top Pick",
+      "area": "Dotonbori/Namba",
+      "address": "2-5-15 Shinsaibashisuji, Chuo Ward, Osaka, 542-0085, Japan",
+      "notes": "Consistently praised. Corner of Dotonbori, larger-than-average rooms, soundproofed despite location. 3 min to Namba Station. Modern, stylish, great service.",
+      "estRate": "$220-280/night for 2 rooms"
+    },
+    {
+      "city": "Osaka",
+      "name": "MIMARU Osaka Namba North",
+      "tier": "Alternative",
+      "area": "Namba/Shinsaibashi",
+      "address": "1-2-10 Minamihorie, Nishi Ward, Osaka, 550-0015, Japan",
+      "notes": "Apartment-style family hotel. Walking distance to Shinsaibashi & Pokémon Café! HAS POKÉMON ROOMS. In-room kitchen, washing machine.",
+      "estRate": "$200-260/night for 2 units"
+    }
+  ],
+  "bookedHotels": [
+    {
+      "city": "Tokyo",
+      "name": "Tokyo Bay Shiomi Prince Hotel",
+      "address": "2-8-6 Shiomi, Koto City, Tokyo 135-0052, Japan",
+      "checkIn": "2026-06-17",
+      "checkOut": "2026-06-20"
+    },
+    {
+      "city": "Kyoto",
+      "name": "Hotel Emion (Umekoji-Kyotonishi)",
+      "address": "20-4 Sujakuonjicho, Shimogyo Ward, Kyoto, 600-8842, Japan",
+      "checkIn": "2026-06-20",
+      "checkOut": "2026-06-23"
+    },
+    {
+      "city": "Osaka",
+      "name": "Hotel Zentis Osaka",
+      "address": "1-4-26 Dojimahama, Kita Ward, Osaka, 530-0004, Japan",
+      "checkIn": "2026-06-23",
+      "checkOut": "2026-06-25"
+    },
+    {
+      "city": "Tokyo",
+      "name": "Tokyo Bay Shiomi Prince Hotel (return)",
+      "address": "2-chome-8-16 Shiomi, Koto City, Tokyo 135-0052, Japan",
+      "checkIn": "2026-06-25",
+      "checkOut": "2026-06-27"
+    }
+  ],
+  "trains": [
+    {
+      "dayNumber": 5,
+      "label": "Shinkansen Tokyo → Kyoto",
+      "departTime": "8:33 AM",
+      "trainName": "Hikari",
+      "car": "Car No. 14",
+      "seats": [
+        {
+          "seat": "2D",
+          "passenger": "Sylvia Karina Arreola Chapa",
+          "ref": "1412-524595"
+        },
+        {
+          "seat": "2E",
+          "passenger": "Jose Alfredo Rodriguez Portillo",
+          "ref": "1412-524603"
+        },
+        {
+          "seat": "3D",
+          "passenger": "Logan Alexander Rodriguez Arreola",
+          "ref": "1412-524611"
+        },
+        {
+          "seat": "3E",
+          "passenger": "Maximiliano Rodriguez Arreola",
+          "ref": "1412-524629"
+        }
+      ]
+    },
+    {
+      "dayNumber": 7,
+      "label": "Shinkansen Kyoto → Hiroshima",
+      "departTime": "8:01 AM",
+      "trainName": "Hikari 733",
+      "car": "Car No. 11",
+      "seats": [
+        {
+          "seat": "1D",
+          "passenger": "Sylvia Karina Arreola Chapa",
+          "ref": "1412-524595"
+        },
+        {
+          "seat": "1E",
+          "passenger": "Jose Alfredo Rodriguez Portillo",
+          "ref": "1412-524603"
+        },
+        {
+          "seat": "2D",
+          "passenger": "Logan Alexander Rodriguez Arreola",
+          "ref": "1412-524611"
+        },
+        {
+          "seat": "2E",
+          "passenger": "Maximiliano Rodriguez Arreola",
+          "ref": "1412-524629"
+        }
+      ]
+    },
+    {
+      "dayNumber": 7,
+      "label": "Shinkansen Hiroshima → Shin-Osaka (Return)",
+      "departTime": "6:33 PM",
+      "trainName": "Sakura 766",
+      "car": "Car No. 4",
+      "seats": [
+        {
+          "seat": "2C",
+          "passenger": "Sylvia Karina Arreola Chapa",
+          "ref": "1412-524595"
+        },
+        {
+          "seat": "2D",
+          "passenger": "Jose Alfredo Rodriguez Portillo",
+          "ref": "1412-524603"
+        },
+        {
+          "seat": "3C",
+          "passenger": "Logan Alexander Rodriguez Arreola",
+          "ref": "1412-524611"
+        },
+        {
+          "seat": "3D",
+          "passenger": "Maximiliano Rodriguez Arreola",
+          "ref": "1412-524629"
+        }
+      ]
+    },
+    {
+      "dayNumber": 7,
+      "label": "Shinkansen Shin-Osaka → Kyoto (Return)",
+      "departTime": "8:21 PM",
+      "trainName": "Hikari 666",
+      "car": "Car No. 11",
+      "seats": [
+        {
+          "seat": "1D",
+          "passenger": "Sylvia Karina Arreola Chapa",
+          "ref": "1412-524595"
+        },
+        {
+          "seat": "1E",
+          "passenger": "Jose Alfredo Rodriguez Portillo",
+          "ref": "1412-524603"
+        },
+        {
+          "seat": "2D",
+          "passenger": "Logan Alexander Rodriguez Arreola",
+          "ref": "1412-524611"
+        },
+        {
+          "seat": "2E",
+          "passenger": "Maximiliano Rodriguez Arreola",
+          "ref": "1412-524629"
+        }
+      ]
+    },
+    {
+      "dayNumber": 9,
+      "label": "Kyoto → Osaka",
+      "departTime": "9:00 AM",
+      "trainName": "Line A Special Rapid (Shin-Kaisoku 425)",
+      "car": "Car No. 12",
+      "seats": [
+        {
+          "seat": "8A",
+          "passenger": "Sylvia Karina Arreola Chapa",
+          "ref": "1412-524595"
+        },
+        {
+          "seat": "8B",
+          "passenger": "Jose Alfredo Rodriguez Portillo",
+          "ref": "1412-524603"
+        },
+        {
+          "seat": "8C",
+          "passenger": "Logan Alexander Rodriguez Arreola",
+          "ref": "1412-524611"
+        },
+        {
+          "seat": "8D",
+          "passenger": "Maximiliano Rodriguez Arreola",
+          "ref": "1412-524629"
+        }
+      ]
+    },
+    {
+      "dayNumber": 11,
+      "label": "Shinkansen Osaka → Tokyo",
+      "departTime": "9:18 AM",
+      "trainName": "Hikari 644",
+      "car": "Car No. 11",
+      "seats": [
+        {
+          "seat": "4A",
+          "passenger": "Sylvia Karina Arreola Chapa",
+          "ref": "1412-524595"
+        },
+        {
+          "seat": "4B",
+          "passenger": "Jose Alfredo Rodriguez Portillo",
+          "ref": "1412-524603"
+        },
+        {
+          "seat": "5A",
+          "passenger": "Logan Alexander Rodriguez Arreola",
+          "ref": "1412-524611"
+        },
+        {
+          "seat": "5B",
+          "passenger": "Maximiliano Rodriguez Arreola",
+          "ref": "1412-524629"
+        }
+      ]
+    }
+  ],
+  "foodGuide": [
+    {
+      "category": "Ramen",
+      "emoji": "🍜",
+      "description": "Rich noodle soup — try ICHIRAN (solo booths) or AFURI (yuzu citrus ramen)"
+    },
+    {
+      "category": "Conveyor Sushi",
+      "emoji": "🍣",
+      "description": "Kaiten-zushi (sushi on a belt) — try KURA SUSHI or UOBEI. Plates come on a tiny bullet train. Kids absolutely love it!"
+    },
+    {
+      "category": "Wagyu Beef",
+      "emoji": "🥩",
+      "description": "Japanese A5 wagyu — melt-in-your-mouth beef. Try a wagyu yakiniku (grill-it-yourself BBQ) for a fun family dinner"
+    },
+    {
+      "category": "Okonomiyaki",
+      "emoji": "🥞",
+      "description": "Savory pancake loaded with cabbage, meat, topped with special sauce. Hiroshima-style has noodles inside — a MUST in Hiroshima!"
+    },
+    {
+      "category": "Takoyaki",
+      "emoji": "🐙",
+      "description": "Fried octopus balls — the #1 Osaka street food. Hot, crispy, topped with mayo and bonito flakes. Weirder than it sounds, better than it sounds!"
+    },
+    {
+      "category": "Kushikatsu",
+      "emoji": "🍢",
+      "description": "Fried skewers — meat, veggies, cheese. Shinsekai district in Osaka. Rule: NO DOUBLE DIPPING in the shared sauce!"
+    },
+    {
+      "category": "Bento + Ekiben",
+      "emoji": "🍱",
+      "description": "Boxed meals — buy at train stations. 'Ekiben' (station bento) are famous — incredible quality for the price. Perfect Shinkansen lunch!"
+    },
+    {
+      "category": "Taiyaki / Crepes",
+      "emoji": "🥞",
+      "description": "Fish-shaped waffles with cream/custard inside. Harajuku crepes are a Tokyo landmark. Great for the boys!"
+    },
+    {
+      "category": "Matcha Everything",
+      "emoji": "🍵",
+      "description": "Kyoto matcha ice cream, matcha lattes, matcha parfaits. It's earthy and slightly bitter — most people love it!"
+    },
+    {
+      "category": "Convenience Stores",
+      "emoji": "🏪",
+      "description": "7-Eleven and Lawson in Japan are INCREDIBLE. Onigiri (rice balls), melon pan, hot foods, amazing desserts. Budget-friendly breakfast option every day!"
+    }
+  ],
+  "restaurantPicks": [
+    {
+      "city": "Tokyo",
+      "mealType": "Breakfast",
+      "name": "Hotel breakfast or 7-Eleven / Lawson",
+      "description": "onigiri, tamagoyaki sandwich, melon pan — quick, cheap, delicious"
+    },
+    {
+      "city": "Tokyo",
+      "mealType": "Breakfast",
+      "name": "Tsukiji Outer Market",
+      "description": "Fresh uni (sea urchin) on rice, tamago-yaki, grilled skewers — the ultimate Tokyo food morning"
+    },
+    {
+      "city": "Tokyo",
+      "mealType": "Breakfast",
+      "name": "Streamer Coffee (Harajuku)",
+      "description": "one of Tokyo's best specialty coffee spots — great for moms who need their latte!"
+    },
+    {
+      "city": "Tokyo",
+      "mealType": "Lunch",
+      "name": "Uobei Sushi Shibuya",
+      "description": "bullet-train conveyor sushi, order via tablet — SO fun for the whole family"
+    },
+    {
+      "city": "Tokyo",
+      "mealType": "Lunch",
+      "name": "Gyukatsu Motomura (Shibuya/Shinjuku)",
+      "description": "you grill your own wagyu cutlet at a tiny stone at your table — interactive & delicious"
+    },
+    {
+      "city": "Tokyo",
+      "mealType": "Lunch",
+      "name": "Ichiran Ramen (multiple locations)",
+      "description": "solo tonkotsu ramen booths, customize everything — iconic & unique experience"
+    },
+    {
+      "city": "Tokyo",
+      "mealType": "Lunch",
+      "name": "Tonkatsu Maisen (Aoyama)",
+      "description": "legendary breaded pork cutlet — set lunch menus are great value"
+    },
+    {
+      "city": "Tokyo",
+      "mealType": "Dinner",
+      "name": "Omoide Yokocho (Shinjuku)",
+      "description": "smoky yakitori alley near Shinjuku Station — tiny stalls, sake, grilled chicken skewers. The VIBE is everything"
+    },
+    {
+      "city": "Tokyo",
+      "mealType": "Dinner",
+      "name": "Golden Gai (Shinjuku)",
+      "description": "200+ micro-bars, each with its own theme. Pick one, order izakaya food — great family evening"
+    },
+    {
+      "city": "Tokyo",
+      "mealType": "Dinner",
+      "name": "Zauo (Shinjuku)",
+      "description": "you CATCH your own fish and they cook it for you! The boys will love this"
+    },
+    {
+      "city": "Tokyo",
+      "mealType": "Dinner",
+      "name": "Kinka Sushi Bar Izakaya (Roppongi)",
+      "description": "beautiful mosaic sushi and izakaya dishes — highly rated for families"
+    },
+    {
+      "city": "Tokyo",
+      "mealType": "Sweets",
+      "name": "Harajuku Crepes (Marion Crêpes)",
+      "description": "classic Tokyo crepes stuffed with strawberries, ice cream, custard"
+    },
+    {
+      "city": "Tokyo",
+      "mealType": "Sweets",
+      "name": "Afuri (multiple locations)",
+      "description": "great yuzu ramen AND a stylish café atmosphere. Also a good coffee stop"
+    },
+    {
+      "city": "Kyoto",
+      "mealType": "Breakfast",
+      "name": "Mash Kyoto (near MIMARU hotel)",
+      "description": "bakery opens at 7 AM, incredible pastries + coffee — great before early morning temple visits"
+    },
+    {
+      "city": "Kyoto",
+      "mealType": "Breakfast",
+      "name": "Inoda Coffee (Sanjo)",
+      "description": "Kyoto's most iconic café since 1940. Order their 'Arabiya' coffee blend with thick toast and eggs"
+    },
+    {
+      "city": "Kyoto",
+      "mealType": "Breakfast",
+      "name": "Nishiki Market (before 9 AM)",
+      "description": "try tamagoyaki skewers, fresh tofu, tsukemono (pickles) — this is local Kyoto breakfast culture"
+    },
+    {
+      "city": "Kyoto",
+      "mealType": "Lunch",
+      "name": "Musashi Sushi (near Sanjo)",
+      "description": "kaitenzushi (conveyor belt). Kyoto-style pressed sushi is special. Very reasonably priced."
+    },
+    {
+      "city": "Kyoto",
+      "mealType": "Lunch",
+      "name": "Kura Sushi Kyoto",
+      "description": "popular kaiten-zushi chain, order via screen, capsule prize after every 5 plates — kids love it"
+    },
+    {
+      "city": "Kyoto",
+      "mealType": "Lunch",
+      "name": "Gion Kappa (Gion district)",
+      "description": "casual tempura set lunch. Great value, walk-in friendly, lovely historic setting"
+    },
+    {
+      "city": "Kyoto",
+      "mealType": "Dinner",
+      "name": "Pontocho Alley",
+      "description": "walk the entire alley first, then pick a restaurant by atmosphere. Some have Kamo River view terraces (kawayuka)"
+    },
+    {
+      "city": "Kyoto",
+      "mealType": "Dinner",
+      "name": "Gionshinbashi Nakatani (Gion)",
+      "description": "intimate restaurant with seasonal Kyoto cuisine — book ahead, truly authentic"
+    },
+    {
+      "city": "Kyoto",
+      "mealType": "Dinner",
+      "name": "Ramen Senmonten (near Shijo)",
+      "description": "rich Kyoto-style chicken ramen — a local favorite, rarely in tourist guides"
+    },
+    {
+      "city": "Kyoto",
+      "mealType": "Sweets",
+      "name": "Salon de Muge (Kikunoi Kicho)",
+      "description": "matcha warabimochi and coffee near Kiyomizu — gentle, beautiful, very Kyoto"
+    },
+    {
+      "city": "Kyoto",
+      "mealType": "Sweets",
+      "name": "Nakamura Tokichi (Uji matcha)",
+      "description": "Kyoto's most famous matcha dessert spot — matcha parfait, matcha soft-serve. Go to the Gion branch"
+    },
+    {
+      "city": "Kyoto",
+      "mealType": "Sweets",
+      "name": "Weekenders Coffee (Tominokoji)",
+      "description": "top specialty coffee in Kyoto — tiny, local, no tourists"
+    },
+    {
+      "city": "Osaka",
+      "mealType": "Breakfast",
+      "name": "Kuromon Ichiba Market (by 8 AM)",
+      "description": "fresh seafood breakfast stalls — grilled scallops, uni rice bowls, crab legs. Unbelievable quality."
+    },
+    {
+      "city": "Osaka",
+      "mealType": "Breakfast",
+      "name": "Hotel breakfast",
+      "description": "if available — Osaka hotels often do excellent Japanese or Western breakfast buffets"
+    },
+    {
+      "city": "Osaka",
+      "mealType": "Lunch",
+      "name": "Dotonbori street food crawl",
+      "description": "takoyaki at Aizuya, okonomiyaki, taiyaki — make a loop and sample everything!"
+    },
+    {
+      "city": "Osaka",
+      "mealType": "Lunch",
+      "name": "Harborland area near Aquarium",
+      "description": "family-friendly food court with ramen, sushi, Japanese curry — perfect after Kaiyukan"
+    },
+    {
+      "city": "Osaka",
+      "mealType": "Lunch",
+      "name": "Shinsekai neighborhood",
+      "description": "kushikatsu (fried skewers) at Daruma or any local stall. The rule: NO double dipping!"
+    },
+    {
+      "city": "Osaka",
+      "mealType": "Dinner",
+      "name": "Izakaya Teppan Shuka (near Shinsaibashi)",
+      "description": "handwritten menus, local izakaya in a side alley — pork-wrapped asparagus, skewers, very authentic Osaka"
+    },
+    {
+      "city": "Osaka",
+      "mealType": "Dinner",
+      "name": "Ichiran Ramen Dotonbori",
+      "description": "the iconic solo ramen booth experience — great late-night option after sightseeing"
+    },
+    {
+      "city": "Osaka",
+      "mealType": "Dinner",
+      "name": "Sakae Sushi (near Shinsaibashi)",
+      "description": "praised for excellent Osaka-style nigiri — friendly and surprisingly affordable"
+    },
+    {
+      "city": "Osaka",
+      "mealType": "Dinner",
+      "name": "Wagyu Yakiniku BBQ",
+      "description": "Osaka has excellent wagyu. Find a mid-range yakiniku restaurant near Namba. Grill your own wagyu at the table — unforgettable family dinner"
+    },
+    {
+      "city": "Osaka",
+      "mealType": "Sweets",
+      "name": "% Arabica Coffee (near Dotonbori)",
+      "description": "most Instagrammable coffee in Japan. Excellent espresso, beautiful minimal design"
+    },
+    {
+      "city": "Osaka",
+      "mealType": "Sweets",
+      "name": "Cremia soft serve (Dotonbori area)",
+      "description": "super creamy, rich soft-serve ice cream in a cone — famous and incredible"
+    },
+    {
+      "city": "Osaka",
+      "mealType": "Sweets",
+      "name": "Pocky & kit-kat specialty shops",
+      "description": "Japan has 200+ unique Kit-Kat flavors. Buy wasabi, sake, matcha, purple sweet potato flavors to bring home!"
+    }
+  ],
+  "practicalTips": [
+    {
+      "category": "Book These in Advance (Don't Wait!)",
+      "tips": [
+        "TeamLab Borderless (Tokyo): Sells out weeks ahead. Book on teamlab.art — choose first entry slot 10 AM",
+        "Pokémon Café Tokyo OR Osaka: Reservation-only. Book on their official site as soon as dates open",
+        "Universal Studios Japan (if going): Nintendo World timed entry passes sell out instantly — book via official USJ app",
+        "Japan Rail Pass: Buy before you leave the US! 7-day or 14-day pass. Covers all Shinkansen.",
+        "Suica/IC Card: Set up on iPhone/Android before arriving — use to pay for trains, convenience stores, even some restaurants",
+        "Hotels: Book 6+ months ahead. Many only release dates 6 months out (around Dec 2025 for June 2026)"
+      ]
+    },
+    {
+      "category": "June Weather in Japan",
+      "tips": [
+        "☔ June is the START of Japan's rainy season (tsuyu). Expect rain several days, especially mid-June.",
+        "🌡️ Temperatures: ~24–30°C (75–86°F). Humid! Pack light, breathable clothes.",
+        "🌂 Pack: compact umbrella for each person, light waterproof layer, comfortable walking shoes",
+        "🌿 Silver lining: outdoor attractions like Fushimi Inari and Arashiyama are MORE beautiful misty and rain-washed",
+        "🏢 Indoor backup plans: TeamLab, Pokémon Centers, arcades, amazing department store food halls (depachika)"
+      ]
+    },
+    {
+      "category": "Family Japan Tips",
+      "tips": [
+        "👟 Shoes: everyone in Japan takes off shoes constantly (temples, some restaurants). Easy-on shoes save time!",
+        "🤫 Quiet rule: trains are silent. No phone calls, quiet conversations. Kids should understand this.",
+        "💵 Cash: Japan is still very cash-friendly. Keep ¥10,000–20,000 on hand daily per person.",
+        "🗑️ Garbage: almost NO public trash cans! Bring a small bag for wrappers until you reach a convenience store.",
+        "🛀 Tattoos: if anyone has tattoos, they may be turned away from some onsen (hot spring baths). Check ahead.",
+        "📱 Google Maps: works incredibly well in Japan for train routing. Saves you so much time.",
+        "🧳 Luggage forwarding (Takkyubin): you can ship your luggage between hotels for ~$10–15/bag. Highly recommended!",
+        "🗣️ Language: Download Google Translate with Japanese offline. The camera feature translates menus in real time!"
+      ]
+    }
+  ]
+}

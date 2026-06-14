@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Japan Family Adventure 2026</title>
+  
+  <!-- SEO & Description -->
+  <meta name="description" content="Offline trip companion and PWA for the 12-day Japan family adventure, featuring schedules, budgets, and checklists.">
+  
+  <!-- PWA Manifest & Themes -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#e85d75">
+  
+  <!-- iOS Safari Standalone PWA Support -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Japan Trip">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- App Sticky Header -->
+  <header class="app-header" id="app-main-header">
+    <a href="#" class="logo-container" id="logo-home">
+      <img src="icons/icon-192.png" alt="Sakura Logo" class="logo-img">
+      <h1 class="app-title">Japan Trip 🌸</h1>
+    </a>
+    <div class="header-controls">
+      <button class="today-btn" id="today-btn" title="Jump to Today's Itinerary">
+        📅 Today
+      </button>
+      <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Light/Dark Theme">
+        🌙
+      </button>
+    </div>
+  </header>
+
+  <!-- Overall Status Banner -->
+  <div class="container" style="padding-bottom: 0;">
+    <div class="info-banner" id="status-banner" style="display: none;">
+      <span id="banner-message">Detecting trip status...</span>
+      <button class="banner-close" onclick="document.getElementById('status-banner').style.display='none'" aria-label="Close status message">×</button>
+    </div>
+  </div>
+
+  <!-- MAIN TAB VIEWS -->
+  <main>
+    
+    <!-- TAB 1: ITINERARY (Home / Default) -->
+    <section class="tab-content active" id="itinerary-tab">
+      <!-- Sticky Day Tabs Scrollable Strip -->
+      <div class="day-navigator-container">
+        <div class="day-navigator" id="day-tabs">
+          <!-- Dynamically populated via JS -->
+        </div>
+      </div>
+      
+      <!-- Day Content View -->
+      <div class="container" id="itinerary-details">
+        <!-- Dynamically populated via JS -->
+      </div>
+    </section>
+
+    <!-- TAB 2: CHECKLIST -->
+    <section class="tab-content" id="checklist-tab">
+      <div class="container">
+        <h2 style="margin-bottom: 16px;">📋 Pre-Trip Checklist</h2>
+        <div id="checklist-content">
+          <!-- Dynamically populated via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: BUDGET -->
+    <section class="tab-content" id="budget-tab">
+      <div class="container">
+        <h2 style="margin-bottom: 16px;">💴 Budget Tracker</h2>
+        <div id="budget-content">
+          <!-- Dynamically populated via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: INFO (Hotels & Trains) -->
+    <section class="tab-content" id="info-tab">
+      <div class="container">
+        <h2 style="margin-bottom: 16px;">ℹ️ Bookings & Info</h2>
+        <div id="info-content">
+          <!-- Dynamically populated via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: FOOD & TIPS -->
+    <section class="tab-content" id="food-tab">
+      <div class="container">
+        <h2 style="margin-bottom: 16px;">🍱 Food Guide & Tips</h2>
+        <div id="food-content">
+          <!-- Dynamically populated via JS -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PWA Install Banner Alert Overlay -->
+  <div class="pwa-install-banner" id="install-banner">
+    <div class="install-banner-header">
+      <span class="install-title">🌸 Add to Home Screen?</span>
+      <button class="banner-close" id="close-install-banner" aria-label="Close install prompt">×</button>
+    </div>
+    <div class="install-desc">Install this Japan Travel Companion for offline-first, easy access. Works on subways and airplanes!</div>
+    <button class="btn btn-primary btn-block" id="install-btn">📱 Install App</button>
+  </div>
+
+  <!-- Persistent Bottom Navigation Bar -->
+  <nav class="bottom-nav" id="app-bottom-nav">
+    <button class="nav-item active" data-tab="itinerary" id="nav-itinerary-btn">
+      <span class="nav-icon">🌸</span>
+      <span>Itinerary</span>
+    </button>
+    <button class="nav-item" data-tab="checklist" id="nav-checklist-btn">
+      <span class="nav-icon">📋</span>
+      <span>Checklist</span>
+    </button>
+    <button class="nav-item" data-tab="budget" id="nav-budget-btn">
+      <span class="nav-icon">💴</span>
+      <span>Budget</span>
+    </button>
+    <button class="nav-item" data-tab="info" id="nav-info-btn">
+      <span class="nav-icon">🏨</span>
+      <span>Bookings</span>
+    </button>
+    <button class="nav-item" data-tab="food" id="nav-food-btn">
+      <span class="nav-icon">🍱</span>
+      <span>Food & Tips</span>
+    </button>
+  </nav>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>

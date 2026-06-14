@@ -1,0 +1,17 @@
+# Reference files only used during data ingestion
+*.pdf
+
+# Local environment files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
