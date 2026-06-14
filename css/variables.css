@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Elegant Japanese Zen Palette */
+  --primary: #e85d75;      /* Sakura Pink */
+  --primary-hover: #d14d64;
+  --secondary: #cc4b4b;    /* Torii Gate Red */
+  --accent-a: #2563eb;     /* Option A - Original Blue */
+  --accent-b: #059669;     /* Option B - Suggested Green */
+  --bg-base: #f7f5f0;      /* Warm off-white sand */
+  --bg-card: #ffffff;      /* Pure white cards */
+  --bg-muted: #f1ede4;     /* Muted grey-sand */
+  --text-main: #2d2622;    /* Dark warm charcoal */
+  --text-muted: #736b66;   /* Stone gray */
+  --border-color: #e6dfd5; /* Soft border */
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  
+  /* Layout constraints */
+  --header-height: 64px;
+  --nav-height: 68px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(45, 34, 30, 0.04);
+  --shadow-md: 0 8px 16px rgba(45, 34, 30, 0.06);
+  --shadow-lg: 0 16px 32px rgba(45, 34, 30, 0.1);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Mode Theme */
+body.dark-mode {
+  --bg-base: #1c1816;
+  --bg-card: #282320;
+  --bg-muted: #332d29;
+  --text-main: #f5eedc;
+  --text-muted: #aba29a;
+  --border-color: #3f3733;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.4);
+}

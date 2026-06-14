@@ -1,0 +1,119 @@
+/* Food Guide & Tips Styles */
+.collapsible-guide-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.guide-card-header {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--bg-card);
+  transition: background-color var(--transition-fast);
+}
+
+.guide-card-header:hover {
+  background-color: var(--bg-muted);
+}
+
+.guide-title {
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.guide-body {
+  padding: 14px 16px;
+  border-top: 1px solid var(--border-color);
+  display: none;
+  animation: slideDown 0.2s ease-out;
+}
+
+.guide-body.active {
+  display: block;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.guide-description {
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.picks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pick-item {
+  border-left: 3px solid var(--primary);
+  padding-left: 10px;
+  margin-bottom: 8px;
+}
+
+.pick-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.pick-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* Tips section list style */
+.tip-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tip-item-line {
+  font-size: 0.88rem;
+  position: relative;
+  padding-left: 16px;
+}
+
+.tip-item-line::before {
+  content: '▪';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+}
+
+/* City Filter Buttons */
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filter-tab-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-tab-btn.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}

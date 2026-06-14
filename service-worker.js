@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v1.0.7';
+const CACHE_VERSION = 'v1.0.8';
 const CACHE_NAME = `japan-trip-cache-${CACHE_VERSION}`;
 
 const ASSETS = [
@@ -9,7 +9,21 @@ const ASSETS = [
   './itinerary.json',
   './manifest.json',
   './icons/icon-192.png',
-  './icons/icon-512.png'
+  './icons/icon-512.png',
+  './css/variables.css',
+  './css/base.css',
+  './css/itinerary.css',
+  './css/checklist.css',
+  './css/budget.css',
+  './css/info.css',
+  './css/food.css',
+  './css/modals.css',
+  './js/helpers.js',
+  './js/itinerary.js',
+  './js/checklist.js',
+  './js/budget.js',
+  './js/info.js',
+  './js/food.js'
 ];
 
 // Install Event
