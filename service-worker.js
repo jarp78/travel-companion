@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v1.0.4';
+const CACHE_VERSION = 'v1.0.7';
 const CACHE_NAME = `japan-trip-cache-${CACHE_VERSION}`;
 
 const ASSETS = [

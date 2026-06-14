@@ -593,8 +593,8 @@ function renderBudget() {
   summaryCard.className = 'budget-summary-card';
   summaryCard.innerHTML = `
     <div style="font-size: 0.9rem; opacity: 0.9;">Total Actual Spend</div>
-    <div class="budget-sum-val">¥${Math.round(totalSpentYen).toLocaleString()} JPY</div>
-    <div class="budget-sum-usd">≈ $${totalSpentUsd.toLocaleString()} USD <span style="font-size: 0.75rem; opacity: 0.8;">(approx. 1$ = ${USD_TO_JPY_RATE}¥)</span></div>
+    <div class="budget-sum-val">$${totalSpentUsd.toLocaleString()} USD</div>
+    <div class="budget-sum-usd">≈ ¥${Math.round(totalSpentYen).toLocaleString()} JPY <span style="font-size: 0.75rem; opacity: 0.8;">(approx. 1$ = ${USD_TO_JPY_RATE}¥)</span></div>
   `;
   container.appendChild(summaryCard);
 
@@ -605,7 +605,7 @@ function renderBudget() {
   let daySelectOptions = '';
   if (tripData && tripData.days) {
     tripData.days.forEach((d, idx) => {
-      daySelectOptions += `<option value="${idx}">Day ${d.dayNumber} · ${d.title}</option>`;
+      daySelectOptions += `<option value="${idx}" ${idx === autoDetectedDay ? 'selected' : ''}>Day ${d.dayNumber} · ${d.title}</option>`;
     });
   }
 
@@ -683,7 +683,15 @@ function renderBudget() {
         dayEntries.forEach(entry => {
           const amount = entry.amount !== undefined ? entry.amount : entry.amountYen;
           const currency = entry.currency || 'JPY';
-          const symbol = currency === 'USD' ? '$' : '¥';
+          
+          let displayAmount = '';
+          if (currency === 'USD') {
+            const jpyConverted = Math.round(amount * USD_TO_JPY_RATE);
+            displayAmount = `$${amount.toLocaleString()} (~¥${jpyConverted.toLocaleString()})`;
+          } else {
+            const usdConverted = Math.round(amount / USD_TO_JPY_RATE);
+            displayAmount = `¥${amount.toLocaleString()} (~$${usdConverted.toLocaleString()})`;
+          }
           
           itemsHtml += `
             <div class="spend-item">
@@ -691,7 +699,7 @@ function renderBudget() {
                 <strong>[${entry.category}]</strong> ${entry.note || ''}
               </div>
               <div style="display: flex; align-items: center; gap: 8px;">
-                <span>${symbol}${amount.toLocaleString()}</span>
+                <span style="font-size: 0.85rem; white-space: nowrap;">${displayAmount}</span>
                 <button class="spend-delete-btn" onclick="openBudgetEditModal('${entry.id}')" style="color: var(--primary);">✏️</button>
                 <button class="spend-delete-btn" onclick="confirmDeleteSpend('${entry.id}')">❌</button>
               </div>
