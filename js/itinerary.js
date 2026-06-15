@@ -2,7 +2,8 @@ import {
   state, 
   ITINERARY_MUTATIONS_KEY, 
   showCustomConfirm, 
-  timeStringToMinutes 
+  timeStringToMinutes,
+  encodeShareData
 } from './helpers.js';
 
 // Get itinerary mutations from localStorage
@@ -231,6 +232,7 @@ export function renderItineraryDay() {
             ${tipsHtml}
             ${navigateButtonHtml ? `<div class="card-actions">${navigateButtonHtml}</div>` : ''}
             <div class="card-edit-actions">
+              <button class="btn btn-icon-only" onclick="shareEvent('${act.id}')">📤 Share</button>
               <button class="btn btn-icon-only" onclick="openEventModal('${act.id}', ${state.selectedDay})">✏️ Edit</button>
               <button class="btn btn-icon-only btn-danger" onclick="confirmDeleteEvent('${act.id}')">🗑️ Delete</button>
             </div>
@@ -383,8 +385,58 @@ export function confirmDeleteEvent(eventId) {
   });
 }
 
+export function shareEvent(eventId) {
+  const day = state.tripData.days[state.selectedDay];
+  const event = day.activities.find(act => act.id === eventId);
+  if (!event) return;
+
+  const payload = {
+    dayIndex: state.selectedDay,
+    event: {
+      id: event.id,
+      time: event.time || '',
+      title: event.title || '',
+      description: event.description || '',
+      location: event.location || null,
+      travelMode: event.travelMode || null,
+      variant: event.variant || null,
+      notes: event.notes || [],
+      bookingRef: event.bookingRef || null
+    }
+  };
+
+  const shareCode = encodeShareData(payload);
+  const shareUrl = `${window.location.origin}${window.location.pathname}?action=import-event&data=${shareCode}`;
+
+  if (navigator.share) {
+    navigator.share({
+      title: `Japan Trip Event: ${event.title}`,
+      text: `Check out this itinerary event for our Japan trip: ${event.title}`,
+      url: shareUrl
+    }).catch(err => {
+      console.warn('[Share] Error sharing via Web Share API:', err);
+    });
+  } else {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      const banner = document.getElementById('status-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+        document.getElementById('banner-message').innerText = '📋 Shareable link copied to clipboard! Send it to your family.';
+        setTimeout(() => {
+          banner.style.display = 'none';
+        }, 4000);
+      } else {
+        alert('Shareable link copied to clipboard! Send it to your family.');
+      }
+    }).catch(err => {
+      console.error('[Share] Failed to copy link to clipboard:', err);
+    });
+  }
+}
+
 // Bind interactive functions to window object for inline HTML event handlers compatibility
 window.toggleCardCollapse = toggleCardCollapse;
 window.openEventModal = openEventModal;
 window.handleSaveEvent = handleSaveEvent;
 window.confirmDeleteEvent = confirmDeleteEvent;
+window.shareEvent = shareEvent;

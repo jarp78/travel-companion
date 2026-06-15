@@ -1,14 +1,22 @@
 import { 
   state, 
-  THEME_STORAGE_KEY 
+  THEME_STORAGE_KEY,
+  decodeShareData,
+  clearUrlParams
 } from './js/helpers.js';
 import { 
   applyItineraryMutations, 
   renderDayNavigator, 
-  selectDayTab 
+  selectDayTab,
+  getItineraryMutations,
+  saveItineraryMutations
 } from './js/itinerary.js';
 import { renderChecklist } from './js/checklist.js';
-import { renderBudget } from './js/budget.js';
+import { 
+  renderBudget,
+  loadBudgetEntries,
+  saveBudgetEntries
+} from './js/budget.js';
 import { renderInfo } from './js/info.js';
 import { renderFood } from './js/food.js';
 
@@ -72,6 +80,14 @@ function setupNavigation() {
   document.getElementById('budget-edit-modal-close').addEventListener('click', () => {
     document.getElementById('budget-edit-modal').classList.remove('active');
   });
+  document.getElementById('import-event-modal-close').addEventListener('click', () => {
+    document.getElementById('import-event-modal').classList.remove('active');
+    clearUrlParams();
+  });
+  document.getElementById('import-spend-modal-close').addEventListener('click', () => {
+    document.getElementById('import-spend-modal').classList.remove('active');
+    clearUrlParams();
+  });
 }
 
 export function switchTab(tabName) {
@@ -124,6 +140,9 @@ async function loadTripData() {
     detectCurrentDay();
     renderDayNavigator();
     selectDayTab(state.selectedDay, false);
+
+    // Check for shared event or expense imports from URL
+    checkForImports();
   } catch (error) {
     console.error('Error loading trip data:', error);
     document.getElementById('itinerary-tab').innerHTML = `
@@ -248,3 +267,176 @@ function hideInstallBanner() {
     installBanner.style.display = 'none';
   }
 }
+
+// Check if query parameters contain shared event or expense data
+function checkForImports() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const action = urlParams.get('action');
+  const data = urlParams.get('data');
+  if (!action || !data) return;
+
+  try {
+    const payload = decodeShareData(data);
+    if (action === 'import-event' && payload.event) {
+      const modal = document.getElementById('import-event-modal');
+      document.getElementById('import-event-id').value = payload.event.id;
+      document.getElementById('import-event-time').innerText = payload.event.time || 'No time';
+      document.getElementById('import-event-title').innerText = payload.event.title || 'Untitled Event';
+      document.getElementById('import-event-desc').innerText = payload.event.description || '';
+
+      // Populate day selection drop-down list
+      const daySelect = document.getElementById('import-event-day');
+      daySelect.innerHTML = '';
+      state.tripData.days.forEach((d, idx) => {
+        daySelect.innerHTML += `<option value="${idx}">Day ${d.dayNumber} · ${d.title}</option>`;
+      });
+      daySelect.value = payload.dayIndex !== undefined ? payload.dayIndex : 0;
+
+      // Duplicate Check (Checking local database for duplicate unique ID)
+      const mutations = getItineraryMutations();
+      const isDuplicate = mutations.added.some(item => item.event.id === payload.event.id) ||
+                          state.tripData.days.some(day => day.activities.some(act => act.id === payload.event.id && !mutations.deleted.includes(act.id)));
+
+      document.getElementById('import-event-duplicate-warning').style.display = isDuplicate ? 'block' : 'none';
+
+      // Save event payload on modal element as JSON string attribute for confirm hook
+      modal.setAttribute('data-payload', JSON.stringify(payload.event));
+      modal.classList.add('active');
+
+    } else if (action === 'import-spend' && payload.spend) {
+      const modal = document.getElementById('import-spend-modal');
+      document.getElementById('import-spend-id').value = payload.spend.id;
+      document.getElementById('import-spend-category').innerText = payload.spend.category || 'Other';
+      document.getElementById('import-spend-note').innerText = payload.spend.note || '';
+      
+      const amount = payload.spend.amount;
+      const currency = payload.spend.currency || 'JPY';
+      document.getElementById('import-spend-amount').innerText = currency === 'USD' ? `$${amount}` : `¥${amount.toLocaleString()}`;
+
+      // Populate day selection drop-down list
+      const daySelect = document.getElementById('import-spend-day');
+      daySelect.innerHTML = '';
+      state.tripData.days.forEach((d, idx) => {
+        daySelect.innerHTML += `<option value="${idx}">Day ${d.dayNumber} · ${d.title}</option>`;
+      });
+      daySelect.value = payload.dayIndex !== undefined ? payload.dayIndex : 0;
+
+      // Duplicate Check
+      const entries = loadBudgetEntries();
+      const isDuplicate = entries.some(e => e.id === payload.spend.id);
+      document.getElementById('import-spend-duplicate-warning').style.display = isDuplicate ? 'block' : 'none';
+
+      modal.setAttribute('data-payload', JSON.stringify(payload.spend));
+      modal.classList.add('active');
+    }
+  } catch (err) {
+    console.error('[Import] Failed to parse shared import link data:', err);
+    clearUrlParams();
+  }
+}
+
+// Confirm event import action
+export function handleConfirmImportEvent(event) {
+  event.preventDefault();
+  const modal = document.getElementById('import-event-modal');
+  const eventData = JSON.parse(modal.getAttribute('data-payload'));
+  const dayIndex = parseInt(document.getElementById('import-event-day').value);
+
+  const mutations = getItineraryMutations();
+
+  // If deleted, undo deletion
+  mutations.deleted = mutations.deleted.filter(id => id !== eventData.id);
+
+  // If already locally added, overwrite it
+  const addedIdx = mutations.added.findIndex(item => item.event.id === eventData.id);
+  if (addedIdx !== -1) {
+    mutations.added[addedIdx] = { dayIndex, event: eventData };
+  } else {
+    // If it was a base itinerary item edited, overwrite edited
+    const existsInBase = state.rawTripData.days.some(day => day.activities.some(act => act.id === eventData.id));
+    if (existsInBase) {
+      mutations.edited[eventData.id] = {
+        time: eventData.time,
+        title: eventData.title,
+        description: eventData.description,
+        location: eventData.location,
+        travelMode: eventData.travelMode,
+        variant: eventData.variant,
+        notes: eventData.notes,
+        bookingRef: eventData.bookingRef
+      };
+    } else {
+      // Add as a new custom event
+      mutations.added.push({ dayIndex, event: eventData });
+    }
+  }
+
+  saveItineraryMutations(mutations);
+  applyItineraryMutations();
+
+  modal.classList.remove('active');
+  clearUrlParams();
+
+  // Redirect to active itinerary day
+  switchTab('itinerary');
+  selectDayTab(dayIndex, true);
+
+  // Show status banner notification
+  const banner = document.getElementById('status-banner');
+  if (banner) {
+    banner.style.display = 'flex';
+    document.getElementById('banner-message').innerText = `🌸 Successfully imported event "${eventData.title}"!`;
+    setTimeout(() => {
+      banner.style.display = 'none';
+    }, 4000);
+  }
+}
+
+// Confirm budget expense import action
+export function handleConfirmImportSpend(event) {
+  event.preventDefault();
+  const modal = document.getElementById('import-spend-modal');
+  const spendData = JSON.parse(modal.getAttribute('data-payload'));
+  const dayIndex = parseInt(document.getElementById('import-spend-day').value);
+
+  const entries = loadBudgetEntries();
+  const existingIdx = entries.findIndex(e => e.id === spendData.id);
+  const newEntry = {
+    id: spendData.id,
+    dayIndex,
+    category: spendData.category,
+    currency: spendData.currency,
+    amount: spendData.amount,
+    note: spendData.note,
+    timestamp: Date.now()
+  };
+
+  if (existingIdx !== -1) {
+    entries[existingIdx] = newEntry;
+  } else {
+    entries.push(newEntry);
+  }
+
+  saveBudgetEntries(entries);
+
+  modal.classList.remove('active');
+  clearUrlParams();
+
+  // Redirect to budget page
+  switchTab('budget');
+  renderBudget();
+
+  // Show status banner notification
+  const banner = document.getElementById('status-banner');
+  if (banner) {
+    banner.style.display = 'flex';
+    document.getElementById('banner-message').innerText = `💴 Successfully imported expense "${spendData.category}"!`;
+    setTimeout(() => {
+      banner.style.display = 'none';
+    }, 4000);
+  }
+}
+
+// Bind handlers to window object for HTML form onsubmit actions compatibility
+window.handleConfirmImportEvent = handleConfirmImportEvent;
+window.handleConfirmImportSpend = handleConfirmImportSpend;

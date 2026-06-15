@@ -86,3 +86,38 @@ export function timeStringToMinutes(timeStr) {
 
   return 1440;
 }
+
+// Safely encodes an object into a URL-friendly Base64 UTF-8 string
+export function encodeShareData(obj) {
+  const jsonStr = JSON.stringify(obj);
+  const utf8Bytes = new TextEncoder().encode(jsonStr);
+  let binary = '';
+  const len = utf8Bytes.byteLength;
+  for (let i = 0; i < len; i++) {
+    binary += String.fromCharCode(utf8Bytes[i]);
+  }
+  const b64 = btoa(binary);
+  return b64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+// Decodes a URL-friendly Base64 UTF-8 string back into an object
+export function decodeShareData(str) {
+  let base64 = str.replace(/-/g, '+').replace(/_/g, '/');
+  while (base64.length % 4) {
+    base64 += '=';
+  }
+  const binary = atob(base64);
+  const len = binary.length;
+  const bytes = new Uint8Array(len);
+  for (let i = 0; i < len; i++) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+  const jsonStr = new TextDecoder().decode(bytes);
+  return JSON.parse(jsonStr);
+}
+
+// Clears URL query parameters without triggering a page reload
+export function clearUrlParams() {
+  const cleanUrl = window.location.origin + window.location.pathname;
+  window.history.replaceState({}, document.title, cleanUrl);
+}

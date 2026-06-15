@@ -258,6 +258,72 @@
     </div>
   </div>
 
+  <!-- Import Itinerary Event Modal -->
+  <div class="modal-overlay" id="import-event-modal">
+    <div class="modal-card">
+      <div class="modal-card-header">
+        <h3 class="modal-title">🌸 Import Shared Event</h3>
+        <button class="modal-close-btn" id="import-event-modal-close" aria-label="Close modal">×</button>
+      </div>
+      <div id="import-event-duplicate-warning" style="display: none; background-color: rgba(204, 75, 75, 0.1); border-left: 4px solid var(--secondary); padding: 10px 12px; margin-bottom: 15px; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 500;">
+        ⚠️ This event already exists in your itinerary. Importing it will update/overwrite the existing one.
+      </div>
+      <div class="modal-body" style="margin-bottom: 15px;">
+        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; margin-bottom: 4px;">Shared Event Details</div>
+        <div style="background-color: var(--bg-muted); padding: 12px; border-radius: var(--radius-md); border: 1px solid var(--border-color); margin-bottom: 15px;">
+          <div id="import-event-time" style="font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--primary);"></div>
+          <h4 id="import-event-title" style="font-size: 1.05rem; font-weight: 600; margin-top: 2px;"></h4>
+          <p id="import-event-desc" style="font-size: 0.85rem; margin-top: 6px; white-space: pre-wrap; color: var(--text-main);"></p>
+        </div>
+        
+        <form id="import-event-form" onsubmit="handleConfirmImportEvent(event)">
+          <input type="hidden" id="import-event-id" />
+          <div class="form-group">
+            <label for="import-event-day">Select Trip Day to Import into</label>
+            <select class="form-control" id="import-event-day" required>
+              <!-- Populated via JS -->
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top: 15px;">Import Event</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Import Budget Expense Modal -->
+  <div class="modal-overlay" id="import-spend-modal">
+    <div class="modal-card">
+      <div class="modal-card-header">
+        <h3 class="modal-title">💴 Import Shared Expense</h3>
+        <button class="modal-close-btn" id="import-spend-modal-close" aria-label="Close modal">×</button>
+      </div>
+      <div id="import-spend-duplicate-warning" style="display: none; background-color: rgba(204, 75, 75, 0.1); border-left: 4px solid var(--secondary); padding: 10px 12px; margin-bottom: 15px; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 500;">
+        ⚠️ This expense entry already exists. Importing it will update/overwrite the existing one.
+      </div>
+      <div class="modal-body" style="margin-bottom: 15px;">
+        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; margin-bottom: 4px;">Shared Expense Details</div>
+        <div style="background-color: var(--bg-muted); padding: 12px; border-radius: var(--radius-md); border: 1px solid var(--border-color); margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div id="import-spend-category" style="font-size: 0.85rem; font-weight: 700;"></div>
+            <div id="import-spend-note" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;"></div>
+          </div>
+          <div id="import-spend-amount" style="font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--primary);"></div>
+        </div>
+        
+        <form id="import-spend-form" onsubmit="handleConfirmImportSpend(event)">
+          <input type="hidden" id="import-spend-id" />
+          <div class="form-group">
+            <label for="import-spend-day">Select Trip Day to Assign to</label>
+            <select class="form-control" id="import-spend-day" required>
+              <!-- Populated via JS -->
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top: 15px;">Import Expense</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- App Script -->
   <script type="module" src="app.js"></script>
 </body>

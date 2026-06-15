@@ -2,7 +2,8 @@ import {
   state, 
   BUDGET_STORAGE_KEY, 
   USD_TO_JPY_RATE, 
-  showCustomConfirm 
+  showCustomConfirm,
+  encodeShareData
 } from './helpers.js';
 
 export function loadBudgetEntries() {
@@ -146,6 +147,7 @@ export function renderBudget() {
               </div>
               <div style="display: flex; align-items: center; gap: 8px;">
                 <span style="font-size: 0.85rem; white-space: nowrap;">${displayAmount}</span>
+                <button class="spend-delete-btn" onclick="shareSpend('${entry.id}')" title="Share Expense">📤</button>
                 <button class="spend-delete-btn" onclick="openBudgetEditModal('${entry.id}')" style="color: var(--primary);">✏️</button>
                 <button class="spend-delete-btn" onclick="confirmDeleteSpend('${entry.id}')">❌</button>
               </div>
@@ -264,8 +266,54 @@ export function handleSaveBudgetEdit(event) {
   }
 }
 
+export function shareSpend(spendId) {
+  const entries = loadBudgetEntries();
+  const entry = entries.find(e => e.id === spendId);
+  if (!entry) return;
+
+  const payload = {
+    dayIndex: entry.dayIndex,
+    spend: {
+      id: entry.id,
+      category: entry.category,
+      currency: entry.currency || 'JPY',
+      amount: entry.amount !== undefined ? entry.amount : entry.amountYen,
+      note: entry.note || ''
+    }
+  };
+
+  const shareCode = encodeShareData(payload);
+  const shareUrl = `${window.location.origin}${window.location.pathname}?action=import-spend&data=${shareCode}`;
+
+  if (navigator.share) {
+    navigator.share({
+      title: `Japan Trip Expense: ${entry.category}`,
+      text: `Import this expense entry for our Japan trip: ${entry.category} - ${entry.note || ''}`,
+      url: shareUrl
+    }).catch(err => {
+      console.warn('[Share] Error sharing via Web Share API:', err);
+    });
+  } else {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      const banner = document.getElementById('status-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+        document.getElementById('banner-message').innerText = '📋 Shareable link copied to clipboard! Send it to your family.';
+        setTimeout(() => {
+          banner.style.display = 'none';
+        }, 4000);
+      } else {
+        alert('Shareable link copied to clipboard! Send it to your family.');
+      }
+    }).catch(err => {
+      console.error('[Share] Failed to copy link to clipboard:', err);
+    });
+  }
+}
+
 // Bind interactive functions to window object
 window.handleAddSpend = handleAddSpend;
 window.confirmDeleteSpend = confirmDeleteSpend;
 window.openBudgetEditModal = openBudgetEditModal;
 window.handleSaveBudgetEdit = handleSaveBudgetEdit;
+window.shareSpend = shareSpend;
