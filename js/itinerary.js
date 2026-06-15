@@ -3,7 +3,8 @@ import {
   ITINERARY_MUTATIONS_KEY, 
   showCustomConfirm, 
   timeStringToMinutes,
-  encodeShareData
+  encodeShareData,
+  copyTextToClipboard
 } from './helpers.js';
 
 // Get itinerary mutations from localStorage
@@ -188,7 +189,7 @@ export function renderItineraryDay() {
         detailsHtml += `
           <div class="card-detail-item">
             <span class="detail-label">🎟️ Reference:</span>
-            <span><strong>${act.bookingRef}</strong></span>
+            <span class="copyable" onclick="copyTextToClipboard('${act.bookingRef.replace(/'/g, "\\'")}', 'Reference')" title="Click to copy" style="cursor: pointer; font-weight: 700; text-decoration: underline; text-underline-offset: 2px;">${act.bookingRef} 📋</span>
           </div>
         `;
       }
@@ -411,8 +412,7 @@ export function shareEvent(eventId) {
   if (navigator.share) {
     navigator.share({
       title: `Japan Trip Event: ${event.title}`,
-      text: `Check out this itinerary event for our Japan trip: ${event.title}`,
-      url: shareUrl
+      text: `🌸 Japan Trip Event:\n"${event.title}"\n\nClick the link below to import this event into your travel companion:\n\n\n${shareUrl}`
     }).catch(err => {
       console.warn('[Share] Error sharing via Web Share API:', err);
     });
@@ -440,3 +440,163 @@ window.openEventModal = openEventModal;
 window.handleSaveEvent = handleSaveEvent;
 window.confirmDeleteEvent = confirmDeleteEvent;
 window.shareEvent = shareEvent;
+window.copyTextToClipboard = copyTextToClipboard;
+
+// Handle Itinerary Search Event
+export function handleItinerarySearch(event) {
+  const query = event.target.value.toLowerCase().trim();
+  const clearBtn = document.getElementById('clear-itinerary-search');
+  
+  if (!query) {
+    clearBtn.style.display = 'none';
+    selectDayTab(state.selectedDay, false);
+    return;
+  }
+  
+  clearBtn.style.display = 'block';
+  renderSearchResults(query);
+}
+
+// Clear search input and restore timeline view
+export function clearItinerarySearch() {
+  const input = document.getElementById('itinerary-search-input');
+  input.value = '';
+  const clearBtn = document.getElementById('clear-itinerary-search');
+  clearBtn.style.display = 'none';
+  selectDayTab(state.selectedDay, false);
+}
+
+// Render search results across all 13 days
+function renderSearchResults(query) {
+  const container = document.getElementById('itinerary-details');
+  container.innerHTML = '';
+
+  const resultsHeader = document.createElement('div');
+  resultsHeader.className = 'day-header';
+  resultsHeader.innerHTML = `
+    <div class="day-title-row">
+      <h2 class="day-title-text">🔍 Search Results</h2>
+      <div class="day-theme">Searching all days for "${query}"</div>
+    </div>
+  `;
+  container.appendChild(resultsHeader);
+
+  const timelineDiv = document.createElement('div');
+  timelineDiv.className = 'timeline';
+
+  let totalMatches = 0;
+
+  state.tripData.days.forEach((day, dayIdx) => {
+    day.activities.forEach(act => {
+      const titleMatch = act.title && act.title.toLowerCase().includes(query);
+      const descMatch = act.description && act.description.toLowerCase().includes(query);
+      const notesMatch = act.notes && act.notes.some(note => note.toLowerCase().includes(query));
+      const locMatch = act.location && (
+        (act.location.name && act.location.name.toLowerCase().includes(query)) ||
+        (act.location.address && act.location.address.toLowerCase().includes(query))
+      );
+      const refMatch = act.bookingRef && act.bookingRef.toLowerCase().includes(query);
+
+      if (titleMatch || descMatch || notesMatch || locMatch || refMatch) {
+        totalMatches++;
+        
+        const card = document.createElement('div');
+        card.className = 'timeline-item';
+        if (act.variant === 'A') card.classList.add('variant-a');
+        if (act.variant === 'B') card.classList.add('variant-b');
+
+        const badgeHtml = act.variant 
+          ? `<span class="badge ${act.variant === 'A' ? 'badge-a' : 'badge-b'}">${act.variant === 'A' ? 'Original Plan' : 'Suggested Addition'}</span>`
+          : '';
+
+        const dayBadgeHtml = `<span class="badge badge-today" style="margin-left: auto;">Day ${day.dayNumber}</span>`;
+
+        let navigateButtonHtml = '';
+        if (act.location) {
+          const mode = act.travelMode || 'transit';
+          const searchDest = act.location.address || act.location.name;
+          const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(searchDest)}&travelmode=${mode}`;
+          navigateButtonHtml = `
+            <button class="btn btn-primary" onclick="window.open('${mapsUrl}', '_blank')">
+              🧭 Navigate
+            </button>
+          `;
+        }
+
+        let detailsHtml = '';
+        if (act.bookingRef) {
+          detailsHtml += `
+            <div class="card-detail-item">
+              <span class="detail-label">🎟️ Reference:</span>
+              <span class="copyable" onclick="copyTextToClipboard('${act.bookingRef.replace(/'/g, "\\'")}', 'Reference')" title="Click to copy" style="cursor: pointer; font-weight: 700; text-decoration: underline; text-underline-offset: 2px;">${act.bookingRef} 📋</span>
+            </div>
+          `;
+        }
+        if (act.location) {
+          detailsHtml += `
+            <div class="card-detail-item">
+              <span class="detail-label">📍 Location:</span>
+              <span>${act.location.name} ${act.location.address ? `(${act.location.address})` : ''}</span>
+            </div>
+          `;
+        }
+
+        let tipsHtml = '';
+        if (act.notes && act.notes.length > 0) {
+          let tipsItems = '';
+          act.notes.forEach(tip => {
+            tipsItems += `<li>${tip}</li>`;
+          });
+          tipsHtml = `
+            <div class="card-tips">
+              <div class="card-tips-title">💡 Notes & Tips</div>
+              <ul style="padding-left: 14px; margin: 0;">${tipsItems}</ul>
+            </div>
+          `;
+        }
+
+        card.innerHTML = `
+          <div class="timeline-dot"></div>
+          <div class="card" id="card-${act.id}">
+            <div class="card-header-row" onclick="toggleCardCollapse('${act.id}')">
+              <div class="card-title-group" style="display: flex; flex-direction: column; width: 100%;">
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                  ${act.time ? `<div class="card-time">${act.time}</div>` : ''}
+                  ${dayBadgeHtml}
+                </div>
+                <div class="card-title" style="margin-top: 4px;">${act.title} ${badgeHtml}</div>
+              </div>
+            </div>
+            <div class="card-body" style="display: block;">
+              ${act.description ? `<div class="card-description">${act.description}</div>` : ''}
+              ${detailsHtml ? `<div class="card-details-grid">${detailsHtml}</div>` : ''}
+              ${tipsHtml}
+              ${navigateButtonHtml ? `<div class="card-actions">${navigateButtonHtml}</div>` : ''}
+              <div class="card-edit-actions">
+                <button class="btn btn-icon-only" onclick="shareEvent('${act.id}')">📤 Share</button>
+                <button class="btn btn-icon-only" onclick="openEventModal('${act.id}', ${dayIdx})">✏️ Edit</button>
+                <button class="btn btn-icon-only btn-danger" onclick="confirmDeleteEvent('${act.id}')">🗑️ Delete</button>
+              </div>
+            </div>
+          </div>
+        `;
+        timelineDiv.appendChild(card);
+      }
+    });
+  });
+
+  if (totalMatches === 0) {
+    timelineDiv.innerHTML = `
+      <div style="padding: 30px; text-align: center; color: var(--text-muted);">
+        <p style="font-size: 1.2rem; margin-bottom: 8px;">🔍 No matching events found</p>
+        <p style="font-size: 0.85rem;">Try searching for terms like "Hotel", "Shinkansen", "Temple", or "Ramen".</p>
+      </div>
+    `;
+  }
+
+  container.appendChild(timelineDiv);
+}
+
+// Bind search handlers to window
+window.handleItinerarySearch = handleItinerarySearch;
+window.clearItinerarySearch = clearItinerarySearch;

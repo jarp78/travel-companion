@@ -335,3 +335,19 @@
   font-size: 0.65rem;
   color: var(--text-muted);
 }
+
+/* Copyable Reference Codes */
+.copyable {
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.copyable:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.copyable:active {
+  transform: scale(0.98);
+}
+

@@ -1,11 +1,11 @@
-// Constants
-export const USD_TO_JPY_RATE = 155; // Offline-first JPY conversion rate
-
 // Local Storage Keys
 export const CHECKLIST_STORAGE_KEY = 'japan-trip-checklist-state';
 export const BUDGET_STORAGE_KEY = 'japan-trip-budget-entries';
 export const THEME_STORAGE_KEY = 'japan-trip-theme-preference';
 export const ITINERARY_MUTATIONS_KEY = 'japan-trip-itinerary-mutations';
+
+// Live binding exchange rate
+export let USD_TO_JPY_RATE = parseFloat(localStorage.getItem('japan-trip-exchange-rate') || 155);
 
 // Global State object to allow sharing mutable state between ES6 modules
 export const state = {
@@ -120,4 +120,37 @@ export function decodeShareData(str) {
 export function clearUrlParams() {
   const cleanUrl = window.location.origin + window.location.pathname;
   window.history.replaceState({}, document.title, cleanUrl);
+}
+
+// Fetch live USD to JPY exchange rates
+export async function fetchExchangeRate() {
+  try {
+    const res = await fetch('https://open.er-api.com/v6/latest/USD');
+    if (!res.ok) throw new Error('API response error');
+    const data = await res.json();
+    if (data && data.rates && data.rates.JPY) {
+      const rate = parseFloat(data.rates.JPY);
+      USD_TO_JPY_RATE = rate;
+      localStorage.setItem('japan-trip-exchange-rate', rate);
+      console.log(`[Exchange Sync] Synced USD to JPY rate: ${rate}`);
+    }
+  } catch (err) {
+    console.warn('[Exchange Sync] Failed to fetch live rate, using cache/default:', err);
+  }
+}
+
+// Copy text to clipboard and display a temporary notification banner
+export function copyTextToClipboard(text, label) {
+  navigator.clipboard.writeText(text).then(() => {
+    const banner = document.getElementById('status-banner');
+    if (banner) {
+      banner.style.display = 'flex';
+      document.getElementById('banner-message').innerText = `📋 Copied ${label || 'reference'}: "${text}"`;
+      setTimeout(() => {
+        banner.style.display = 'none';
+      }, 3000);
+    }
+  }).catch(err => {
+    console.error('[Copy] Failed to copy to clipboard:', err);
+  });
 }

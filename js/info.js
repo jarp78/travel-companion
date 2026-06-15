@@ -1,4 +1,4 @@
-import { state } from './helpers.js';
+import { state, copyTextToClipboard } from './helpers.js';
 
 // INFO VIEW (HOTELS & SHINKANSEN TRAINS) TAB LOGIC
 export function renderInfo() {
@@ -69,8 +69,8 @@ export function renderInfo() {
         seatRows += `
           <tr>
             <td>${s.passenger}</td>
-            <td class="seat-code">${s.seat}</td>
-            <td style="font-size: 0.75rem; color: var(--text-muted);">${s.ref}</td>
+            <td><span class="copyable" onclick="copyTextToClipboard('${s.seat}', 'Seat')" title="Click to copy" style="cursor: pointer; font-family: 'Outfit', sans-serif; font-weight: 700; color: var(--primary); text-decoration: underline; text-underline-offset: 2px;">${s.seat} 📋</span></td>
+            <td><span class="copyable" onclick="copyTextToClipboard('${s.ref}', 'Reference')" title="Click to copy" style="cursor: pointer; font-size: 0.8rem; text-decoration: underline; text-underline-offset: 2px;">${s.ref} 📋</span></td>
           </tr>
         `;
       });

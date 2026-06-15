@@ -2,7 +2,9 @@ import {
   state, 
   THEME_STORAGE_KEY,
   decodeShareData,
-  clearUrlParams
+  clearUrlParams,
+  fetchExchangeRate,
+  USD_TO_JPY_RATE
 } from './js/helpers.js';
 import { 
   applyItineraryMutations, 
@@ -24,6 +26,7 @@ import { renderFood } from './js/food.js';
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   setupNavigation();
+  fetchExchangeRate();
   loadTripData();
   setupPWA();
 });
@@ -88,6 +91,24 @@ function setupNavigation() {
     document.getElementById('import-spend-modal').classList.remove('active');
     clearUrlParams();
   });
+
+  // Itinerary Search Event listeners
+  const itinerarySearch = document.getElementById('itinerary-search-input');
+  if (itinerarySearch) {
+    itinerarySearch.addEventListener('input', (e) => {
+      if (window.handleItinerarySearch) {
+        window.handleItinerarySearch(e);
+      }
+    });
+  }
+  const clearItinerarySearchBtn = document.getElementById('clear-itinerary-search');
+  if (clearItinerarySearchBtn) {
+    clearItinerarySearchBtn.addEventListener('click', () => {
+      if (window.clearItinerarySearch) {
+        window.clearItinerarySearch();
+      }
+    });
+  }
 }
 
 export function switchTab(tabName) {
@@ -313,6 +334,9 @@ function checkForImports() {
       const currency = payload.spend.currency || 'JPY';
       document.getElementById('import-spend-amount').innerText = currency === 'USD' ? `$${amount}` : `¥${amount.toLocaleString()}`;
 
+      const rate = payload.spend.exchangeRate || USD_TO_JPY_RATE;
+      document.getElementById('import-spend-rate-info').innerText = `💱 Exchange Rate: 1 USD = ${rate.toFixed(2)} JPY`;
+
       // Populate day selection drop-down list
       const daySelect = document.getElementById('import-spend-day');
       daySelect.innerHTML = '';
@@ -408,6 +432,7 @@ export function handleConfirmImportSpend(event) {
     currency: spendData.currency,
     amount: spendData.amount,
     note: spendData.note,
+    exchangeRate: spendData.exchangeRate || USD_TO_JPY_RATE,
     timestamp: Date.now()
   };
 

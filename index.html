@@ -59,6 +59,14 @@
         </div>
       </div>
       
+      <!-- Itinerary Search Bar -->
+      <div class="container" style="padding-bottom: 0; padding-top: 8px;">
+        <div style="position: relative; width: 100%;">
+          <input type="text" id="itinerary-search-input" class="form-control" placeholder="🔍 Search itinerary (all days)..." style="padding-left: 36px; padding-right: 36px; border-radius: 20px; font-weight: 500;" />
+          <button id="clear-itinerary-search" style="display: none; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); border: none; background: none; font-size: 1.25rem; cursor: pointer; color: var(--text-muted); line-height: 1;">&times;</button>
+        </div>
+      </div>
+      
       <!-- Day Content View -->
       <div class="container" id="itinerary-details">
         <!-- Dynamically populated via JS -->
@@ -253,6 +261,10 @@
           <label for="budget-edit-note">Note / Description (Optional)</label>
           <input type="text" class="form-control" id="budget-edit-note" />
         </div>
+        <div class="form-group">
+          <label for="budget-edit-exchange-rate">Exchange Rate (1 USD = JPY)</label>
+          <input type="number" class="form-control" id="budget-edit-exchange-rate" step="0.01" required />
+        </div>
         <button type="submit" class="btn btn-primary btn-block" style="margin-top: 15px;">Save Changes</button>
       </form>
     </div>
@@ -302,12 +314,15 @@
       </div>
       <div class="modal-body" style="margin-bottom: 15px;">
         <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; margin-bottom: 4px;">Shared Expense Details</div>
-        <div style="background-color: var(--bg-muted); padding: 12px; border-radius: var(--radius-md); border: 1px solid var(--border-color); margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
-          <div>
-            <div id="import-spend-category" style="font-size: 0.85rem; font-weight: 700;"></div>
-            <div id="import-spend-note" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;"></div>
+        <div style="background-color: var(--bg-muted); padding: 12px; border-radius: var(--radius-md); border: 1px solid var(--border-color); margin-bottom: 15px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div id="import-spend-category" style="font-size: 0.85rem; font-weight: 700;"></div>
+              <div id="import-spend-note" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;"></div>
+            </div>
+            <div id="import-spend-amount" style="font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--primary);"></div>
           </div>
-          <div id="import-spend-amount" style="font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--primary);"></div>
+          <div id="import-spend-rate-info" style="font-size: 0.75rem; color: var(--text-muted); border-top: 1px dashed var(--border-color); padding-top: 6px; margin-top: 8px;"></div>
         </div>
         
         <form id="import-spend-form" onsubmit="handleConfirmImportSpend(event)">
