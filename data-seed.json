@@ -1,10 +1,11 @@
 {
   "version": "1.0",
-  "exportedAt": "2026-06-16T00:25:00Z",
+  "exportedAt": "2026-06-16T01:34:01.139Z",
   "data": {
-    "japan-trip-checklist-state": "{}",
-    "japan-trip-budget-entries": "[]",
-    "japan-trip-theme-preference": "\"light\"",
-    "japan-trip-itinerary-mutations": "{\"added\":[],\"deleted\":[],\"edited\":{}}"
+    "japan-trip-checklist-state": "{\"jrpass\":true,\"teamlab_tix\":true,\"pokemon_cafe\":true,\"usj_tix\":true,\"passport_check\":true,\"weather_check\":true}",
+    "japan-trip-budget-entries": "[{\"id\":\"b-1781543522543-35\",\"dayIndex\":0,\"category\":\"Transport\",\"currency\":\"USD\",\"amount\":67.49,\"note\":\"Gas\",\"exchangeRate\":160.14,\"timestamp\":1781543522544},{\"id\":\"b-1781544969600-229\",\"dayIndex\":0,\"category\":\"Food\",\"currency\":\"USD\",\"amount\":122.71,\"note\":\"Lunch at Namaste, Tupelo\",\"exchangeRate\":160.14,\"timestamp\":1781544969600},{\"id\":\"b-1781563448797-957\",\"dayIndex\":0,\"category\":\"Food\",\"currency\":\"USD\",\"amount\":3.91,\"note\":\"Celsius drink\",\"exchangeRate\":160.14,\"timestamp\":1781563448798},{\"id\":\"b-1781563487988-119\",\"dayIndex\":0,\"category\":\"Transport\",\"currency\":\"USD\",\"amount\":21.75,\"note\":\"Gas\",\"exchangeRate\":160.14,\"timestamp\":1781563487989},{\"id\":\"b-1781563541571-550\",\"dayIndex\":0,\"category\":\"Food\",\"currency\":\"USD\",\"amount\":106.65,\"note\":\"Dinner, Doordash\",\"exchangeRate\":160.14,\"timestamp\":1781563541571}]",
+    "japan-trip-theme-preference": "light",
+    "japan-trip-itinerary-mutations": "{\"added\":[{\"dayIndex\":1,\"event\":{\"id\":\"custom-1781489510863-173\",\"time\":\"3:55 Am\",\"title\":\"Drop car at The Parking Spot 1\",\"description\":\"Parking type: International covered self-park\\nCheck in date/time: 6/16/2026 4:00 AM\\nCheck out date/time: 6/27/2026 11:00 PM\",\"location\":{\"name\":\"Atlanta / ATL / The Parking Spot 1\",\"address\":\"2741 Camp Creek Parkway Atlanta, GA, 30337\"},\"travelMode\":\"driving\",\"variant\":null,\"notes\":[],\"bookingRef\":\"125258185\"}}],\"edited\":{\"d0-3\":{\"time\":\"~5:30 PM\",\"title\":\"Check in — Tru by Hilton\",\"description\":\"Tru by Hilton Atlanta Airport\",\"location\":{\"name\":\"Tru by Hilton Atlanta Airport\",\"address\":\"2101 Convention Center Concourse A, College Park, GA 30337, United States\"},\"travelMode\":\"driving\",\"variant\":null,\"notes\":[],\"bookingRef\":\"Confirmation #3429994738\"}},\"deleted\":[]}",
+    "japan-trip-exchange-rate": "160.165183"
   }
 }
