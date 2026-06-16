@@ -44,7 +44,7 @@ export function renderBudget() {
   summaryCard.className = 'budget-summary-card';
   summaryCard.innerHTML = `
     <div style="font-size: 0.9rem; opacity: 0.9;">Total Actual Spend</div>
-    <div class="budget-sum-val">$${Math.round(totalSpentUsd).toLocaleString()} USD</div>
+    <div class="budget-sum-val">$${totalSpentUsd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD</div>
     <div class="budget-sum-usd">≈ ¥${Math.round(totalSpentYen).toLocaleString()} JPY <span style="font-size: 0.75rem; opacity: 0.8;">(total approximates JPY & USD)</span></div>
   `;
   container.appendChild(summaryCard);
@@ -109,7 +109,7 @@ export function renderBudget() {
       <div style="display: flex; gap: 10px; margin-bottom: 12px;">
         <div style="flex: 1;">
           <label>Currency</label>
-          <select class="form-control" id="spend-currency" required>
+          <select class="form-control" id="spend-currency" required onchange="window.updateSpendAmountValidation()">
             <option value="JPY">JPY (¥)</option>
             <option value="USD">USD ($)</option>
           </select>
@@ -131,6 +131,7 @@ export function renderBudget() {
     </form>
   `;
   container.appendChild(formCard);
+  updateSpendAmountValidation(); // Initialize dynamic validation on load
 
   // Daily Spend Breakdown Section Header and Search Input
   const breakdownHeader = document.createElement('div');
@@ -210,24 +211,33 @@ export function renderBudgetBreakdownList() {
           const rate = entry.exchangeRate || USD_TO_JPY_RATE;
           
           let displayAmount = '';
+          let conversionText = '';
           if (currency === 'USD') {
             const jpyConverted = Math.round(amount * rate);
-            displayAmount = `$${amount.toLocaleString()} (~¥${jpyConverted.toLocaleString()} at rate ${rate.toFixed(2)})`;
+            displayAmount = `$${amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            conversionText = `~¥${jpyConverted.toLocaleString()} (at 1 USD = ${rate.toFixed(2)} JPY)`;
           } else {
             const usdConverted = Math.round(amount / rate);
-            displayAmount = `¥${amount.toLocaleString()} (~$${usdConverted.toLocaleString()} at rate ${rate.toFixed(2)})`;
+            displayAmount = `¥${amount.toLocaleString()}`;
+            conversionText = `~$${usdConverted.toLocaleString()} (at 1 USD = ${rate.toFixed(2)} JPY)`;
           }
           
           itemsHtml += `
             <div class="spend-item">
-              <div>
-                <strong>[${entry.category}]</strong> ${entry.note || ''}
+              <div class="spend-item-main">
+                <div class="spend-item-desc">
+                  <span class="spend-category-badge">${entry.category}</span>
+                  <span>${entry.note || ''}</span>
+                </div>
+                <div class="spend-amount">${displayAmount}</div>
               </div>
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <span style="font-size: 0.85rem; white-space: nowrap;">${displayAmount}</span>
-                <button class="spend-delete-btn" onclick="shareSpend('${entry.id}')" title="Share Expense">📤</button>
-                <button class="spend-delete-btn" onclick="openBudgetEditModal('${entry.id}')" style="color: var(--primary);">✏️</button>
-                <button class="spend-delete-btn" onclick="confirmDeleteSpend('${entry.id}')">❌</button>
+              <div class="spend-item-meta">
+                <div class="spend-conversion">${conversionText}</div>
+                <div class="spend-actions">
+                  <button class="spend-delete-btn" onclick="shareSpend('${entry.id}')" title="Share Expense">📤</button>
+                  <button class="spend-delete-btn" onclick="openBudgetEditModal('${entry.id}')" style="color: var(--primary);" title="Edit Expense">✏️</button>
+                  <button class="spend-delete-btn" onclick="confirmDeleteSpend('${entry.id}')" title="Delete Expense">❌</button>
+                </div>
               </div>
             </div>
           `;
@@ -267,7 +277,8 @@ export function handleAddSpend(event) {
   const dayIndex = parseInt(document.getElementById('spend-day').value);
   const category = document.getElementById('spend-category').value;
   const currency = document.getElementById('spend-currency').value;
-  const amount = parseInt(document.getElementById('spend-amount').value);
+  const amountVal = document.getElementById('spend-amount').value;
+  const amount = currency === 'JPY' ? parseInt(amountVal) : parseFloat(amountVal);
   const note = document.getElementById('spend-note').value;
   
   const rateInput = document.getElementById('spend-exchange-rate');
@@ -328,6 +339,9 @@ export function openBudgetEditModal(entryId) {
   // Set edit modal's exchange rate field
   document.getElementById('budget-edit-exchange-rate').value = entry.exchangeRate !== undefined ? entry.exchangeRate : USD_TO_JPY_RATE;
 
+  // Set the dynamic validation (min, step, placeholder) based on entry currency
+  updateBudgetEditAmountValidation();
+
   modal.classList.add('active');
 }
 
@@ -337,7 +351,8 @@ export function handleSaveBudgetEdit(event) {
   const dayIndex = parseInt(document.getElementById('budget-edit-day').value);
   const category = document.getElementById('budget-edit-category').value;
   const currency = document.getElementById('budget-edit-currency').value;
-  const amount = parseInt(document.getElementById('budget-edit-amount').value);
+  const amountVal = document.getElementById('budget-edit-amount').value;
+  const amount = currency === 'JPY' ? parseInt(amountVal) : parseFloat(amountVal);
   const note = document.getElementById('budget-edit-note').value;
   
   const rateInput = document.getElementById('budget-edit-exchange-rate');
@@ -463,6 +478,39 @@ export function clearBudgetSearch() {
   renderBudgetBreakdownList();
 }
 
+// Dynamic validation settings based on currency select field
+export function updateSpendAmountValidation() {
+  const currencySelect = document.getElementById('spend-currency');
+  const amountInput = document.getElementById('spend-amount');
+  if (!currencySelect || !amountInput) return;
+
+  if (currencySelect.value === 'USD') {
+    amountInput.setAttribute('step', '0.01');
+    amountInput.setAttribute('min', '0.01');
+    amountInput.placeholder = 'e.g. 10.50';
+  } else {
+    amountInput.setAttribute('step', '1');
+    amountInput.setAttribute('min', '1');
+    amountInput.placeholder = 'e.g. 1500';
+  }
+}
+
+export function updateBudgetEditAmountValidation() {
+  const currencySelect = document.getElementById('budget-edit-currency');
+  const amountInput = document.getElementById('budget-edit-amount');
+  if (!currencySelect || !amountInput) return;
+
+  if (currencySelect.value === 'USD') {
+    amountInput.setAttribute('step', '0.01');
+    amountInput.setAttribute('min', '0.01');
+    amountInput.placeholder = 'e.g. 10.50';
+  } else {
+    amountInput.setAttribute('step', '1');
+    amountInput.setAttribute('min', '1');
+    amountInput.placeholder = 'e.g. 1500';
+  }
+}
+
 // Bind interactive functions to window object
 window.handleAddSpend = handleAddSpend;
 window.confirmDeleteSpend = confirmDeleteSpend;
@@ -473,3 +521,6 @@ window.toggleConverterBody = toggleConverterBody;
 window.convertCurrency = convertCurrency;
 window.handleBudgetSearch = handleBudgetSearch;
 window.clearBudgetSearch = clearBudgetSearch;
+window.updateSpendAmountValidation = updateSpendAmountValidation;
+window.updateBudgetEditAmountValidation = updateBudgetEditAmountValidation;
+

@@ -248,7 +248,7 @@
         </div>
         <div class="form-group">
           <label for="budget-edit-currency">Currency</label>
-          <select class="form-control" id="budget-edit-currency" required>
+          <select class="form-control" id="budget-edit-currency" required onchange="window.updateBudgetEditAmountValidation()">
             <option value="JPY">JPY (¥)</option>
             <option value="USD">USD ($)</option>
           </select>

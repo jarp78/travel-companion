@@ -332,7 +332,7 @@ function checkForImports() {
       
       const amount = payload.spend.amount;
       const currency = payload.spend.currency || 'JPY';
-      document.getElementById('import-spend-amount').innerText = currency === 'USD' ? `$${amount}` : `¥${amount.toLocaleString()}`;
+      document.getElementById('import-spend-amount').innerText = currency === 'USD' ? `$${amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : `¥${amount.toLocaleString()}`;
 
       const rate = payload.spend.exchangeRate || USD_TO_JPY_RATE;
       document.getElementById('import-spend-rate-info').innerText = `💱 Exchange Rate: 1 USD = ${rate.toFixed(2)} JPY`;

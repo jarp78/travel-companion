@@ -101,13 +101,70 @@
 
 .spend-item {
   display: flex;
-  justify-content: space-between;
-  padding: 6px 0;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 0;
   border-bottom: 1px solid var(--bg-base);
 }
 
 .spend-item:last-child {
   border-bottom: none;
+}
+
+.spend-item-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.spend-item-desc {
+  font-weight: 500;
+  color: var(--text-main);
+  word-break: break-word;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.spend-category-badge {
+  display: inline-block;
+  background-color: var(--bg-base);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+}
+
+.spend-amount {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  white-space: nowrap;
+}
+
+.spend-item-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.spend-conversion {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.spend-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .spend-delete-btn {
@@ -117,4 +174,14 @@
   cursor: pointer;
   font-size: 0.8rem;
   font-weight: 600;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition-fast);
 }
+
+.spend-delete-btn:hover {
+  opacity: 0.7;
+}
+
