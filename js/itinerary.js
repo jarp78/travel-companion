@@ -100,6 +100,13 @@ export function renderItineraryDay() {
 
   const day = state.tripData.days[state.selectedDay];
 
+  // 1. Render Dual Time Zones Clock Bar
+  const clocksDiv = document.createElement('div');
+  clocksDiv.className = 'dual-clocks-bar';
+  clocksDiv.id = 'itinerary-clocks';
+  container.appendChild(clocksDiv);
+  updateItineraryClocks();
+
   // Render Day Heading Info
   const headerDiv = document.createElement('div');
   headerDiv.className = 'day-header';
@@ -147,6 +154,90 @@ export function renderItineraryDay() {
     selectDayTab(parseInt(e.target.value), true);
   });
 
+  // Helper function to render a card's inner HTML
+  function createActivityCardHtml(act) {
+    const badgeHtml = act.variant 
+      ? `<span class="badge ${act.variant === 'A' ? 'badge-a' : 'badge-b'}">${act.variant === 'A' ? 'Original Plan' : 'Suggested Addition'}</span>`
+      : '';
+
+    // Check if maps navigation is available
+    let navigateButtonHtml = '';
+    if (act.location) {
+      const mode = act.travelMode || 'transit';
+      const searchDest = act.location.address || act.location.name;
+      const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(searchDest)}&travelmode=${mode}`;
+      
+      // Check if taxi recommended
+      const taxiRecommended = (act.description && act.description.toLowerCase().includes('taxi')) || 
+                              (act.notes && act.notes.some(n => n.toLowerCase().includes('taxi')));
+      const taxiLabel = taxiRecommended ? '<span style="margin-left: 8px; font-size: 0.8rem;">🚕 Taxi recommended</span>' : '';
+
+      navigateButtonHtml = `
+        <button class="btn btn-primary" onclick="window.open('${mapsUrl}', '_blank')">
+          🧭 Navigate ${taxiLabel}
+        </button>
+      `;
+    }
+
+    // Check details / booking reference
+    let detailsHtml = '';
+    if (act.bookingRef) {
+      detailsHtml += `
+        <div class="card-detail-item">
+          <span class="detail-label">🎟️ Reference:</span>
+          <span class="copyable" onclick="copyTextToClipboard('${act.bookingRef.replace(/'/g, "\\'")}', 'Reference')" title="Click to copy" style="cursor: pointer; font-weight: 700; text-decoration: underline; text-underline-offset: 2px;">${act.bookingRef} 📋</span>
+        </div>
+      `;
+    }
+    if (act.location) {
+      detailsHtml += `
+        <div class="card-detail-item">
+          <span class="detail-label">📍 Location:</span>
+          <span>${act.location.name} ${act.location.address ? `(${act.location.address})` : ''}</span>
+        </div>
+      `;
+    }
+
+    // Tips block
+    let tipsHtml = '';
+    if (act.notes && act.notes.length > 0) {
+      let tipsItems = '';
+      act.notes.forEach(tip => {
+        tipsItems += `<li>${tip}</li>`;
+      });
+      tipsHtml = `
+        <div class="card-tips">
+          <div class="card-tips-title">💡 Notes & Tips</div>
+          <ul style="padding-left: 14px; margin: 0;">${tipsItems}</ul>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="timeline-dot"></div>
+      <div class="card collapsed" id="card-${act.id}">
+        <div class="card-header-row" onclick="toggleCardCollapse('${act.id}')">
+          <div class="card-title-group">
+            ${act.time ? `<div class="card-time">${act.time}</div>` : ''}
+            <div class="card-title">${act.title} ${badgeHtml}</div>
+          </div>
+          <span class="card-expand-icon">▼</span>
+        </div>
+        <div class="card-body">
+          ${act.description ? `<div class="card-description">${act.description}</div>` : ''}
+          ${detailsHtml ? `<div class="card-details-grid">${detailsHtml}</div>` : ''}
+          ${tipsHtml}
+          ${navigateButtonHtml ? `<div class="card-actions">${navigateButtonHtml}</div>` : ''}
+          <div class="card-edit-actions">
+            <button class="btn btn-icon-only" onclick="shareEvent('${act.id}')">📤 Share</button>
+            <button class="btn btn-icon-only" onclick="openEventModal('${act.id}', ${state.selectedDay})">✏️ Edit</button>
+            <button class="btn btn-icon-only btn-danger" onclick="confirmDeleteEvent('${act.id}')">🗑️ Delete</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   // Render Timeline activities
   const timelineDiv = document.createElement('div');
   timelineDiv.className = 'timeline';
@@ -154,92 +245,58 @@ export function renderItineraryDay() {
   if (!day.activities || day.activities.length === 0) {
     timelineDiv.innerHTML = `<div style="padding: 20px; text-align: center; color: var(--text-muted);">No activities listed for today.</div>`;
   } else {
-    day.activities.forEach((act) => {
+    const isToday = state.selectedDay === state.autoDetectedDay;
+    
+    let pastActivities = [];
+    let upcomingActivities = [];
+    
+    if (isToday) {
+      const now = new Date();
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
+      day.activities.forEach(act => {
+        const actMinutes = timeStringToMinutes(act.time);
+        // If it started more than 30 minutes ago, mark as past (completed)
+        if (act.time && actMinutes < (currentMinutes - 30)) {
+          pastActivities.push(act);
+        } else {
+          upcomingActivities.push(act);
+        }
+      });
+    } else {
+      upcomingActivities = [...day.activities];
+    }
+
+    // Append past activities inside collapsible container if any
+    if (pastActivities.length > 0) {
+      const pastContainer = document.createElement('div');
+      pastContainer.className = 'past-events-container';
+      pastContainer.innerHTML = `
+        <button class="past-events-toggle-btn" id="past-events-toggle-btn" data-count="${pastActivities.length}" onclick="window.togglePastEventsCollapse()">
+          ☀️ Show ${pastActivities.length} earlier completed events today
+        </button>
+        <div id="past-events-content" class="past-events-content collapsed"></div>
+      `;
+      
+      const contentDiv = pastContainer.querySelector('#past-events-content');
+      pastActivities.forEach(act => {
+        const card = document.createElement('div');
+        card.className = 'timeline-item past-activity';
+        if (act.variant === 'A') card.classList.add('variant-a');
+        if (act.variant === 'B') card.classList.add('variant-b');
+        card.innerHTML = createActivityCardHtml(act);
+        contentDiv.appendChild(card);
+      });
+      
+      timelineDiv.appendChild(pastContainer);
+    }
+
+    // Append upcoming activities normally
+    upcomingActivities.forEach(act => {
       const card = document.createElement('div');
       card.className = 'timeline-item';
       if (act.variant === 'A') card.classList.add('variant-a');
       if (act.variant === 'B') card.classList.add('variant-b');
-      
-      const badgeHtml = act.variant 
-        ? `<span class="badge ${act.variant === 'A' ? 'badge-a' : 'badge-b'}">${act.variant === 'A' ? 'Original Plan' : 'Suggested Addition'}</span>`
-        : '';
-
-      // Check if maps navigation is available
-      let navigateButtonHtml = '';
-      if (act.location) {
-        const mode = act.travelMode || 'transit';
-        const searchDest = act.location.address || act.location.name;
-        const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(searchDest)}&travelmode=${mode}`;
-        
-        // Check if taxi recommended
-        const taxiRecommended = (act.description && act.description.toLowerCase().includes('taxi')) || 
-                                (act.notes && act.notes.some(n => n.toLowerCase().includes('taxi')));
-        const taxiLabel = taxiRecommended ? '<span style="margin-left: 8px; font-size: 0.8rem;">🚕 Taxi recommended</span>' : '';
-
-        navigateButtonHtml = `
-          <button class="btn btn-primary" onclick="window.open('${mapsUrl}', '_blank')">
-            🧭 Navigate ${taxiLabel}
-          </button>
-        `;
-      }
-
-      // Check details / booking reference
-      let detailsHtml = '';
-      if (act.bookingRef) {
-        detailsHtml += `
-          <div class="card-detail-item">
-            <span class="detail-label">🎟️ Reference:</span>
-            <span class="copyable" onclick="copyTextToClipboard('${act.bookingRef.replace(/'/g, "\\'")}', 'Reference')" title="Click to copy" style="cursor: pointer; font-weight: 700; text-decoration: underline; text-underline-offset: 2px;">${act.bookingRef} 📋</span>
-          </div>
-        `;
-      }
-      if (act.location) {
-        detailsHtml += `
-          <div class="card-detail-item">
-            <span class="detail-label">📍 Location:</span>
-            <span>${act.location.name} ${act.location.address ? `(${act.location.address})` : ''}</span>
-          </div>
-        `;
-      }
-
-      // Tips block
-      let tipsHtml = '';
-      if (act.notes && act.notes.length > 0) {
-        let tipsItems = '';
-        act.notes.forEach(tip => {
-          tipsItems += `<li>${tip}</li>`;
-        });
-        tipsHtml = `
-          <div class="card-tips">
-            <div class="card-tips-title">💡 Notes & Tips</div>
-            <ul style="padding-left: 14px; margin: 0;">${tipsItems}</ul>
-          </div>
-        `;
-      }
-
-      card.innerHTML = `
-        <div class="timeline-dot"></div>
-        <div class="card collapsed" id="card-${act.id}">
-          <div class="card-header-row" onclick="toggleCardCollapse('${act.id}')">
-            <div class="card-title-group">
-              ${act.time ? `<div class="card-time">${act.time}</div>` : ''}
-              <div class="card-title">${act.title} ${badgeHtml}</div>
-            </div>
-            <span class="card-expand-icon">▼</span>
-          </div>
-          <div class="card-body">
-            ${act.description ? `<div class="card-description">${act.description}</div>` : ''}
-            ${detailsHtml ? `<div class="card-details-grid">${detailsHtml}</div>` : ''}
-            ${tipsHtml}
-            ${navigateButtonHtml ? `<div class="card-actions">${navigateButtonHtml}</div>` : ''}
-            <div class="card-edit-actions">
-              <button class="btn btn-icon-only" onclick="shareEvent('${act.id}')">📤 Share</button>
-              <button class="btn btn-icon-only" onclick="openEventModal('${act.id}', ${state.selectedDay})">✏️ Edit</button>
-              <button class="btn btn-icon-only btn-danger" onclick="confirmDeleteEvent('${act.id}')">🗑️ Delete</button>
-            </div>
-          </div>
-        </div>
-      `;
+      card.innerHTML = createActivityCardHtml(act);
       timelineDiv.appendChild(card);
     });
   }
@@ -600,3 +657,61 @@ function renderSearchResults(query) {
 // Bind search handlers to window
 window.handleItinerarySearch = handleItinerarySearch;
 window.clearItinerarySearch = clearItinerarySearch;
+
+export function updateItineraryClocks() {
+  const clockEl = document.getElementById('itinerary-clocks');
+  if (!clockEl) return;
+
+  const now = new Date();
+
+  // Get date strings in target timezones to calculate relative day difference
+  const jstDateStr = now.toLocaleDateString('en-US', { timeZone: 'Asia/Tokyo' });
+  const ctDateStr = now.toLocaleDateString('en-US', { timeZone: 'America/Chicago' });
+  const localDateStr = now.toLocaleDateString('en-US');
+
+  const jstDate = new Date(jstDateStr);
+  const ctDate = new Date(ctDateStr);
+  const localDate = new Date(localDateStr);
+
+  const jstDiff = Math.round((jstDate - localDate) / (1000 * 60 * 60 * 24));
+  const ctDiff = Math.round((ctDate - localDate) / (1000 * 60 * 60 * 24));
+
+  const getDayLabel = (diff) => {
+    if (diff === 0) return ' (Today)';
+    if (diff === 1) return ' (Tomorrow)';
+    if (diff === -1) return ' (Yesterday)';
+    return '';
+  };
+
+  const jstLabel = getDayLabel(jstDiff);
+  const ctLabel = getDayLabel(ctDiff);
+
+  const optionsJST = { timeZone: 'Asia/Tokyo', hour: 'numeric', minute: '2-digit', hour12: true, weekday: 'short' };
+  const optionsCT = { timeZone: 'America/Chicago', hour: 'numeric', minute: '2-digit', hour12: true, weekday: 'short' };
+
+  const jstStr = now.toLocaleTimeString('en-US', optionsJST);
+  const ctStr = now.toLocaleTimeString('en-US', optionsCT);
+
+  clockEl.innerHTML = `
+    <div class="clock-item">🎌 Tokyo (JST): <span class="clock-time">${jstStr}${jstLabel}</span></div>
+    <div class="clock-separator">|</div>
+    <div class="clock-item">🏡 Chicago (CT): <span class="clock-time">${ctStr}${ctLabel}</span></div>
+  `;
+}
+
+export function togglePastEventsCollapse() {
+  const content = document.getElementById('past-events-content');
+  const btn = document.getElementById('past-events-toggle-btn');
+  if (!content || !btn) return;
+  const isCollapsed = content.classList.contains('collapsed');
+  if (isCollapsed) {
+    content.classList.remove('collapsed');
+    btn.innerHTML = `☀️ Hide earlier completed events today`;
+  } else {
+    content.classList.add('collapsed');
+    btn.innerHTML = `☀️ Show ${btn.getAttribute('data-count')} earlier completed events today`;
+  }
+}
+
+window.updateItineraryClocks = updateItineraryClocks;
+window.togglePastEventsCollapse = togglePastEventsCollapse;

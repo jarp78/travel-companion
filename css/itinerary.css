@@ -351,3 +351,84 @@
   transform: scale(0.98);
 }
 
+/* Dual Time Zones Bar */
+.dual-clocks-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+  gap: 8px;
+}
+
+.clock-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-main);
+}
+
+.clock-time {
+  font-family: 'Outfit', sans-serif;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.clock-separator {
+  color: var(--border-color);
+  font-weight: 300;
+}
+
+/* Past Events Collapsible styling */
+.past-events-container {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.past-events-toggle-btn {
+  background-color: var(--bg-muted);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: block;
+  margin: 8px 0 16px 0;
+  transition: all var(--transition-fast);
+  width: fit-content;
+}
+
+.past-events-toggle-btn:hover {
+  background-color: var(--border-color);
+  color: var(--text-main);
+}
+
+.past-events-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.past-events-content.collapsed {
+  display: none;
+}
+
+.past-activity {
+  opacity: 0.6;
+  filter: grayscale(30%);
+  transition: all var(--transition-normal);
+}
+
+.past-activity:hover {
+  opacity: 1;
+  filter: none;
+}
+
+

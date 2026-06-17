@@ -29,6 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchExchangeRate();
   loadTripData();
   setupPWA();
+
+  // Live updating dual-timezone clocks (runs every 10 seconds if clocks exist on screen)
+  setInterval(() => {
+    if (typeof window.updateItineraryClocks === 'function') {
+      window.updateItineraryClocks();
+    }
+  }, 10000);
 });
 
 // Setup Dark/Light Theme
