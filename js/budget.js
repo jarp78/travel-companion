@@ -3,7 +3,8 @@ import {
   BUDGET_STORAGE_KEY, 
   USD_TO_JPY_RATE, 
   showCustomConfirm,
-  encodeShareData
+  encodeShareData,
+  timeStringToMinutes
 } from './helpers.js';
 
 export function loadBudgetEntries() {
@@ -108,6 +109,10 @@ export function renderBudget() {
         <input type="number" class="form-control" id="spend-exchange-rate" step="0.01" value="${USD_TO_JPY_RATE.toFixed(2)}" required />
       </div>
       <div class="form-group">
+        <label>Time of Expense (Optional)</label>
+        <input type="text" class="form-control" id="spend-time" placeholder="e.g. 12:30 PM, Morning, or Dinner" />
+      </div>
+      <div class="form-group">
         <label>Note / Description (Optional)</label>
         <input type="text" class="form-control" id="spend-note" placeholder="e.g. Ichiran Ramen lunch" />
       </div>
@@ -151,6 +156,18 @@ export function renderBudget() {
 export function renderBudgetBreakdownList() {
   const container = document.getElementById('budget-breakdown-list');
   if (!container) return;
+
+  // Cache current open/collapsed state of day rows to preserve across re-renders
+  const expandedStates = {};
+  if (state.tripData && state.tripData.days) {
+    state.tripData.days.forEach((day, index) => {
+      const detailsEl = document.getElementById(`budget-day-${index}`);
+      if (detailsEl) {
+        expandedStates[index] = detailsEl.style.display !== 'none';
+      }
+    });
+  }
+
   container.innerHTML = '';
 
   const entries = loadBudgetEntries();
@@ -172,6 +189,17 @@ export function renderBudgetBreakdownList() {
       }
 
       renderedCount++;
+
+      // Sort entries: custom sortOrder first, then chronological time, then timestamp
+      dayEntries.sort((a, b) => {
+        const orderA = a.sortOrder !== undefined && a.sortOrder !== null ? a.sortOrder : 999999;
+        const orderB = b.sortOrder !== undefined && b.sortOrder !== null ? b.sortOrder : 999999;
+        if (orderA !== orderB) return orderA - orderB;
+        const timeA = timeStringToMinutes(a.time);
+        const timeB = timeStringToMinutes(b.time);
+        if (timeA !== timeB) return timeA - timeB;
+        return a.timestamp - b.timestamp;
+      });
 
       // Day total spend sum using item-specific rate
       const dayEntriesAll = entries.filter(e => e.dayIndex === index);
@@ -213,11 +241,17 @@ export function renderBudgetBreakdownList() {
             displayAmount = `¥${amount.toLocaleString()}`;
             conversionText = `~$${usdConverted.toLocaleString()} (at 1 USD = ${rate.toFixed(2)} JPY)`;
           }
+
+          const timeBadgeHtml = entry.time 
+            ? `<span style="font-size: 0.8rem; font-weight: 600; color: var(--primary); margin-right: 6px;">🕒 ${entry.time}</span>` 
+            : '';
           
           itemsHtml += `
-            <div class="spend-item">
+            <div class="spend-item" draggable="true" data-id="${entry.id}">
               <div class="spend-item-main">
                 <div class="spend-item-desc">
+                  <span class="drag-handle" style="cursor: grab; margin-right: 6px; color: var(--text-muted);">☰</span>
+                  ${timeBadgeHtml}
                   <span class="spend-category-badge">${entry.category}</span>
                   <span>${entry.note || ''}</span>
                 </div>
@@ -238,13 +272,16 @@ export function renderBudgetBreakdownList() {
         itemsHtml = `<div style="text-align: center; font-style: italic; font-size: 0.8rem; color: var(--text-muted); padding: 4px 0;">No entries recorded</div>`;
       }
 
-      const isCurrentDay = index === state.autoDetectedDay;
-      const displayStyle = isCurrentDay ? 'block' : 'none';
+      const isExpanded = expandedStates[index] !== undefined 
+        ? expandedStates[index] 
+        : (index === state.autoDetectedDay);
+      const displayStyle = isExpanded ? 'block' : 'none';
+      const arrowChar = isExpanded ? '▲' : '▼';
 
       row.innerHTML = `
         <div class="budget-day-header" onclick="window.toggleBudgetDayCollapse(${index})">
           <div style="display: flex; align-items: center; gap: 8px;">
-            <span class="day-toggle-arrow" style="font-size: 0.8rem; color: var(--text-muted); transition: transform 0.2s;">${isCurrentDay ? '▲' : '▼'}</span>
+            <span class="day-toggle-arrow" style="font-size: 0.8rem; color: var(--text-muted); transition: transform 0.2s;">${arrowChar}</span>
             <span>Day ${day.dayNumber} · ${day.title}</span>
           </div>
           <div style="font-size: 0.9rem; color: var(--primary);">¥${Math.round(dayActualYen).toLocaleString()} (~$${Math.round(dayActualUsd)})</div>
@@ -253,7 +290,7 @@ export function renderBudgetBreakdownList() {
           <div style="margin-bottom: 8px; font-size: 0.8rem; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
             <strong>Estimate:</strong> ${estText}
           </div>
-          <div>${itemsHtml}</div>
+          <div class="spend-items-list">${itemsHtml}</div>
         </div>
       `;
       container.appendChild(row);
@@ -268,6 +305,11 @@ export function renderBudgetBreakdownList() {
       `;
     }
   }
+
+  // Set up drag and drop event listeners
+  if (typeof setupDragAndDrop === 'function') {
+    setupDragAndDrop();
+  }
 }
 
 export function handleAddSpend(event) {
@@ -277,6 +319,8 @@ export function handleAddSpend(event) {
   const currency = document.getElementById('spend-currency').value;
   const amountVal = document.getElementById('spend-amount').value;
   const amount = currency === 'JPY' ? parseInt(amountVal) : parseFloat(amountVal);
+  const timeInput = document.getElementById('spend-time');
+  const time = timeInput ? timeInput.value.trim() : null;
   const note = document.getElementById('spend-note').value;
   
   const rateInput = document.getElementById('spend-exchange-rate');
@@ -288,6 +332,8 @@ export function handleAddSpend(event) {
     category,
     currency,
     amount,
+    time: time || null,
+    sortOrder: null,
     note,
     exchangeRate,
     timestamp: Date.now()
@@ -332,6 +378,8 @@ export function openBudgetEditModal(entryId) {
   document.getElementById('budget-edit-category').value = entry.category;
   document.getElementById('budget-edit-currency').value = entry.currency || 'JPY';
   document.getElementById('budget-edit-amount').value = entry.amount !== undefined ? entry.amount : entry.amountYen;
+  const timeInput = document.getElementById('budget-edit-time');
+  if (timeInput) timeInput.value = entry.time || '';
   document.getElementById('budget-edit-note').value = entry.note || '';
   
   // Set edit modal's exchange rate field
@@ -351,6 +399,8 @@ export function handleSaveBudgetEdit(event) {
   const currency = document.getElementById('budget-edit-currency').value;
   const amountVal = document.getElementById('budget-edit-amount').value;
   const amount = currency === 'JPY' ? parseInt(amountVal) : parseFloat(amountVal);
+  const timeInput = document.getElementById('budget-edit-time');
+  const time = timeInput ? timeInput.value.trim() : null;
   const note = document.getElementById('budget-edit-note').value;
   
   const rateInput = document.getElementById('budget-edit-exchange-rate');
@@ -365,6 +415,7 @@ export function handleSaveBudgetEdit(event) {
       category,
       currency,
       amount,
+      time: time || null,
       note,
       exchangeRate
     };
@@ -387,7 +438,9 @@ export function shareSpend(spendId) {
       currency: entry.currency || 'JPY',
       amount: entry.amount !== undefined ? entry.amount : entry.amountYen,
       note: entry.note || '',
-      exchangeRate: entry.exchangeRate || USD_TO_JPY_RATE
+      exchangeRate: entry.exchangeRate || USD_TO_JPY_RATE,
+      time: entry.time || null,
+      sortOrder: entry.sortOrder !== undefined ? entry.sortOrder : null
     }
   };
 
@@ -569,6 +622,81 @@ export function updateBudgetEditAmountValidation() {
   }
 }
 
+// Setup drag and drop listeners
+export function setupDragAndDrop() {
+  const list = document.getElementById('budget-breakdown-list');
+  if (!list) return;
+
+  let draggedItem = null;
+
+  list.querySelectorAll('.spend-item').forEach((item) => {
+    item.addEventListener('dragstart', (e) => {
+      draggedItem = item;
+      item.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', item.getAttribute('data-id'));
+    });
+
+    item.addEventListener('dragend', () => {
+      item.classList.remove('dragging');
+      if (draggedItem) {
+        saveNewOrder(draggedItem.closest('.spend-items-list'));
+        draggedItem = null;
+      }
+    });
+
+    item.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      if (!draggedItem || draggedItem === item) return;
+
+      const container = item.closest('.spend-items-list');
+      if (draggedItem.closest('.spend-items-list') !== container) return;
+
+      const rect = item.getBoundingClientRect();
+      const next = (e.clientY - rect.top) / (rect.bottom - rect.top) > 0.5;
+
+      container.insertBefore(draggedItem, next ? item.nextSibling : item);
+    });
+  });
+
+  list.querySelectorAll('.spend-items-list').forEach((container) => {
+    container.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      if (draggedItem && draggedItem.closest('.spend-items-list') === container) {
+        const spendItems = container.querySelectorAll('.spend-item');
+        if (spendItems.length === 0) {
+          container.appendChild(draggedItem);
+        }
+      }
+    });
+  });
+}
+
+// Save order of elements in list to local storage
+export function saveNewOrder(container) {
+  if (!container) return;
+
+  const entries = loadBudgetEntries();
+  let updated = false;
+
+  const spendItems = container.querySelectorAll('.spend-item');
+  spendItems.forEach((item, index) => {
+    const id = item.getAttribute('data-id');
+    const entry = entries.find(e => e.id === id);
+    if (entry) {
+      if (entry.sortOrder !== index) {
+        entry.sortOrder = index;
+        updated = true;
+      }
+    }
+  });
+
+  if (updated) {
+    saveBudgetEntries(entries);
+    renderBudgetBreakdownList();
+  }
+}
+
 // Bind interactive functions to window object
 window.handleAddSpend = handleAddSpend;
 window.confirmDeleteSpend = confirmDeleteSpend;
@@ -585,4 +713,6 @@ window.handleBudgetSearch = handleBudgetSearch;
 window.clearBudgetSearch = clearBudgetSearch;
 window.updateSpendAmountValidation = updateSpendAmountValidation;
 window.updateBudgetEditAmountValidation = updateBudgetEditAmountValidation;
+window.setupDragAndDrop = setupDragAndDrop;
+window.saveNewOrder = saveNewOrder;
 

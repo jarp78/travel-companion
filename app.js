@@ -441,6 +441,8 @@ export function handleConfirmImportSpend(event) {
     category: spendData.category,
     currency: spendData.currency,
     amount: spendData.amount,
+    time: spendData.time || null,
+    sortOrder: spendData.sortOrder !== undefined ? spendData.sortOrder : null,
     note: spendData.note,
     exchangeRate: spendData.exchangeRate || USD_TO_JPY_RATE,
     timestamp: Date.now()
