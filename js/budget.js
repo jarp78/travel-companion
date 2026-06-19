@@ -39,43 +39,24 @@ export function renderBudget() {
     }
   });
 
-  // Render running total display card
+  // Render running total display card with converter trigger
   const summaryCard = document.createElement('div');
   summaryCard.className = 'budget-summary-card';
   summaryCard.innerHTML = `
-    <div style="font-size: 0.9rem; opacity: 0.9;">Total Actual Spend</div>
-    <div class="budget-sum-val">$${totalSpentUsd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD</div>
-    <div class="budget-sum-usd">≈ ¥${Math.round(totalSpentYen).toLocaleString()} JPY <span style="font-size: 0.75rem; opacity: 0.8;">(total approximates JPY & USD)</span></div>
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+      <div>
+        <div style="font-size: 0.9rem; opacity: 0.9;">Total Actual Spend</div>
+        <div class="budget-sum-val">$${totalSpentUsd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD</div>
+      </div>
+      <button class="converter-summary-btn" onclick="window.openConverterModal()" title="Open Currency Converter">
+        💱 Converter
+      </button>
+    </div>
+    <div class="budget-sum-usd" style="margin-top: 10px;">≈ ¥${Math.round(totalSpentYen).toLocaleString()} JPY <span style="font-size: 0.75rem; opacity: 0.8;">(total approximates JPY & USD)</span></div>
   `;
   container.appendChild(summaryCard);
 
-  // 1. Currency Converter Widget
-  const converterCard = document.createElement('div');
-  converterCard.className = 'form-card';
-  converterCard.style.marginBottom = '20px';
-  converterCard.innerHTML = `
-    <h3 class="form-title" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer; margin-bottom: 0;" onclick="window.toggleConverterBody()">
-      <span>💱 Quick Currency Converter</span>
-      <span id="converter-toggle-icon" style="font-size: 0.9rem; color: var(--text-muted);">▼</span>
-    </h3>
-    <div id="converter-body" style="display: none; padding-top: 12px; margin-top: 12px; border-top: 1px dashed var(--border-color);">
-      <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600; margin-bottom: 8px;">Current Rate: 1 USD = ${USD_TO_JPY_RATE.toFixed(2)} JPY</div>
-      <div style="display: flex; gap: 10px; align-items: center;">
-        <div style="flex: 1;">
-          <label style="display: block; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-bottom: 4px;">USD ($)</label>
-          <input type="number" id="converter-usd" class="form-control" placeholder="e.g. 100" oninput="window.convertCurrency('USD')" />
-        </div>
-        <div style="font-size: 1.2rem; padding-top: 16px; opacity: 0.5;">⇄</div>
-        <div style="flex: 1;">
-          <label style="display: block; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-bottom: 4px;">JPY (¥)</label>
-          <input type="number" id="converter-jpy" class="form-control" placeholder="e.g. 15500" oninput="window.convertCurrency('JPY')" />
-        </div>
-      </div>
-    </div>
-  `;
-  container.appendChild(converterCard);
-
-  // Add Spend Form
+  // Add Spend Form (Collapsible and collapsed by default)
   const formCard = document.createElement('div');
   formCard.className = 'form-card';
   
@@ -87,8 +68,11 @@ export function renderBudget() {
   }
 
   formCard.innerHTML = `
-    <h3 class="form-title">➕ Add Actual Expense</h3>
-    <form id="add-spend-form" onsubmit="handleAddSpend(event)">
+    <h3 class="form-title" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer; margin-bottom: 0;" onclick="window.toggleAddSpendForm()">
+      <span>➕ Add Actual Expense</span>
+      <span id="add-spend-toggle-icon" style="font-size: 0.9rem; color: var(--text-muted);">▼</span>
+    </h3>
+    <form id="add-spend-form" onsubmit="handleAddSpend(event)" style="display: none; padding-top: 12px; margin-top: 12px; border-top: 1px dashed var(--border-color);">
       <div class="form-group">
         <label>Trip Day</label>
         <select class="form-control" id="spend-day" required>
@@ -138,9 +122,17 @@ export function renderBudget() {
   breakdownHeader.style.margin = '20px 0 12px 0';
   breakdownHeader.innerHTML = `
     <h3 style="margin-bottom: 10px;">📊 Daily Budget Breakdown</h3>
-    <div style="position: relative; width: 100%;">
+    <div style="position: relative; width: 100%; margin-bottom: 10px;">
       <input type="text" id="budget-search-input" class="form-control" placeholder="🔍 Filter budget logs..." style="padding-left: 36px; padding-right: 36px; border-radius: 20px; font-weight: 500;" oninput="window.handleBudgetSearch(event)" />
       <button id="clear-budget-search" onclick="window.clearBudgetSearch()" style="display: none; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); border: none; background: none; font-size: 1.25rem; cursor: pointer; color: var(--text-muted); line-height: 1;">&times;</button>
+    </div>
+    <div class="budget-controls" style="display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 12px;">
+      <button class="btn btn-icon-only" onclick="window.toggleAllBudgetDays(true)" style="font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 4px;">
+        📖 Expand All
+      </button>
+      <button class="btn btn-icon-only" onclick="window.toggleAllBudgetDays(false)" style="font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 4px;">
+        📕 Collapse All
+      </button>
     </div>
   `;
   container.appendChild(breakdownHeader);
@@ -246,12 +238,18 @@ export function renderBudgetBreakdownList() {
         itemsHtml = `<div style="text-align: center; font-style: italic; font-size: 0.8rem; color: var(--text-muted); padding: 4px 0;">No entries recorded</div>`;
       }
 
+      const isCurrentDay = index === state.autoDetectedDay;
+      const displayStyle = isCurrentDay ? 'block' : 'none';
+
       row.innerHTML = `
-        <div class="budget-day-header" onclick="toggleCategoryCollapse('budget-day-${index}')">
-          <div>Day ${day.dayNumber} · ${day.title}</div>
+        <div class="budget-day-header" onclick="window.toggleBudgetDayCollapse(${index})">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="day-toggle-arrow" style="font-size: 0.8rem; color: var(--text-muted); transition: transform 0.2s;">${isCurrentDay ? '▲' : '▼'}</span>
+            <span>Day ${day.dayNumber} · ${day.title}</span>
+          </div>
           <div style="font-size: 0.9rem; color: var(--primary);">¥${Math.round(dayActualYen).toLocaleString()} (~$${Math.round(dayActualUsd)})</div>
         </div>
-        <div class="budget-day-details" id="budget-day-${index}">
+        <div class="budget-day-details" id="budget-day-${index}" style="display: ${displayStyle};">
           <div style="margin-bottom: 8px; font-size: 0.8rem; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
             <strong>Estimate:</strong> ${estText}
           </div>
@@ -421,21 +419,81 @@ export function shareSpend(spendId) {
   }
 }
 
-// Collapsible Currency Converter Toggles
-export function toggleConverterBody() {
-  const body = document.getElementById('converter-body');
-  const icon = document.getElementById('converter-toggle-icon');
-  if (!body) return;
-  if (body.style.display === 'none') {
-    body.style.display = 'block';
+// Open/close popup converter modal
+export function openConverterModal() {
+  const modal = document.getElementById('converter-modal');
+  const infoEl = document.getElementById('converter-rate-info');
+  if (infoEl) {
+    infoEl.innerText = `Current Rate: 1 USD = ${USD_TO_JPY_RATE.toFixed(2)} JPY`;
+  }
+  // Clear fields
+  const usdInput = document.getElementById('converter-usd');
+  const jpyInput = document.getElementById('converter-jpy');
+  if (usdInput) usdInput.value = '';
+  if (jpyInput) jpyInput.value = '';
+
+  if (modal) modal.classList.add('active');
+}
+
+export function closeConverterModal() {
+  const modal = document.getElementById('converter-modal');
+  if (modal) modal.classList.remove('active');
+}
+
+// Collapsible Add Spend Form
+export function toggleAddSpendForm() {
+  const form = document.getElementById('add-spend-form');
+  const icon = document.getElementById('add-spend-toggle-icon');
+  const cardTitle = document.querySelector('#budget-content .form-card h3.form-title');
+  if (!form || !icon) return;
+  if (form.style.display === 'none') {
+    form.style.display = 'block';
     icon.innerText = '▲';
+    if (cardTitle) cardTitle.style.marginBottom = '12px';
   } else {
-    body.style.display = 'none';
+    form.style.display = 'none';
     icon.innerText = '▼';
+    if (cardTitle) cardTitle.style.marginBottom = '0';
   }
 }
 
-// Convert currency values dynamically in converter card
+// Collapsible Daily Breakdown Rows
+export function toggleBudgetDayCollapse(index) {
+  const element = document.getElementById(`budget-day-${index}`);
+  const header = element ? element.previousElementSibling : null;
+  const arrow = header ? header.querySelector('.day-toggle-arrow') : null;
+  
+  if (element) {
+    if (element.style.display === 'none') {
+      element.style.display = 'block';
+      if (arrow) arrow.innerText = '▲';
+    } else {
+      element.style.display = 'none';
+      if (arrow) arrow.innerText = '▼';
+    }
+  }
+}
+
+// Bulk expand / collapse breakdown rows
+export function toggleAllBudgetDays(expand) {
+  if (!state.tripData || !state.tripData.days) return;
+  state.tripData.days.forEach((day, index) => {
+    const element = document.getElementById(`budget-day-${index}`);
+    if (element) {
+      const header = element.previousElementSibling;
+      const arrow = header ? header.querySelector('.day-toggle-arrow') : null;
+      if (expand) {
+        element.style.display = 'block';
+        if (arrow) arrow.innerText = '▲';
+      } else {
+        element.style.display = 'none';
+        if (arrow) arrow.innerText = '▼';
+      }
+    }
+  });
+}
+
+// Convert currency values dynamically in converter modal
 export function convertCurrency(source) {
   const usdInput = document.getElementById('converter-usd');
   const jpyInput = document.getElementById('converter-jpy');
@@ -517,7 +575,11 @@ window.confirmDeleteSpend = confirmDeleteSpend;
 window.openBudgetEditModal = openBudgetEditModal;
 window.handleSaveBudgetEdit = handleSaveBudgetEdit;
 window.shareSpend = shareSpend;
-window.toggleConverterBody = toggleConverterBody;
+window.openConverterModal = openConverterModal;
+window.closeConverterModal = closeConverterModal;
+window.toggleAddSpendForm = toggleAddSpendForm;
+window.toggleBudgetDayCollapse = toggleBudgetDayCollapse;
+window.toggleAllBudgetDays = toggleAllBudgetDays;
 window.convertCurrency = convertCurrency;
 window.handleBudgetSearch = handleBudgetSearch;
 window.clearBudgetSearch = clearBudgetSearch;

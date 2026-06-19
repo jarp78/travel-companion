@@ -270,6 +270,30 @@
     </div>
   </div>
 
+  <!-- Quick Currency Converter Modal -->
+  <div class="modal-overlay" id="converter-modal">
+    <div class="modal-card">
+      <div class="modal-card-header">
+        <h3 class="modal-title">💱 Quick Currency Converter</h3>
+        <button class="modal-close-btn" id="converter-modal-close" aria-label="Close modal">×</button>
+      </div>
+      <div class="modal-body" style="margin-bottom: 0;">
+        <div id="converter-rate-info" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom: 12px;"></div>
+        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+          <div style="flex: 1;">
+            <label style="display: block; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-bottom: 4px;">USD ($)</label>
+            <input type="number" id="converter-usd" class="form-control" placeholder="e.g. 100" oninput="window.convertCurrency('USD')" />
+          </div>
+          <div style="font-size: 1.2rem; padding-top: 16px; opacity: 0.5;">⇄</div>
+          <div style="flex: 1;">
+            <label style="display: block; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-bottom: 4px;">JPY (¥)</label>
+            <input type="number" id="converter-jpy" class="form-control" placeholder="e.g. 15500" oninput="window.convertCurrency('JPY')" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Import Itinerary Event Modal -->
   <div class="modal-overlay" id="import-event-modal">
     <div class="modal-card">

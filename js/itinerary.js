@@ -81,7 +81,9 @@ export function selectDayTab(dayIndex, scroll = false) {
     if (index === dayIndex) {
       tab.classList.add('active');
       if (scroll) {
-        tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        setTimeout(() => {
+          tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }, 100);
       }
     } else {
       tab.classList.remove('active');

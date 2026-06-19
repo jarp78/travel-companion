@@ -90,6 +90,9 @@ function setupNavigation() {
   document.getElementById('budget-edit-modal-close').addEventListener('click', () => {
     document.getElementById('budget-edit-modal').classList.remove('active');
   });
+  document.getElementById('converter-modal-close').addEventListener('click', () => {
+    document.getElementById('converter-modal').classList.remove('active');
+  });
   document.getElementById('import-event-modal-close').addEventListener('click', () => {
     document.getElementById('import-event-modal').classList.remove('active');
     clearUrlParams();
@@ -167,7 +170,7 @@ async function loadTripData() {
     // Auto-detect current day & render initial view
     detectCurrentDay();
     renderDayNavigator();
-    selectDayTab(state.selectedDay, false);
+    selectDayTab(state.selectedDay, true);
 
     // Check for shared event or expense imports from URL
     checkForImports();
