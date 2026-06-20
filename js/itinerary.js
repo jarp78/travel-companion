@@ -53,9 +53,9 @@ export function renderDayNavigator() {
   state.tripData.days.forEach((day, index) => {
     const isToday = index === state.autoDetectedDay;
     
-    // Day Label (e.g. "June 15")
+    // Day Label (e.g. "Mon, Jun 15")
     const dateObj = new Date(day.date + 'T00:00:00');
-    const formattedDate = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const formattedDate = dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 
     const tab = document.createElement('button');
     tab.className = `day-tab ${isToday ? 'today-indicator' : ''}`;
