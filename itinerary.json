@@ -1651,14 +1651,14 @@
       "city": "Osaka",
       "name": "Hotel Zentis Osaka",
       "address": "1-4-26 Dojimahama, Kita Ward, Osaka, 530-0004, Japan",
-      "checkIn": "2026-06-23",
-      "checkOut": "2026-06-25"
+      "checkIn": "2026-06-24",
+      "checkOut": "2026-06-26"
     },
     {
       "city": "Tokyo",
       "name": "Tokyo Bay Shiomi Prince Hotel (return)",
       "address": "2-chome-8-16 Shiomi, Koto City, Tokyo 135-0052, Japan",
-      "checkIn": "2026-06-25",
+      "checkIn": "2026-06-26",
       "checkOut": "2026-06-27"
     }
   ],
