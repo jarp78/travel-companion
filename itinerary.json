@@ -1376,50 +1376,186 @@
       "activities": [
         {
           "id": "d10-1",
+          "time": "07:30 AM",
+          "title": "Depart Hotel Zentis for USJ",
+          "description": "Take the train from Hotel Zentis Osaka to Universal Studios Japan. Typical route: Walk to Oebashi/Yodoyabashi Station or Osaka Station, take the JR Yumesaki Line to Universal-City Station. Total travel time is around 30 minutes including walking.",
+          "variant": "A",
+          "location": {
+            "name": "Hotel Zentis Osaka",
+            "address": "1-3-19 Dojimahama, Kita Ward, Osaka"
+          },
+          "travelMode": "transit",
+          "notes": [
+            "Arrive at the park around 8:00 AM to get through security and lines early."
+          ],
+          "bookingRef": null
+        },
+        {
+          "id": "d10-1a",
           "time": "08:00 AM",
-          "title": "Universal Studios Japan — Option A",
-          "description": "Arrive Early (gates open 8:30 AM, sometimes 8:00 AM). Nintendo World timed entry. Express Pass Priority Order: 1. Flying Dinosaur, 2. Hollywood Dream Backwards, 3. Harry Potter, 4. Despicable Me, 5. Space Fantasy, 6. Jurassic World, 7. Use passes flexibly. Mario Kart: Koopa's Challenge is the crown jewel. Power-Up Band (~¥4,000) for interactive game. Food: Butterbeer in Hogsmeade, Minion churros. Return: JR Yumesaki Line to Osaka Station (~15 min) → Hotel Zentis.",
+          "title": "Arrive at Universal Studios Japan",
+          "description": "Arrive at the park gates, clear security, and enter USJ. Enjoy the morning atmosphere and ride any non-Express Pass attractions or check out the shops before your scheduled Express Pass slots begin.",
           "variant": "A",
           "location": {
             "name": "Universal Studios Japan",
             "address": "2-1-33 Sakurajima, Konohana Ward, Osaka"
           },
-          "travelMode": "transit",
+          "travelMode": null,
           "notes": [
-            "USJ Note: Nintendo World is incredible but timed entry passes sell out fast. Book online MONTHS ahead.",
-            "LUGGAGE NOTE: Transfer luggage to Tokyo Bay Shiomi Prince Hotel today so it is waiting for your return to Tokyo."
+            "Check the USJ official app for current wait times.",
+            "Make sure to have your Express Passes loaded and ready."
           ],
-          "bookingRef": "Express Pass Booked"
+          "bookingRef": "USJ Tickets Booked"
         },
         {
-          "id": "d10-2",
-          "time": "09:00 AM",
-          "title": "Aquarium Kaiyukan — Option B",
-          "description": "One of the world's best! Giant whale shark tank, multiple floors. Half-day. Perfect for nature lovers.",
-          "variant": "B",
+          "id": "d10-1b",
+          "time": "10:30 AM",
+          "title": "USJ: Super Nintendo World (Pass 1)",
+          "description": "Scheduled Entry to Super Nintendo World area (10:30-11:30).\n- 10:30-11:00 Mario Kart: Koopa's Challenge\n- 11:00-11:30 Yoshi's Adventure",
+          "variant": "A",
           "location": {
-            "name": "Osaka Aquarium Kaiyukan",
-            "address": "1-1-10 Kaigandori, Minato Ward, Osaka"
+            "name": "Super Nintendo World (USJ)",
+            "address": "Universal Studios Japan, Osaka"
           },
-          "travelMode": "transit",
+          "travelMode": null,
           "notes": [
-            "Alternative to USJ: Nintendo Osaka Store (free) + Pokémon Café + Aquarium = full amazing day with no long queues."
+            "Power-Up Bands (~¥4,000) are available at carts inside the area for interactive games.",
+            "Keep an eye on the time to head to Donkey Kong Country next."
+          ],
+          "bookingRef": "Express Pass 1"
+        },
+        {
+          "id": "d10-1c",
+          "time": "11:30 AM",
+          "title": "USJ: Mine Cart Madness (Pass 1)",
+          "description": "Ride the brand new Mine Cart Madness in the Donkey Kong Country area of Super Nintendo World (11:30-12:00).",
+          "variant": "A",
+          "location": {
+            "name": "Donkey Kong Country (USJ)",
+            "address": "Universal Studios Japan, Osaka"
+          },
+          "travelMode": null,
+          "notes": [
+            "Mine Cart Madness slot is 11:30-12:00."
+          ],
+          "bookingRef": "Express Pass 1"
+        },
+        {
+          "id": "d10-1d",
+          "time": "12:00 PM",
+          "title": "Lunch & Exploration",
+          "description": "Enjoy lunch at the park. Kinopio's Cafe (Toad's Cafe) in Nintendo World is highly recommended but requires getting a timed entry ticket early. Alternatively, eat at the Wizarding World of Harry Potter (Three Broomsticks) or outside Nintendo World.",
+          "variant": "A",
+          "location": null,
+          "travelMode": null,
+          "notes": [
+            "Butterbeer at Hogsmeade is a must-try!"
           ],
           "bookingRef": null
         },
         {
-          "id": "d10-3",
-          "time": "13:00 PM",
-          "title": "Osaka Castle & Park — Option B",
-          "description": "Beautiful grounds, history exhibit inside the castle. Less than 30 min from hotel. Combine with Osaka Museum of History next door.",
-          "variant": "B",
+          "id": "d10-1e",
+          "time": "01:00 PM",
+          "title": "USJ: Wizarding World of Harry Potter (Pass 1)",
+          "description": "Flight of the Hippogriff slot is 13:00-13:30. Also ride Harry Potter and the Forbidden Journey (unscheduled Express Pass).",
+          "variant": "A",
           "location": {
-            "name": "Osaka Castle",
-            "address": "1-1 Osakajo, Chuo Ward, Osaka"
+            "name": "The Wizarding World of Harry Potter (USJ)",
+            "address": "Universal Studios Japan, Osaka"
           },
-          "travelMode": "transit",
+          "travelMode": null,
           "notes": [
-            "TeamLab Planets (Toyosu, Tokyo): if you didn't do TeamLab Borderless in Tokyo, consider this on your final Tokyo day instead."
+            "Harry Potter and the Forbidden Journey is a 3D motion-simulation ride inside Hogwarts Castle."
+          ],
+          "bookingRef": "Express Pass 1"
+        },
+        {
+          "id": "d10-1f",
+          "time": "02:00 PM",
+          "title": "USJ: Villain-Con Minion Blast (Pass 1)",
+          "description": "Villain-Con Minion Blast time slot is 14:00-14:30. Stand on the moving pathway and blast targets in this interactive shooting game.",
+          "variant": "A",
+          "location": {
+            "name": "Minion Park (USJ)",
+            "address": "Universal Studios Japan, Osaka"
+          },
+          "travelMode": null,
+          "notes": [
+            "Download the USJ app to sync your score."
+          ],
+          "bookingRef": "Express Pass 1"
+        },
+        {
+          "id": "d10-1g",
+          "time": "02:30 PM",
+          "title": "USJ: Choice Attractions / Break",
+          "description": "Time to use your unscheduled choices from Pass 1:\n- Choice A: The Flying Dinosaur OR Despicable Me: Minion Mayhem OR Detective Conan 4-D Live Show.\n- Choice B: JAWS OR Hollywood Dream - The Ride.",
+          "variant": "A",
+          "location": null,
+          "travelMode": null,
+          "notes": [
+            "The Flying Dinosaur is one of the most intense flying coasters in the world.",
+            "Hollywood Dream is a smooth roller coaster where you choose your soundtrack."
+          ],
+          "bookingRef": "Express Pass 1"
+        },
+        {
+          "id": "d10-1h",
+          "time": "03:30 PM",
+          "title": "USJ: Villain-Con Minion Blast (Pass 2)",
+          "description": "Villain-Con Minion Blast time slot for Pass 2 is 15:30-16:00. This is the second slot for members on Pass 2.",
+          "variant": "A",
+          "location": {
+            "name": "Minion Park (USJ)",
+            "address": "Universal Studios Japan, Osaka"
+          },
+          "travelMode": null,
+          "notes": [
+            "Check if those without Pass 2 want to grab a snack or do another ride."
+          ],
+          "bookingRef": "Express Pass 2"
+        },
+        {
+          "id": "d10-1i",
+          "time": "04:00 PM",
+          "title": "USJ: Space Fantasy & JAWS (Pass 2)",
+          "description": "Use the unscheduled Express Pass 2 attractions:\n- Space Fantasy - The Ride\n- JAWS\nUse these dynamically based on lines and family preference.",
+          "variant": "A",
+          "location": null,
+          "travelMode": null,
+          "notes": [
+            "Space Fantasy is an indoor spinning coaster through space.",
+            "JAWS is a fun scenic boat ride with shark surprises."
+          ],
+          "bookingRef": "Express Pass 2"
+        },
+        {
+          "id": "d10-1j",
+          "time": "05:50 PM",
+          "title": "USJ: Jujutsu Kaisen: The Real 4-D (Pass 2)",
+          "description": "Time slot is 17:50-18:10. Immersive 4D theater experience featuring Jujutsu Kaisen.",
+          "variant": "A",
+          "location": null,
+          "travelMode": null,
+          "notes": [
+            "Located in the Cinema 4-D Theater."
+          ],
+          "bookingRef": "Express Pass 2"
+        },
+        {
+          "id": "d10-1k",
+          "time": "06:30 PM",
+          "title": "USJ Evening & Dinner at CityWalk",
+          "description": "Head out of the park and explore Universal CityWalk Osaka for dinner. Tons of options including Takoyaki Park, sushi, burgers, and Japanese options.",
+          "variant": "A",
+          "location": {
+            "name": "Universal CityWalk Osaka",
+            "address": "6-2-61 Shimaya, Konohana Ward, Osaka"
+          },
+          "travelMode": "walking",
+          "notes": [
+            "Takoyaki Park on the 4th floor features multiple famous Osaka takoyaki shops in one place.",
+            "Return to Hotel Zentis via train (~30 mins)."
           ],
           "bookingRef": null
         }
